@@ -1,0 +1,86 @@
+TABLAS
+
+USUARIO (código, correo_electrónico, contraseña, última_conexión, nombre, fecha_nacimiento*, teléfono*, foto*)
+	PK: código
+	UK: correo_electrónico
+ADMINISTRADOR (código_administrador)
+	PK: código_administrador
+	FK: código_administrador → USUARIO.código
+CLIENTE (código_cliente)
+	PK: código_cliente
+	FK: código_cliente → USUARIO.código
+TICKET (código, mensaje, asunto, estado, código_cliente)
+	PK: código
+	FK: código_cliente → CLIENTE.código_cliente
+	NN (código_cliente)
+TARJETA (número)
+	PK: número
+USUARIO_VINCULAR_TARJETA (código_usuario, número_tarjeta)
+	PK: código_usuario, número_tarjeta
+	FK: código_usuario → USUARIO.código_usuario
+	FK: número_tarjeta → TARJETA.número
+DIRECCIÓN (código_cliente, número, tipo, cp, localidad, provincia, dirección)
+	PK: código_cliente, número
+	FK: código_cliente → CLIENTE.código_cliente
+PEDIDO_GENERA_FACTURA (código_pedido, fecha_pedido, precio_total, facturado, código_cliente_pedido, número_dirección_pedido, código_factura, fecha_facturación, código_cliente_factura, número_dirección_factura)
+	PK: código_pedido
+	UK: código_factura
+	FK: código_cliente_pedido, número_dirección_pedido → DIRECCIÓN. código_cliente, número
+	NN (código_cliente_pedido, número_dirección_pedido)
+	FK: código_cliente_factura, número_dirección_factura → DIRECCIÓN. código_cliente, número
+	NN (código_cliente_factura, número_dirección_factura)
+CLIENTE_REALIZAR_PEDIDO (código_cliente, código_pedido)
+	PK: código_cliente, código_pedido
+	FK: código_cliente → CLIENTE.código_cliente
+	FK: código_pedido → PEDIDO_GENERA_FACTURA.código_pedido
+LISTA_DESEOS (código_cliente, nombre_lista)
+	PK: código_cliente, nombre_lista
+	FK: código_cliente → CLIENTE.código_cliente
+OPINIÓN (código, mensaje, fecha_publicación, código_cliente, código_producto)
+	PK: código
+	FK: código_cliente → CLIENTE.código_cliente
+	FK: código_producto → PRODUCTO_BUSCAR_CATEGORÍA.código_producto
+	NN (código_cliente)
+	NN (código_producto)
+PROVEEDOR (código, teléfono, dirección, nombre, tipo)
+	PK: código
+PRODUCTO_BUSCAR_CATEGORÍA (código_producto, foto, nombre, descripción, precio, unidad_medida, stock_mínimo, stock, iva, código_proveedor, código_categoría, nombre_categoría, modificador, creador)
+	PK: código_producto
+	UK: código_categoría
+	FK: código_proveedor → PROVEEDOR.código
+	FK: modificador → ADMINISTRADOR.código_administrador
+	FK: creador → ADMINISTRADOR.código_administrador
+	NN (código_proveedor)
+	NN (creador)
+LIBRO (código_libro, formato, editorial, autor, género, isbn, número_páginas)
+	PK: código_libro
+	FK: código_libro → PRODUCTO_BUSCAR_CATEGORÍA.código_producto
+DISCO (código_disco, canciones, sello, género, artista, tipo, asin)
+	PK: código_disco
+	FK: código_disco → PRODUCTO_BUSCAR_CATEGORÍA.código_producto
+SUBCATEGORÍA (código_subcategoría, nombre, código_categoría)
+	PK: código_subcategoría
+	FK: código_categoría → PRODUCTO_BUSCAR_CATEGORÍA.código_producto
+	NN (código_categoría)
+PEDIDO_AÑADIR_PRODUCTO (código_producto, código_pedido, cantidad, precio)
+	PK: código_producto, código_pedido
+	FK: código_producto → PRODUCTO_BUSCAR_CATEGORÍA.código_producto
+	FK: código_pedido → PEDIDO_GENERA_FACTURA.código_pedido
+LISTA_DESEOS_AÑADIR_PRODUCTO (código_producto, nombre_lista, código_cliente)
+	PK: código_producto, nombre_lista, código_cliente
+	FK: código_producto → PRODUCTO_BUSCAR_CATEGORÍA.código_producto
+	FK: nombre_lista, código_cliente → LISTA_DESEOS.código_cliente, nombre_lista
+
+PÉRDIDAS SEMÁNTICAS
+
+Generalización →  solamente hay pérdida si una generalización es total o exclusiva.
+	La generalización de USUARIO es tanto total como exclusiva. Se pierden tanto la totalidad como la exclusividad puesto que no podemos plasmarlas en el modelo relacional.
+	La generalización de PRODUCTO es exclusiva. Se pierde la exclusividad ya que no se puede plasmar en el modelo relacional.
+(1,n) →  Se pierde el uno, no se puede representar. Ya que en el relacional sólo podemos captar la existencia mínima de ese producto en relaciones con restricción de  existencia.
+	Se pierde el 1 del (1,n) de PRODUCTO-PROVEEDOR.
+	Se pierde el 1 del (1,n) de SUBCATEGORÍA-CATEGORÍA.
+	Se pierde el 1 del (1,n) de PRODUCTO-LISTA_DESEOS.
+	Se pierde el 1 del (1,n) de PRODUCTO-PEDIDO.
+	Se pierde el 1 del (1,n) de CLIENTE-PEDIDO.
+1:N o 1:1 →  Si hay atributo en la relación, se pierde. 
+	En las relaciones 1:N ADMINISTRADOR-MODIFICAR-PRODUCTO y ADMINISTRADOR-CREAR-PRODUCTO, se pierden los atributos “Fecha de creación” y “Fecha de última modificación” porque no hacemos una tabla de la relación.
