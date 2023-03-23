@@ -1,8 +1,7 @@
 package dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.ArrayList;
 
 /**
  *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
@@ -13,13 +12,13 @@ public class Usuario {
     private final String correoElectronico;   // Único
     private final String password;
     private final String nombreCompleto;
-    private final LocalTime fechaNacimiento;  //  Opcional
+    private final LocalDate fechaNacimiento;  //  Opcional
     private final int telefono;   //  Opcional
     private final String foto;    //  Opcional
     private final TipoUsuario tipo;
     private final LocalDateTime ultimaConexion; //Timestamp
 
-    public Usuario(int codigo, String correoElectronico, String password, String nombreCompleto, LocalTime fechaNacimiento, int telefono, String foto, TipoUsuario tipo, LocalDateTime ultimaConexion) {
+    public Usuario(int codigo, String correoElectronico, String password, String nombreCompleto, LocalDate fechaNacimiento, int telefono, String foto, TipoUsuario tipo, LocalDateTime ultimaConexion) {
         this.codigo = codigo;
         this.correoElectronico = correoElectronico;
         this.password = password;
@@ -47,7 +46,7 @@ public class Usuario {
         return nombreCompleto;
     }
 
-    public LocalTime getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 

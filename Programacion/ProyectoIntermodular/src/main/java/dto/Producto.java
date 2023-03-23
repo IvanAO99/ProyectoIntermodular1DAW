@@ -1,7 +1,6 @@
 package dto;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 /**
  *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
