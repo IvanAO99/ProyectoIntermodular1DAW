@@ -13,17 +13,13 @@ public class Usuario {
     private final String correoElectronico;   // Único
     private final String password;
     private final String nombreCompleto;
-    
     private final LocalTime fechaNacimiento;  //  Opcional
     private final int telefono;   //  Opcional
     private final String foto;    //  Opcional
-    
     private final TipoUsuario tipo;
-    private final ArrayList<Tarjeta> tarjetas;
-    private final ArrayList<Direccion> direcciones;
-    private final LocalDateTime ultimaConexion;
+    private final LocalDateTime ultimaConexion; //Timestamp
 
-    public Usuario(int codigo, String correoElectronico, String password, String nombreCompleto, LocalTime fechaNacimiento, int telefono, String foto, TipoUsuario tipo, ArrayList<Tarjeta> tarjetas, ArrayList<Direccion> direcciones, LocalDateTime ultimaConexion) {
+    public Usuario(int codigo, String correoElectronico, String password, String nombreCompleto, LocalTime fechaNacimiento, int telefono, String foto, TipoUsuario tipo, LocalDateTime ultimaConexion) {
         this.codigo = codigo;
         this.correoElectronico = correoElectronico;
         this.password = password;
@@ -32,8 +28,6 @@ public class Usuario {
         this.telefono = telefono;
         this.foto = foto;
         this.tipo = tipo;
-        this.tarjetas = tarjetas;
-        this.direcciones = direcciones;
         this.ultimaConexion = ultimaConexion;
     }
 
@@ -67,14 +61,6 @@ public class Usuario {
 
     public TipoUsuario getTipo() {
         return tipo;
-    }
-
-    public ArrayList<Tarjeta> getTarjetas() {
-        return tarjetas;
-    }
-
-    public ArrayList<Direccion> getDirecciones() {
-        return direcciones;
     }
 
     public LocalDateTime getUltimaConexion() {

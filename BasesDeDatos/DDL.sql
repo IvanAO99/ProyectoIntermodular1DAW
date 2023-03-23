@@ -46,7 +46,7 @@ CREATE TABLE ARTESDORADAS_direcciones (
 
 CREATE TABLE ARTESDORADAS_pedidos (
     codigo NUMBER(2) PRIMARY KEY,
-    fecha DATE NOT NULL,
+    fecha TIMESTAMP NOT NULL,
     precio_total NUMBER(10) NOT NULL,
     facturado VARCHAR2(2) NOT NULL,
     cliente NUMBER(2) NOT NULL REFERENCES ARTESDORADAS_usuarios ON DELETE CASCADE,
@@ -58,7 +58,7 @@ CREATE TABLE ARTESDORADAS_pedidos (
 CREATE TABLE ARTESDORADAS_facturas (
     codigo NUMBER(2) PRIMARY KEY,
     pedido NUMBER(2) NOT NULL UNIQUE REFERENCES ARTESDORADAS_pedidos ON DELETE CASCADE,
-    fecha DATE NOT NULL,
+    fecha TIMESTAMP NOT NULL,
     cliente NUMBER(2) NOT NULL,
     direccion_factura NUMBER(2) NOT NULL,
     CONSTRAINT FK_direccion_factura FOREIGN KEY (cliente, direccion_factura) REFERENCES ARTESDORADAS_direcciones ON DELETE CASCADE
@@ -73,7 +73,7 @@ CREATE TABLE ARTESDORADAS_listas_deseos (
 CREATE TABLE ARTESDORADAS_opiniones (
     codigo NUMBER(2) PRIMARY KEY,
     mensaje VARCHAR2(4000) NOT NULL,
-    fecha_publicacion DATE NOT NULL,
+    fecha_publicacion TIMESTAMP NOT NULL,
     cliente NUMBER(2) NOT NULL REFERENCES ARTESDORADAS_usuarios ON DELETE CASCADE
 );
 
@@ -98,8 +98,8 @@ CREATE TABLE ARTESDORADAS_productos (
     proveedor NUMBER(2) NOT NULL REFERENCES ARTESDORADAS_proveedores ON DELETE CASCADE,
     creador NUMBER(2) NOT NULL REFERENCES ARTESDORADAS_usuarios ON DELETE CASCADE,
     modificador NUMBER(2) REFERENCES ARTESDORADAS_usuarios ON DELETE CASCADE,
-    fecha_creacion DATE NOT NULL,
-    fecha_ultima_modificacion DATE
+    fecha_creacion TIMESTAMP NOT NULL,
+    fecha_ultima_modificacion TIMESTAMP
 );
 
 ALTER TABLE ARTESDORADAS_opiniones ADD (producto NUMBER(2) NOT NULL REFERENCES ARTESDORADAS_productos ON DELETE CASCADE);

@@ -1,6 +1,6 @@
 package dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -17,15 +17,13 @@ public abstract class Producto {
     private final String nombre;
     private final String descripcion;
     private final String foto;
-    private final LocalDate fechaCreacion;  //  Opcional
-    private final LocalDate fechaUltimaModificacion;    //  Opcional
+    private final LocalDateTime fechaCreacion;  //  Opcional //LocalDateTime
+    private final LocalDateTime fechaUltimaModificacion;    //  Opcional //LocalDateTime
     private final Proveedor proveedor;
     private final Usuario creador;
     private final Usuario modificador;  //  Opcional
-    private final ArrayList<Opinion> opiniones;
-    private final ArrayList<Categoria> categorias;
 
-    public Producto(int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDate fechaCreacion, LocalDate fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador, ArrayList<Opinion> opiniones, ArrayList<Categoria> categorias) {
+    public Producto(int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDateTime fechaCreacion, LocalDateTime fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador) {
         this.codigo = codigo;
         this.iva = iva;
         this.stock = stock;
@@ -40,8 +38,6 @@ public abstract class Producto {
         this.proveedor = proveedor;
         this.creador = creador;
         this.modificador = modificador;
-        this.opiniones = opiniones;
-        this.categorias = categorias;
     }
 
     public int getCodigo() {
@@ -80,11 +76,11 @@ public abstract class Producto {
         return foto;
     }
 
-    public LocalDate getFechaCreacion() {
+    public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public LocalDate getFechaUltimaModificacion() {
+    public LocalDateTime getFechaUltimaModificacion() {
         return fechaUltimaModificacion;
     }
 
@@ -98,14 +94,6 @@ public abstract class Producto {
 
     public Usuario getModificador() {
         return modificador;
-    }
-
-    public ArrayList<Opinion> getOpiniones() {
-        return opiniones;
-    }
-
-    public ArrayList<Categoria> getCategorias() {
-        return categorias;
     }
 
     @Override

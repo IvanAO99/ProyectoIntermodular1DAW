@@ -11,14 +11,16 @@ public class Direccion {
     private final String localidad;
     private final String provincia;
     private final String direccionCompleta;
+    private final Usuario cliente;
 
-    public Direccion(int codigo, String tipo, int cp, String localidad, String provincia, String direccionCompleta) {
+    public Direccion(int codigo, String tipo, int cp, String localidad, String provincia, String direccionCompleta, Usuario cliente) {
         this.codigo = codigo;
         this.tipo = tipo;
         this.cp = cp;
         this.localidad = localidad;
         this.provincia = provincia;
         this.direccionCompleta = direccionCompleta;
+        this.cliente = cliente;
     }
 
     public int getCodigo() {
@@ -43,6 +45,10 @@ public class Direccion {
 
     public String getDireccionCompleta() {
         return direccionCompleta;
+    }
+
+    public Usuario getCliente() {
+        return cliente;
     }
 
     @Override

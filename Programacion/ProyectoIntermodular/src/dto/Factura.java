@@ -1,6 +1,6 @@
 package dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
@@ -8,12 +8,12 @@ import java.time.LocalDate;
 public class Factura {
     
     private final int codigo;   //  Clave primaria
-    private final LocalDate fechaFactura;
+    private final LocalDateTime fechaFactura;
     private final Usuario cliente;
     private final Direccion direccion;
     private final Pedido pedido;
 
-    public Factura(int codigo, LocalDate fechaFactura, Usuario cliente, Direccion direccion, Pedido pedido) {
+    public Factura(int codigo, LocalDateTime fechaFactura, Usuario cliente, Direccion direccion, Pedido pedido) {
         this.codigo = codigo;
         this.fechaFactura = fechaFactura;
         this.cliente = cliente;
@@ -25,7 +25,7 @@ public class Factura {
         return codigo;
     }
 
-    public LocalDate getFechaFactura() {
+    public LocalDateTime getFechaFactura() {
         return fechaFactura;
     }
 

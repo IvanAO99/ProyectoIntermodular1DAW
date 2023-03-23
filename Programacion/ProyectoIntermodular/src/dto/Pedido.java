@@ -1,6 +1,6 @@
 package dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -10,14 +10,14 @@ import java.util.Map.Entry;
 public class Pedido {
     
     private final int codigo;   //  Clave primaria
-    private final LocalDate fechaPedido;
+    private final LocalDateTime fechaPedido;
     private final double precioTotal;
-    private final EstadoFacturado facturado;
+    private final boolean facturado;
     private final Usuario cliente;
     private final Direccion direccion;
     private final HashMap<Producto, Entry<Integer,Double>> lineasPedido;
 
-    public Pedido(int codigo, LocalDate fechaPedido, double precioTotal, EstadoFacturado facturado, Usuario cliente, Direccion direccion, HashMap<Producto, Entry<Integer, Double>> lineasPedido) {
+    public Pedido(int codigo, LocalDateTime fechaPedido, double precioTotal, boolean facturado, Usuario cliente, Direccion direccion, HashMap<Producto, Entry<Integer, Double>> lineasPedido) {
         this.codigo = codigo;
         this.fechaPedido = fechaPedido;
         this.precioTotal = precioTotal;
@@ -31,7 +31,7 @@ public class Pedido {
         return codigo;
     }
 
-    public LocalDate getFechaPedido() {
+    public LocalDateTime getFechaPedido() {
         return fechaPedido;
     }
 
@@ -39,7 +39,7 @@ public class Pedido {
         return precioTotal;
     }
 
-    public EstadoFacturado getFacturado() {
+    public boolean isFacturado() {
         return facturado;
     }
 

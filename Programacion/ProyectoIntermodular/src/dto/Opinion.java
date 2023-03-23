@@ -1,6 +1,6 @@
 package dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
@@ -9,10 +9,10 @@ public class Opinion {
     
     private final int codigo;   //  Clave primaria
     private final String mensaje;
-    private final LocalDate fechaPublicacion;
+    private final LocalDateTime fechaPublicacion;
     private final Usuario cliente;
 
-    public Opinion(int codigo, String mensaje, LocalDate fechaPublicacion, Usuario cliente) {
+    public Opinion(int codigo, String mensaje, LocalDateTime fechaPublicacion, Usuario cliente) {
         this.codigo = codigo;
         this.mensaje = mensaje;
         this.fechaPublicacion = fechaPublicacion;
@@ -27,7 +27,7 @@ public class Opinion {
         return mensaje;
     }
 
-    public LocalDate getFechaPublicacion() {
+    public LocalDateTime getFechaPublicacion() {
         return fechaPublicacion;
     }
 

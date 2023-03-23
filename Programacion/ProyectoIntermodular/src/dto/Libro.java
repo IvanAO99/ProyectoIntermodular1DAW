@@ -1,6 +1,7 @@
 package dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -15,8 +16,8 @@ public class Libro extends Producto {
     private final int isbn;
     private final int nPaginas;
 
-    public Libro(String formato, String editorial, String autor, String genero, int isbn, int nPaginas, int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDate fechaCreacion, LocalDate fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador, ArrayList<Opinion> opiniones, ArrayList<Categoria> categorias) {
-        super(codigo, iva, stock, stockMinimo, unidadDeMedida, precio, nombre, descripcion, foto, fechaCreacion, fechaUltimaModificacion, proveedor, creador, modificador, opiniones, categorias);
+    public Libro(String formato, String editorial, String autor, String genero, int isbn, int nPaginas, int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDateTime fechaCreacion, LocalDateTime fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador) {
+        super(codigo, iva, stock, stockMinimo, unidadDeMedida, precio, nombre, descripcion, foto, fechaCreacion, fechaUltimaModificacion, proveedor, creador, modificador);
         this.formato = formato;
         this.editorial = editorial;
         this.autor = autor;
