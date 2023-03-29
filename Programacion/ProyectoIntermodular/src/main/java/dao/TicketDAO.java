@@ -12,7 +12,6 @@ import dto.*;
  *
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
  */
-/*
 public class TicketDAO extends TablaDAO<Ticket> {
 
     public TicketDAO() {
@@ -88,4 +87,3 @@ public class TicketDAO extends TablaDAO<Ticket> {
     }
 
 }
-*/
