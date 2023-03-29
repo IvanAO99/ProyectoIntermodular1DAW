@@ -12,7 +12,6 @@ import dto.*;
  *
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
  */
-/*
 public class FacturaDAO extends TablaDAO<Factura> {
 
     public FacturaDAO() {
@@ -27,19 +26,14 @@ public class FacturaDAO extends TablaDAO<Factura> {
 
     @Override
     public int anyadir(Factura f) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?)";
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, f.getCodigo());
         prepared.setInt(2, f.getPedido().getCodigo());
-        Direccion direccion = f.getDireccion();
-        if (direccion == null) {
-            prepared.setNull(3, java.sql.Types.INTEGER);
-        } else {
-            prepared.setInt(3, direccion.getCodigo());
-        }
-        prepared.setTimestamp(4, Timestamp.valueOf(f.getFechaFactura()));
+        prepared.setTimestamp(3, Timestamp.valueOf(f.getFechaFactura()));
+        prepared.setInt(4, f.getCliente().getCodigo());
+        prepared.setInt(5, f.getDireccion().getCodigo());
         return prepared.executeUpdate();
-
     }
 
     @Override
@@ -58,33 +52,33 @@ public class FacturaDAO extends TablaDAO<Factura> {
 
     @Override
     public ArrayList<Factura> getAll() throws SQLException {
-        ArrayList<Factura> lista = new ArrayList<>();
+        ArrayList<Factura> facturas = new ArrayList<>();
         String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY codigo";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int codigo = resultSet.getInt("codigo");
             Pedido pedido = new PedidoDAO().getByCodigo(resultSet.getInt("pedido"));
-            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("codigo"));
+            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("direccion_factura"));
             LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
-            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo"));
-            lista.add(new Factura(codigo, fecha, cliente, direccion, pedido));
+            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("cliente"));
+            facturas.add(new Factura(codigo, fecha, cliente, direccion, pedido));
         }
 
-        return lista;
+        return facturas;
     }
 
     @Override
     public Factura getByCodigo(int codigo) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo=?";
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo = ?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, codigo);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             Pedido pedido = new PedidoDAO().getByCodigo(resultSet.getInt("pedido"));
-            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("codigo"));
+            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("direccion_factura"));
             LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
-            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo"));
+            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("cliente"));
             return new Factura(codigo, fecha, cliente, direccion, pedido);
         }
 
@@ -92,4 +86,3 @@ public class FacturaDAO extends TablaDAO<Factura> {
     }
 
 }
-*/

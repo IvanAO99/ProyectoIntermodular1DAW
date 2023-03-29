@@ -17,7 +17,7 @@ import dto.*;
 public class UsuarioDAO extends TablaDAO<Usuario> {
 
     public UsuarioDAO() {
-        this.tabla = "ARTESDORADAS_usuarios";
+        this.tabla = "artesdoradas_usuarios";
     }
 
     @Override
@@ -28,21 +28,23 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
 
     @Override
     public int anyadir(Usuario u) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?,?,?)";
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?,?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, u.getCodigo());
-        prepared.setString(2, u.getNombreCompleto());
-        prepared.setString(3, u.getCorreoElectronico());
-        prepared.setString(4, u.getPassword());
-        prepared.setDate(5, Date.valueOf(u.getFechaNacimiento()));
-        prepared.setInt(6, u.getTelefono());
-        prepared.setString(7, String.valueOf(u.getTipo()));
+        prepared.setString(2, u.getCorreoElectronico());
+        prepared.setString(3, u.getPassword());
         LocalDateTime ultimaConexion = u.getUltimaConexion();
         if (ultimaConexion == null) {
-            prepared.setNull(8, java.sql.Types.TIMESTAMP);
+            prepared.setNull(4, java.sql.Types.TIMESTAMP);
         } else {
-            prepared.setTimestamp(8, Timestamp.valueOf(ultimaConexion));
+            prepared.setTimestamp(4, Timestamp.valueOf(ultimaConexion));
         }
+        prepared.setString(5, u.getNombreCompleto());
+        prepared.setDate(6, Date.valueOf(u.getFechaNacimiento()));
+        prepared.setInt(7, u.getTelefono());
+        prepared.setString(8, String.valueOf(u.getFoto()));
+        prepared.setString(9, String.valueOf(u.getTipo().toString()));
+        
         return prepared.executeUpdate();
 
     }
@@ -129,7 +131,7 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
 
     }
 
-    private void anyadirTarjetas(Usuario u) throws SQLException {
+    public void anyadirTarjetas(Usuario u) throws SQLException {
         for (Tarjeta t : u.getTarjetas()) {
             String sentenciaSQL = "INSERT INTO ARTESDORADAS_tarjetas_clientes VALUES(?, ?)";
             PreparedStatement prepared = getPrepared(sentenciaSQL);
@@ -140,10 +142,22 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
         }
     }
 
-    private void eliminarTarjetas(Usuario u) throws SQLException {
+    public void eliminarTarjetas(Usuario u) throws SQLException {
         String sentenciaSQL = "DELETE FROM ARTESDORADAS_tarjetas_clientes WHERE cliente = ?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, u.getCodigo());
         prepared.executeUpdate();
+    }
+    
+    public Usuario getUsuario(String nomEmail, String contrasenya) throws SQLException {
+        ArrayList<Usuario> usuarios = getAll();
+        
+        for (Usuario usuario : usuarios) {
+            if (usuario.getCorreoElectronico().equals(nomEmail) && usuario.getPassword().equals(contrasenya)) {
+                return usuario;
+            }
+        }
+        
+        return null;
     }
 }

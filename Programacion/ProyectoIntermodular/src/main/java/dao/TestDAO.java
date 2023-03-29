@@ -6,8 +6,12 @@ package dao;
 
 import dto.*;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.OptionalInt;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,16 +19,12 @@ import java.util.OptionalInt;
  */
 public class TestDAO {
     public static void main(String[] args) {
-        TarjetaDAO dao = new TarjetaDAO();
-        
-        ArrayList<Tarjeta> array = new ArrayList<>();
+        UsuarioDAO dao = new UsuarioDAO();
         
         try {
-            array = dao.getAll();
-            
-            System.out.println(array);
-        } catch (SQLException e) {
-            
+            dao.vaciar();
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
     }
 }

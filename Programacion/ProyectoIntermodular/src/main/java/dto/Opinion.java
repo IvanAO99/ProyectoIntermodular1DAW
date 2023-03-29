@@ -11,12 +11,14 @@ public class Opinion {
     private final String mensaje;
     private final LocalDateTime fechaPublicacion;
     private final Usuario cliente;
+    private final Producto producto;
 
-    public Opinion(int codigo, String mensaje, LocalDateTime fechaPublicacion, Usuario cliente) {
+    public Opinion(int codigo, String mensaje, LocalDateTime fechaPublicacion, Usuario cliente, Producto producto) {
         this.codigo = codigo;
         this.mensaje = mensaje;
         this.fechaPublicacion = fechaPublicacion;
         this.cliente = cliente;
+        this.producto = producto;
     }
 
     public int getCodigo() {
@@ -33,6 +35,10 @@ public class Opinion {
 
     public Usuario getCliente() {
         return cliente;
+    }
+    
+    public Producto getProducto() {
+        return producto;
     }
 
     @Override

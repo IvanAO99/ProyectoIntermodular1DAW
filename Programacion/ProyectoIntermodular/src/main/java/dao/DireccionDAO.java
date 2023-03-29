@@ -10,7 +10,6 @@ import dto.*;
  *
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
  */
-/*
 public class DireccionDAO extends TablaDAO<Direccion> {
 
     public DireccionDAO() {
@@ -25,14 +24,15 @@ public class DireccionDAO extends TablaDAO<Direccion> {
 
     @Override
     public int anyadir(Direccion d) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?)";
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, d.getCodigo());
-        prepared.setInt(2, d.getCliente().getCodigo());
-        prepared.setString(3, d.getDireccionCompleta());
-        prepared.setString(4, d.getLocalidad());
-        prepared.setString(5, d.getProvincia());
-        prepared.setInt(6, d.getCp());
+        prepared.setInt(1, d.getCliente().getCodigo());
+        prepared.setInt(2, d.getCodigo());
+        prepared.setString(3, d.getTipo());
+        prepared.setInt(4, d.getCp());
+        prepared.setString(5, d.getLocalidad());
+        prepared.setString(6, d.getProvincia());
+        prepared.setString(7, d.getDireccionCompleta());
         return prepared.executeUpdate();
     }
 
@@ -58,7 +58,7 @@ public class DireccionDAO extends TablaDAO<Direccion> {
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int codigo = resultSet.getInt("codigo");
-            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario"));
+            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("cliente"));
             String tipo = resultSet.getString("tipo");
             String direccion = resultSet.getString("direccion_completa");
             String localidad = resultSet.getString("localidad");
@@ -71,40 +71,39 @@ public class DireccionDAO extends TablaDAO<Direccion> {
 
     @Override
     public Direccion getByCodigo(int codigo) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo=?";;
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo = ? ";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, codigo);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario"));
+            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("cliente"));
             String tipo = resultSet.getString("tipo");
-            String direccion = resultSet.getString("dir");
-            String localidad = resultSet.getString("poblacion");
+            String direccionCompleta = resultSet.getString("direccion_completa");
+            String localidad = resultSet.getString("localidad");
             String provincia = resultSet.getString("provincia");
             int cp = resultSet.getInt("cp");
-            return new Direccion(codigo, tipo, cp, localidad, provincia, direccion, cliente);
+            return new Direccion(codigo, tipo, cp, localidad, provincia, direccionCompleta, cliente);
         }
         return null;
     }
 
     public ArrayList<Direccion> getDireccionesDe(Usuario u) throws SQLException {
-        ArrayList<Direccion> lista = new ArrayList<>();
-        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE usuario=? ORDER BY codigo";
+        ArrayList<Direccion> direcciones = new ArrayList<>();
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE usuario = ? ORDER BY codigo";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, u.getCodigo());
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
             int codigo = resultSet.getInt("codigo");
-            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario"));
+            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("cliente"));
             String tipo = resultSet.getString("tipo");
-            String direccion = resultSet.getString("direccion_completa");
+            String direccionCompleta = resultSet.getString("direccion_completa");
             String localidad = resultSet.getString("localidad");
             String provincia = resultSet.getString("provincia");
             int cp = resultSet.getInt("cp");
-            lista.add(new Direccion(codigo, tipo, cp, localidad, provincia, direccion, cliente));
+            direcciones.add(new Direccion(codigo, tipo, cp, localidad, provincia, direccionCompleta, cliente));
         }
-        return lista;
+        return direcciones;
     }
 
 }
-*/
