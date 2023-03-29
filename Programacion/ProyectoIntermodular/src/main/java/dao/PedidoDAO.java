@@ -15,6 +15,7 @@ import java.util.Map.Entry;
  *
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
  */
+/*
 public class PedidoDAO extends TablaDAO<Pedido> {
 
     public PedidoDAO() {
@@ -150,3 +151,4 @@ public class PedidoDAO extends TablaDAO<Pedido> {
     }
 
 }
+*/

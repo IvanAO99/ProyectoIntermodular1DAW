@@ -25,8 +25,8 @@ public class Conexion {
         pool = new PoolProperties();
         pool.setUrl(URL);
         pool.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-        pool.setUsername("javauser");
-        pool.setPassword("javauser");
+        pool.setUsername("alumno");
+        pool.setPassword("alumno");
         pool.setMaxActive(15);
         pool.setMaxIdle(10);
         pool.setMaxWait(5000);

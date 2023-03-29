@@ -1,3 +1,4 @@
+
 package dao;
 
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import dto.*;
  *
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
  */
+/*
 public class DiscoDAO extends TablaDAO<Producto> {
 
     public DiscoDAO() {
@@ -218,3 +220,4 @@ public class DiscoDAO extends TablaDAO<Producto> {
     }
 
 }
+*/

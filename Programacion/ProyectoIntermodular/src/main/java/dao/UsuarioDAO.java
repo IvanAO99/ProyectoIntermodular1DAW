@@ -80,7 +80,8 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
             String fotoS = resultSet.getString("foto");
             String foto = fotoS == null ? null : fotoS;
             LocalDateTime ultimaConexion = ultimaConexionTS == null ? null : ultimaConexionTS.toLocalDateTime();
-            lista.add(new Usuario(codigo, email, contrasenya, nombre, fechaNacimiento, telefono, foto, tipoUsuario, ultimaConexion));
+            ArrayList<Tarjeta> tarjetas = getTarjetas(codigo);
+            lista.add(new Usuario(codigo, email, contrasenya, nombre, fechaNacimiento, telefono, foto, tipoUsuario, ultimaConexion, tarjetas));
         }
 
         return lista;
@@ -102,10 +103,47 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
             String fotoS = resultSet.getString("foto");
             String foto = fotoS == null ? null : fotoS;
             LocalDateTime ultimaConexion = ultimaConexionTS == null ? null : ultimaConexionTS.toLocalDateTime();
-            return new Usuario(codigo, email, contrasenya, nombre, fechaNacimiento, telefono, foto, tipoUsuario, ultimaConexion);
+            ArrayList<Tarjeta> tarjetas = getTarjetas(codigo);
+            return new Usuario(codigo, email, contrasenya, nombre, fechaNacimiento, telefono, foto, tipoUsuario, ultimaConexion, tarjetas);
         }
         
         return null;
     }
 
+    public ArrayList<Tarjeta> getTarjetas(int codCliente) throws SQLException {
+        TarjetaDAO tarjetaDAO = new TarjetaDAO();
+        ArrayList<Tarjeta> tarjetas = new ArrayList<>();
+        
+        String sentenciaSQL = "SELECT tarjeta FROM ARTESDORADAS_tarjetas_usuarios WHERE cliente = ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, codCliente);
+        ResultSet resultSet = prepared.executeQuery();
+        
+        while (resultSet.next()) {
+            Tarjeta tarjeta = tarjetaDAO.getByCodigo(resultSet.getInt("tarjeta"));
+            
+            tarjetas.add(tarjeta);
+        }
+
+        return tarjetas;
+
+    }
+
+    private void anyadirTarjetas(Usuario u) throws SQLException {
+        for (Tarjeta t : u.getTarjetas()) {
+            String sentenciaSQL = "INSERT INTO ARTESDORADAS_tarjetas_clientes VALUES(?, ?)";
+            PreparedStatement prepared = getPrepared(sentenciaSQL);
+            prepared.setInt(1, u.getCodigo());
+            prepared.setInt(2, t.getNumero());
+
+            prepared.executeUpdate();
+        }
+    }
+
+    private void eliminarTarjetas(Usuario u) throws SQLException {
+        String sentenciaSQL = "DELETE FROM ARTESDORADAS_tarjetas_clientes WHERE cliente = ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, u.getCodigo());
+        prepared.executeUpdate();
+    }
 }

@@ -1,6 +1,7 @@
 package dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
@@ -14,8 +15,8 @@ public class Disco extends Producto {
     private final String tipo;
     private final int asin;
 
-    public Disco(String canciones, String sello, String genero, String artista, String tipo, int asin, int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDateTime fechaCreacion, LocalDateTime fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador) {
-        super(codigo, iva, stock, stockMinimo, unidadDeMedida, precio, nombre, descripcion, foto, fechaCreacion, fechaUltimaModificacion, proveedor, creador, modificador);
+    public Disco(String canciones, String sello, String genero, String artista, String tipo, int asin, int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDateTime fechaCreacion, LocalDateTime fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador, ArrayList<Categoria> categorias) {
+        super(codigo, iva, stock, stockMinimo, unidadDeMedida, precio, nombre, descripcion, foto, fechaCreacion, fechaUltimaModificacion, proveedor, creador, modificador, categorias);
         this.canciones = canciones;
         this.sello = sello;
         this.genero = genero;

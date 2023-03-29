@@ -13,6 +13,7 @@ import dto.*;
  *
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
  */
+/*
 public class ProductoDAO extends TablaDAO<Producto> {
 
     public ProductoDAO() {
@@ -218,3 +219,4 @@ public class ProductoDAO extends TablaDAO<Producto> {
     }
 
 }
+*/

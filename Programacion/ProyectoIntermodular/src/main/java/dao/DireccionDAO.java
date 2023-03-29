@@ -10,6 +10,7 @@ import dto.*;
  *
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
  */
+/*
 public class DireccionDAO extends TablaDAO<Direccion> {
 
     public DireccionDAO() {
@@ -106,3 +107,4 @@ public class DireccionDAO extends TablaDAO<Direccion> {
     }
 
 }
+*/

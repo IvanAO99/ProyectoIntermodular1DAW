@@ -12,6 +12,7 @@ import dto.*;
  *
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
  */
+/*
 public class FacturaDAO extends TablaDAO<Factura> {
 
     public FacturaDAO() {
@@ -91,3 +92,4 @@ public class FacturaDAO extends TablaDAO<Factura> {
     }
 
 }
+*/

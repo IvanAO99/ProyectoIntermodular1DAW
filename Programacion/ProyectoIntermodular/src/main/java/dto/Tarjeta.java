@@ -16,6 +16,11 @@ public class Tarjeta {
     }
 
     @Override
+    public String toString() {
+        return "Tarjeta {" + "numero = " + numero + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 5;
         hash = 59 * hash + this.numero;

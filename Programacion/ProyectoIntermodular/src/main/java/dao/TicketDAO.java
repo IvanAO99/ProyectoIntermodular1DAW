@@ -12,6 +12,7 @@ import dto.*;
  *
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
  */
+/*
 public class TicketDAO extends TablaDAO<Ticket> {
 
     public TicketDAO() {
@@ -61,7 +62,7 @@ public class TicketDAO extends TablaDAO<Ticket> {
             int codigo = resultSet.getInt("codigo");
             String mensaje = resultSet.getString("mensaje");
             String asunto = resultSet.getString("asunto");
-            EstadoTicket estado = EstadoTicket.valueOf(resultSet.getString("estado"));
+            EstadoTicket estado = EstadoTicket.valueOf(resultSet.getString("estado").toUpperCase());
             Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo"));
             lista.add(new Ticket(codigo, mensaje, asunto, estado, cliente));
         }
@@ -76,14 +77,15 @@ public class TicketDAO extends TablaDAO<Ticket> {
         prepared.setInt(1, codigo);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
-            Pedido pedido = new PedidoDAO().getByCodigo(resultSet.getInt("pedido"));
-            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("codigo"));
-            LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
+            String mensaje = resultSet.getString("mensaje");
+            String asunto = resultSet.getString("asunto");
+            EstadoTicket estado = EstadoTicket.valueOf(resultSet.getString("estado").toUpperCase());
             Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("codigo"));
-            return new Ticket(codigo, fecha, cliente, direccion, pedido);
+            return new Ticket(codigo, mensaje, asunto, estado, cliente);
         }
 
         return null;
     }
 
 }
+*/

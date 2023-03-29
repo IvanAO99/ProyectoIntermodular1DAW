@@ -2,6 +2,7 @@ package dto;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
@@ -17,8 +18,9 @@ public class Usuario {
     private final String foto;    //  Opcional
     private final TipoUsuario tipo;
     private final LocalDateTime ultimaConexion; //Timestamp
+    private final ArrayList<Tarjeta> tarjetas;
 
-    public Usuario(int codigo, String correoElectronico, String password, String nombreCompleto, LocalDate fechaNacimiento, int telefono, String foto, TipoUsuario tipo, LocalDateTime ultimaConexion) {
+    public Usuario(int codigo, String correoElectronico, String password, String nombreCompleto, LocalDate fechaNacimiento, int telefono, String foto, TipoUsuario tipo, LocalDateTime ultimaConexion, ArrayList<Tarjeta> tarjetas) {
         this.codigo = codigo;
         this.correoElectronico = correoElectronico;
         this.password = password;
@@ -28,6 +30,7 @@ public class Usuario {
         this.foto = foto;
         this.tipo = tipo;
         this.ultimaConexion = ultimaConexion;
+        this.tarjetas = tarjetas;
     }
 
     public int getCodigo() {
@@ -64,6 +67,10 @@ public class Usuario {
 
     public LocalDateTime getUltimaConexion() {
         return ultimaConexion;
+    }
+
+    public ArrayList<Tarjeta> getTarjetas() {
+        return tarjetas;
     }
 
     @Override

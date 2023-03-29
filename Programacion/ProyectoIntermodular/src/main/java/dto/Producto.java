@@ -1,6 +1,7 @@
 package dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
@@ -21,8 +22,9 @@ public abstract class Producto {
     private final Proveedor proveedor;
     private final Usuario creador;
     private final Usuario modificador;  //  Opcional
+    private final ArrayList<Categoria> categorias;
 
-    public Producto(int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDateTime fechaCreacion, LocalDateTime fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador) {
+    public Producto(int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDateTime fechaCreacion, LocalDateTime fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador, ArrayList<Categoria> categorias) {
         this.codigo = codigo;
         this.iva = iva;
         this.stock = stock;
@@ -37,6 +39,7 @@ public abstract class Producto {
         this.proveedor = proveedor;
         this.creador = creador;
         this.modificador = modificador;
+        this.categorias = categorias;
     }
 
     public int getCodigo() {
@@ -93,6 +96,10 @@ public abstract class Producto {
 
     public Usuario getModificador() {
         return modificador;
+    }
+
+    public ArrayList<Categoria> getCategorias() {
+        return categorias;
     }
 
     @Override
