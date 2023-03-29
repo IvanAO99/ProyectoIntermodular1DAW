@@ -14,7 +14,7 @@ import dto.*;
 public class CategoriaDAO extends TablaDAO<Categoria> {
 
     public CategoriaDAO() {
-        this.tabla = "artesdoradas_categorias";
+        this.tabla = "ARTESDORADAS_categorias";
     }
 
     @Override

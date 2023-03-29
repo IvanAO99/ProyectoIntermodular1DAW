@@ -7,11 +7,11 @@ public class Proveedor {
 
     private final int codigo;   //  Clave primaria
     private final String nombre;
-    private final String telefono;
+    private final int telefono;
     private final String direccion;
     private final TipoProveedor tipo;
 
-    public Proveedor(int codigo, String nombre, String telefono, String direccion, TipoProveedor tipo) {
+    public Proveedor(int codigo, String nombre, int telefono, String direccion, TipoProveedor tipo) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -27,7 +27,7 @@ public class Proveedor {
         return nombre;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
