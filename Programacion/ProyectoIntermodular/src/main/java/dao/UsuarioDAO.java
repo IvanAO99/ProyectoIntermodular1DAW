@@ -17,7 +17,7 @@ import dto.*;
 public class UsuarioDAO extends TablaDAO<Usuario> {
 
     public UsuarioDAO() {
-        this.tabla = "artesdoradas_usuarios";
+        this.tabla = "ARTESDORADAS_usuarios";
     }
 
     @Override

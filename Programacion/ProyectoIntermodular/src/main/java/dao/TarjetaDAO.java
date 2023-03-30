@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class TarjetaDAO extends TablaDAO<Tarjeta> {
 
     public TarjetaDAO() {
-        this.tabla = "artesdoradas_tarjetas";
+        this.tabla = "ARTESDORADAS_tarjetas";
     }
 
     @Override

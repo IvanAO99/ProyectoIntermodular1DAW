@@ -24,6 +24,10 @@ public class Libro extends Producto {
         this.isbn = isbn;
         this.nPaginas = nPaginas;
     }
+    
+    public Libro(Producto p, String formato, String editorial, String autor, String genero, int isbn, int nPaginas) {
+        this(formato, editorial, autor, genero, isbn, nPaginas, p.getCodigo(), p.getIva(), p.getStock(), p.getStockMinimo(), p.getUnidadDeMedida(), p.getPrecio(), p.getNombre(), p.getDescripcion(), p.getFoto(), p.getFechaCreacion(), p.getFechaUltimaModificacion(), p.getProveedor(), p.getCreador(), p.getModificador(), p.getCategorias());
+    }
 
     public String getFormato() {
         return formato;

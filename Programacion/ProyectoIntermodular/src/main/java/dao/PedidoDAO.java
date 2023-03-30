@@ -18,7 +18,7 @@ import java.util.Map.Entry;
 public class PedidoDAO extends TablaDAO<Pedido> {
 
     public PedidoDAO() {
-        this.tabla = "pedido";
+        this.tabla = "ARTESDORADAS_pedidos";
     }
 
     @Override

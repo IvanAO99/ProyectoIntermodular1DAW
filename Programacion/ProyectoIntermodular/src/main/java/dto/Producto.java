@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
 **/
-public abstract class Producto {
+public class Producto {
 
     private final int codigo;   //  Clave primaria
     private final int iva;
@@ -17,8 +17,8 @@ public abstract class Producto {
     private final String nombre;
     private final String descripcion;
     private final String foto;
-    private final LocalDateTime fechaCreacion;  //  Opcional //LocalDateTime
-    private final LocalDateTime fechaUltimaModificacion;    //  Opcional //LocalDateTime
+    private final LocalDateTime fechaCreacion;  //  Opcional
+    private final LocalDateTime fechaUltimaModificacion;    //  Opcional
     private final Proveedor proveedor;
     private final Usuario creador;
     private final Usuario modificador;  //  Opcional

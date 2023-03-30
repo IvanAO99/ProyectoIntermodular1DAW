@@ -1,11 +1,11 @@
 package dao;
 
+import dto.Categoria;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.OptionalInt;
-import dto.*;
 
 /**
  *

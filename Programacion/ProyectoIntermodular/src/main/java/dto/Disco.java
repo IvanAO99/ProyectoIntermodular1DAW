@@ -24,6 +24,10 @@ public class Disco extends Producto {
         this.tipo = tipo;
         this.asin = asin;
     }
+    
+    public Disco(Producto p, String canciones, String sello, String genero, String artista, String tipo, int asin) {
+        this(canciones, sello, genero, artista, tipo, asin, p.getCodigo(), p.getIva(), p.getStock(), p.getStockMinimo(), p.getUnidadDeMedida(), p.getPrecio(), p.getNombre(), p.getDescripcion(), p.getFoto(), p.getFechaCreacion(), p.getFechaUltimaModificacion(), p.getProveedor(), p.getCreador(), p.getModificador(), p.getCategorias());
+    }
 
     public String getCanciones() {
         return canciones;
