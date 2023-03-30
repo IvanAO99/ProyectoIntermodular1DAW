@@ -29,7 +29,7 @@ public class PedidoDAO extends TablaDAO<Pedido> {
 
     @Override
     public int anyadir(Pedido p) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?)";
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, p.getCodigo());
         prepared.setTimestamp(2, Timestamp.valueOf(p.getFechaPedido()));
