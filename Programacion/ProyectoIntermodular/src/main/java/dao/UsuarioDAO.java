@@ -42,10 +42,8 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
         prepared.setString(5, u.getNombreCompleto());
         prepared.setDate(6, Date.valueOf(u.getFechaNacimiento()));
         prepared.setInt(7, u.getTelefono());
-        prepared.setString(8, String.valueOf(u.getFoto()));
-        prepared.setString(9, String.valueOf(u.getTipo().toString()));
         prepared.setString(8, u.getFoto());
-        prepared.setString(9, String.valueOf(u.getTipo()));
+        prepared.setString(9, u.getTipo().toString());
         
         return prepared.executeUpdate();
 

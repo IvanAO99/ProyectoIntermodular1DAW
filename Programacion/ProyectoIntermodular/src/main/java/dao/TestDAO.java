@@ -19,10 +19,14 @@ import java.util.logging.Logger;
  */
 public class TestDAO {
     public static void main(String[] args) {
-        UsuarioDAO dao = new UsuarioDAO();
+        PedidoDAO dao = new PedidoDAO();
+        
+        Usuario u = new Usuario();
+        Direccion d = new Direccion();
+        Pedido p = new Pedido(1,LocalDateTime.now(), 25.31, true, u, d, null);
         
         try {
-            dao.vaciar();
+            dao.anyadir(p);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
