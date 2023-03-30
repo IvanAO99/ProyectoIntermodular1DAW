@@ -16,10 +16,10 @@
 <body>
 	<header id="cabeceraWeb">
 		<div id="tittle">
-			<a href="../index.html"><img id="logo" src="#"></a>
+			<a href="../index.html"><img id="logo" src="../img/logo.png"></a>
 			<h1>ARTES DORADAS</h1>
 		</div>
-		<nav>
+		<nav id="navegadorPrincipal">
 			<ul id="menu">
 				<li><a href="../index.html"><i class="fa-solid fa-house"></i>INICIO</a></li>
 				<li><a href="./categorias.html"><i class="fa-solid fa-list"></i>CATEGORÍAS</a></li>
@@ -35,12 +35,12 @@
 				<h2>CATEGORÍAS</h2>
 				<form action="" class="inputWrapper">
 					<div class="inputLabelWrapper">
-						<input type="radio" name="" id="checkboxLibros">
-						<label for="checkboxLibros">Libros</label>
+						<input type="radio" name="categoria" id="checkboxLibros">
+						<label for="checkboxLibros" class="generoLabel">Libros</label>
 					</div>
 					<div class="inputLabelWrapper">
-						<input type="radio" name="" id="checkboxDiscos">
-						<label for="checkboxDiscos">Discos</label>
+						<input type="radio" name="categoria" id="checkboxDiscos">
+						<label for="checkboxDiscos" class="generoLabel">Discos</label>
 					</div>
 				</form>
 			</div>
@@ -59,6 +59,10 @@
 						<input type="checkbox" name="" id="checkboxGenero3">
 						<label for="checkboxGenero3">Genero 3</label>
 					</div>
+					<div class="inputLabelWrapper">
+						<input type="checkbox" name="" id="checkboxGenero4">
+						<label for="checkboxGenero4">Genero 4</label>
+					</div>
 				</form>
 			</div>
 			<div id="submitResetWrapper">
@@ -67,7 +71,7 @@
 			</div>
 		</aside>
 		<section id="productsMain">
-			<input type="search" name="" id="searchBox">
+			<input type="search" name="buscador" id="searchBox" placeholder="Buscador...">
 			<figure class="popularimgWrapper">
 				<img src="../img/disco.jpg" alt="" id="popular">
 			</figure>
