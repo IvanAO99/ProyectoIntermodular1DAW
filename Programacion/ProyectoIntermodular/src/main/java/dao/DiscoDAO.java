@@ -54,9 +54,8 @@ public class DiscoDAO extends TablaDAO<Disco> {
             int asin = resultSet.getInt("asin");
             String artista = resultSet.getString("artista");
             String tipo = resultSet.getString("tipo");
-            String genero = resultSet.getString("genero");
 
-            lista.add(new Disco(producto, canciones, sello, genero, artista, tipo, asin));
+            lista.add(new Disco(producto, canciones, sello, artista, tipo, asin));
         }
 
         return lista;
@@ -75,9 +74,8 @@ public class DiscoDAO extends TablaDAO<Disco> {
             int asin = resultSet.getInt("asin");
             String artista = resultSet.getString("artista");
             String tipo = resultSet.getString("tipo");
-            String genero = resultSet.getString("genero");
 
-            return new Disco(producto, canciones, sello, genero, artista, tipo, asin);
+            return new Disco(producto, canciones, sello, artista, tipo, asin);
         }
 
         return null;

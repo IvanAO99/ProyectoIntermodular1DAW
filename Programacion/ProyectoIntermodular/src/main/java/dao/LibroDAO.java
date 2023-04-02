@@ -51,11 +51,10 @@ public class LibroDAO extends TablaDAO<Libro> {
             String formato = resultSet.getString("formato");
             String editorial = resultSet.getString("editorial");
             int nPaginas = resultSet.getInt("numero_paginas");
-            String genero = resultSet.getString("genero");
             int isbn = resultSet.getInt("isbn");
             String autor = resultSet.getString("autor");
 
-            libros.add(new Libro(producto, formato, editorial, autor, genero, isbn, nPaginas));
+            libros.add(new Libro(producto, formato, editorial, autor, isbn, nPaginas));
         }
 
         return libros;
@@ -72,11 +71,10 @@ public class LibroDAO extends TablaDAO<Libro> {
             String formato = resultSet.getString("formato");
             String editorial = resultSet.getString("editorial");
             int nPaginas = resultSet.getInt("numero_paginas");
-            String genero = resultSet.getString("genero");
             int isbn = resultSet.getInt("isbn");
             String autor = resultSet.getString("autor");
 
-            return new Libro(producto, formato, editorial, autor, genero, isbn, nPaginas);
+            return new Libro(producto, formato, editorial, autor, isbn, nPaginas);
         }
 
         return null;

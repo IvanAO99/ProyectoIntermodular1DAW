@@ -10,23 +10,21 @@ public class Disco extends Producto {
 
     private final String canciones;
     private final String sello;
-    private final String genero;
     private final String artista;
     private final String tipo;
     private final int asin;
 
-    public Disco(String canciones, String sello, String genero, String artista, String tipo, int asin, int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDateTime fechaCreacion, LocalDateTime fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador, ArrayList<Categoria> categorias) {
+    public Disco(String canciones, String sello, String artista, String tipo, int asin, int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDateTime fechaCreacion, LocalDateTime fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador, ArrayList<Categoria> categorias) {
         super(codigo, iva, stock, stockMinimo, unidadDeMedida, precio, nombre, descripcion, foto, fechaCreacion, fechaUltimaModificacion, proveedor, creador, modificador, categorias);
         this.canciones = canciones;
         this.sello = sello;
-        this.genero = genero;
         this.artista = artista;
         this.tipo = tipo;
         this.asin = asin;
     }
     
-    public Disco(Producto p, String canciones, String sello, String genero, String artista, String tipo, int asin) {
-        this(canciones, sello, genero, artista, tipo, asin, p.getCodigo(), p.getIva(), p.getStock(), p.getStockMinimo(), p.getUnidadDeMedida(), p.getPrecio(), p.getNombre(), p.getDescripcion(), p.getFoto(), p.getFechaCreacion(), p.getFechaUltimaModificacion(), p.getProveedor(), p.getCreador(), p.getModificador(), p.getCategorias());
+    public Disco(Producto p, String canciones, String sello, String artista, String tipo, int asin) {
+        this(canciones, sello, artista, tipo, asin, p.getCodigo(), p.getIva(), p.getStock(), p.getStockMinimo(), p.getUnidadDeMedida(), p.getPrecio(), p.getNombre(), p.getDescripcion(), p.getFoto(), p.getFechaCreacion(), p.getFechaUltimaModificacion(), p.getProveedor(), p.getCreador(), p.getModificador(), p.getCategorias());
     }
 
     public String getCanciones() {
@@ -35,10 +33,6 @@ public class Disco extends Producto {
 
     public String getSello() {
         return sello;
-    }
-
-    public String getGenero() {
-        return genero;
     }
 
     public String getArtista() {
