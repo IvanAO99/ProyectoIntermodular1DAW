@@ -71,10 +71,9 @@ public class PedidoDAO extends TablaDAO<Pedido> {
             int codigo = resultSet.getInt("codigo");
             LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
             double precioTotal = resultSet.getDouble("precio_total");
-            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario"));
-            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("codigo"));
-            //MetodoPago metodoPago = MetodoPago.valueOf(resultSet.getString("metodopago"));
-            boolean facturado = estaFacturado(codigo);
+            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("cliente"));
+            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("direccion_envio"));
+            boolean facturado = (resultSet.getString("facturado").equals("Sí"));
             HashMap<Producto, Entry<Integer, Double>> lineasPedido = getLineas(codigo);
             lista.add(new Pedido(codigo, fecha, precioTotal, facturado, usuario, direccion, lineasPedido));
         }
@@ -91,10 +90,9 @@ public class PedidoDAO extends TablaDAO<Pedido> {
         while (resultSet.next()) {
             LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
             double precioTotal = resultSet.getDouble("precio_total");
-            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("usuario"));
-            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("codigo"));
-            //MetodoPago metodoPago = MetodoPago.valueOf(resultSet.getString("metodopago"));
-            boolean facturado = estaFacturado(codigo);
+            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("cliente"));
+            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("direccion_envio"));
+            boolean facturado = (resultSet.getString("facturado").equals("Sí"));
             HashMap<Producto, Entry<Integer, Double>> lineasPedido = getLineas(codigo);
             return new Pedido(codigo, fecha, precioTotal, facturado, usuario, direccion, lineasPedido);
         }
@@ -132,21 +130,4 @@ public class PedidoDAO extends TablaDAO<Pedido> {
             prepared.executeUpdate();
         }
     }
-
-    private void eliminarLineas(Pedido p) throws SQLException {
-        String sentenciaSQL = "DELETE FROM ARTESDORADAS_pedidos_productos WHERE pedido=?";
-        PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, p.getCodigo());
-        prepared.executeUpdate();
-
-    }
-
-    public boolean estaFacturado(int codpedido) throws SQLException {
-        String sentenciaSQL = "SELECT * FROM ARTESDORADAS_facturas WHERE pedido=?";
-        PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, codpedido);
-        return prepared.executeUpdate() != 0;
-
-    }
-
 }

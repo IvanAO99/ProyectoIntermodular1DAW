@@ -1,0 +1,72 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+main {
+    padding: 200px;
+}
+
+section {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+
+    margin: 20px;
+
+    height: fit-content;
+}
+
+#primera {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+
+    margin: 20px;
+}
+
+#segunda {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+
+    margin: 20px;
+
+    width: fit-content;
+}
+
+img {
+    max-width: 100px;
+}
+
+section, article {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+
+    margin: 20px;
+}
+
+.recomendados {
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+}
+
+.recomendados h2 {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+
+    text-align: center
+}
+
+#subtítulo {
+    display: flex;
+
+    justify-content: center;
+}

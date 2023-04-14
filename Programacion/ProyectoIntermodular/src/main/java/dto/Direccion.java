@@ -52,6 +52,11 @@ public class Direccion {
     }
 
     @Override
+    public String toString() {
+        return "Direccion{" + "codigo=" + codigo + ", tipo=" + tipo + ", cp=" + cp + ", localidad=" + localidad + ", provincia=" + provincia + ", direccionCompleta=" + direccionCompleta + ", cliente=" + cliente + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 89 * hash + this.codigo;

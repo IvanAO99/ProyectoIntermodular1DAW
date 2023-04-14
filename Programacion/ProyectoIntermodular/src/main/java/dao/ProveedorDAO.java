@@ -24,24 +24,14 @@ public class ProveedorDAO extends TablaDAO<Proveedor> {
 
     @Override
     public int anyadir(Proveedor pr) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?)";
-        PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, pr.getCodigo());
-        prepared.setInt(2, pr.getTelefono());
-        prepared.setString(3, pr.getDireccion());
-        prepared.setString(4, pr.getNombre());
-        prepared.setString(5, pr.getTipo().toString());
-        return prepared.executeUpdate();
-
+        // NO SE UTILIZA EN NUESTRO PROYECTO
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public Proveedor eliminar(Proveedor pr) throws SQLException {
-        if (pr == null) {
-            return null;
-        } else {
-            return eliminar(pr.getCodigo()) != null ? pr : null;
-        }
+        // NO SE UTILIZA EN NUESTRO PROYECTO
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -61,7 +51,7 @@ public class ProveedorDAO extends TablaDAO<Proveedor> {
             String nombre = resultSet.getString("nombre");
             String direccion = resultSet.getString("direccion");
             int telefono = resultSet.getInt("telefono");
-            TipoProveedor tipo = TipoProveedor.valueOf(resultSet.getString("tipo"));
+            TipoProveedor tipo = TipoProveedor.valueOf(resultSet.getString("tipo").toUpperCase());
             lista.add(new Proveedor(codigo, nombre, telefono, direccion, tipo));
         }
 
@@ -77,7 +67,7 @@ public class ProveedorDAO extends TablaDAO<Proveedor> {
             String nombre = resultSet.getString("nombre");
             String direccion = resultSet.getString("direccion");
             int telefono = resultSet.getInt("telefono");
-            TipoProveedor tipo = TipoProveedor.valueOf(resultSet.getString("tipo"));
+            TipoProveedor tipo = TipoProveedor.valueOf(resultSet.getString("tipo").toUpperCase());
             return new Proveedor(codigo, nombre, telefono, direccion, tipo);
         }
         

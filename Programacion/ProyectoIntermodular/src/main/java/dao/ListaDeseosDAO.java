@@ -45,7 +45,7 @@ public class ListaDeseosDAO extends TablaDAO<ListaDeseos> {
     @Override
     public ArrayList<ListaDeseos> getAll() throws SQLException {
         ArrayList<ListaDeseos> listasDeseos = new ArrayList<>();
-        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY codigo";
+        String sentenciaSQL = "SELECT * FROM " + tabla + " ORDER BY cliente";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
         while (resultSet.next()) {
@@ -67,14 +67,14 @@ public class ListaDeseosDAO extends TablaDAO<ListaDeseos> {
         ProductoDAO productoDAO = new ProductoDAO();
         ArrayList<Producto> productos = new ArrayList<>();
         
-        String sentenciaSQL = "SELECT tarjeta FROM ARTESDORADAS_listas_deseos_productos WHERE cliente=? AND nombre_lista=?";
+        String sentenciaSQL = "SELECT * FROM ARTESDORADAS_listas_deseos_productos WHERE cliente=? AND nombre_lista=?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, codCliente);
         prepared.setString(2, nombreLista);
         ResultSet resultSet = prepared.executeQuery();
         
         while (resultSet.next()) {
-            Producto producto = productoDAO.getByCodigo(resultSet.getInt("codigo"));
+            Producto producto = productoDAO.getByCodigo(resultSet.getInt("producto"));
             
             productos.add(producto);
         }

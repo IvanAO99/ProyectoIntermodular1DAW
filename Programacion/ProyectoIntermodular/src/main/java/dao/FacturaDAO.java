@@ -38,11 +38,8 @@ public class FacturaDAO extends TablaDAO<Factura> {
 
     @Override
     public Factura eliminar(Factura f) throws SQLException {
-        if (f == null) {
-            return null;
-        } else {
-            return eliminar(f.getCodigo()) != null ? f : null;
-        }
+        // NO SE UTILIZA EN NUESTRO PROYECTO
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override

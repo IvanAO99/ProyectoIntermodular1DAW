@@ -33,6 +33,11 @@ public class ListaDeseos {
     }
 
     @Override
+    public String toString() {
+        return "ListaDeseos{" + "nombre=" + nombre + ", cliente=" + cliente + ", productos=" + productos + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 3;
         hash = 59 * hash + Objects.hashCode(this.nombre);

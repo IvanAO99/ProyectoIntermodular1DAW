@@ -10,7 +10,7 @@ CREATE TABLE ARTESDORADAS_usuarios (
     ultima_conexion TIMESTAMP NOT NULL,
     nombre VARCHAR2(20) NOT NULL,
     fecha_nacimiento DATE,
-    telefono NUMBER(10),
+    telefono NUMBER(9),
     foto VARCHAR2(200),
     tipo VARCHAR2(20) NOT NULL
 );
@@ -79,7 +79,7 @@ CREATE TABLE ARTESDORADAS_opiniones (
 
 CREATE TABLE ARTESDORADAS_proveedores (
     codigo NUMBER(2) PRIMARY KEY,
-    telefono NUMBER(10) NOT NULL,
+    telefono NUMBER(9) NOT NULL,
     direccion VARCHAR2(100) NOT NULL,
     nombre VARCHAR2(50) NOT NULL,
     tipo VARCHAR2(20) NOT NULL
@@ -109,7 +109,7 @@ CREATE TABLE ARTESDORADAS_libros (
     formato VARCHAR2(20) NOT NULL,
     editorial VARCHAR2(20) NOT NULL,
     autor VARCHAR2(20) NOT NULL,
-    isbn NUMBER(20) NOT NULL,
+    isbn NUMBER(13) NOT NULL,
     numero_paginas VARCHAR2(20) NOT NULL
 );
 
@@ -119,7 +119,7 @@ CREATE TABLE ARTESDORADAS_discos (
     sello VARCHAR2(20) NOT NULL,
     artista VARCHAR2(20) NOT NULL,
     tipo VARCHAR2(20) NOT NULL,
-    asin NUMBER(20) NOT NULL
+    asin NUMBER(13) NOT NULL
 );
 
 CREATE TABLE ARTESDORADAS_categorias (

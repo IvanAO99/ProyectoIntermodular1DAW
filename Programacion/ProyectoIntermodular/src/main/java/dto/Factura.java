@@ -42,6 +42,11 @@ public class Factura {
     }
 
     @Override
+    public String toString() {
+        return "Factura{" + "codigo=" + codigo + ", fechaFactura=" + fechaFactura + ", cliente=" + cliente + ", direccion=" + direccion + ", pedido=" + pedido + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 43 * hash + this.codigo;

@@ -73,16 +73,26 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
         while (resultSet.next()) {
             int codigo = resultSet.getInt("codigo");
             String nombre = resultSet.getString("nombre");
+            //System.out.println(nombre);
             String contrasenya = resultSet.getString("password");
+            //System.out.println(contrasenya);
             String email = resultSet.getString("correo_electronico");
+            //System.out.println(email);
             LocalDate fechaNacimiento = resultSet.getDate("fecha_nacimiento").toLocalDate();
+            //System.out.println(fechaNacimiento);
             int telefono = resultSet.getInt("telefono");
-            TipoUsuario tipoUsuario = TipoUsuario.valueOf(resultSet.getString("tipo"));
+            //System.out.println(telefono);
+            TipoUsuario tipoUsuario = TipoUsuario.valueOf(resultSet.getString("tipo").toUpperCase());
+            //System.out.println(tipoUsuario);
             Timestamp ultimaConexionTS = resultSet.getTimestamp("ultima_conexion");
+            //System.out.println(ultimaConexionTS);
             String fotoS = resultSet.getString("foto");
             String foto = fotoS == null ? null : fotoS;
+            //System.out.println(foto);
             LocalDateTime ultimaConexion = ultimaConexionTS == null ? null : ultimaConexionTS.toLocalDateTime();
+            //System.out.println(ultimaConexion);
             ArrayList<Tarjeta> tarjetas = getTarjetas(codigo);
+            //System.out.println(tarjetas);
             lista.add(new Usuario(codigo, email, contrasenya, nombre, fechaNacimiento, telefono, foto, tipoUsuario, ultimaConexion, tarjetas));
         }
 
@@ -100,7 +110,7 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
             String email = resultSet.getString("correo_electronico");
             LocalDate fechaNacimiento = resultSet.getDate("fecha_nacimiento").toLocalDate();
             int telefono = resultSet.getInt("telefono");
-            TipoUsuario tipoUsuario = TipoUsuario.valueOf(resultSet.getString("tipo"));
+            TipoUsuario tipoUsuario = TipoUsuario.valueOf(resultSet.getString("tipo").toUpperCase());
             Timestamp ultimaConexionTS = resultSet.getTimestamp("ultima_conexion");
             String fotoS = resultSet.getString("foto");
             String foto = fotoS == null ? null : fotoS;
@@ -113,6 +123,7 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
     }
 
     public ArrayList<Tarjeta> getTarjetas(int codCliente) throws SQLException {
+        //System.out.println("Entrando en getTarjetas");
         TarjetaDAO tarjetaDAO = new TarjetaDAO();
         ArrayList<Tarjeta> tarjetas = new ArrayList<>();
         
@@ -122,6 +133,7 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
         ResultSet resultSet = prepared.executeQuery();
         
         while (resultSet.next()) {
+            //System.out.println("Tarjeta: ");
             Tarjeta tarjeta = tarjetaDAO.getByCodigo(resultSet.getInt("tarjeta"));
             
             tarjetas.add(tarjeta);

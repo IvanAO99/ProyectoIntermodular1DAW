@@ -19,31 +19,20 @@ public class CategoriaDAO extends TablaDAO<Categoria> {
 
     @Override
     public int actualizar(Categoria c) throws SQLException {
-        String sentenciaSQL = "UPDATE " + tabla + " SET nombre=? WHERE codigo=?";
-        PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setString(1, c.getNombre());
-        prepared.setInt(2, c.getCodigo());
-        return prepared.executeUpdate();
-
+        // NO SE UTILIZA EN NUESTRO PROYECTO
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public int anyadir(Categoria c) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?)";
-        PreparedStatement prepared = getPrepared(sentenciaSQL);
-        prepared.setInt(1, c.getCodigo());
-        prepared.setString(2, c.getNombre());
-        return prepared.executeUpdate();
-
+        // NO SE UTILIZA EN NUESTRO PROYECTO
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public Categoria eliminar(Categoria c) throws SQLException {
-        if (c == null) {
-            return null;
-        } else {
-            return eliminar(c.getCodigo()) != null ? c : null;
-        }
+        // NO SE UTILIZA EN NUESTRO PROYECTO
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override

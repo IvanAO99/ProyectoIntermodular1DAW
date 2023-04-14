@@ -59,6 +59,7 @@ public class TarjetaDAO extends TablaDAO<Tarjeta> {
 
     @Override
     public Tarjeta getByCodigo(int numero) throws SQLException {
+        //System.out.println("Entrando en getByCodigo");
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE numero = ?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, numero);
@@ -66,6 +67,7 @@ public class TarjetaDAO extends TablaDAO<Tarjeta> {
         
         while (resultSet.next()) {
             int numeroTarjeta = resultSet.getInt("numero");
+            //System.out.println("Numero de tarjeta: " + numeroTarjeta);
             return new Tarjeta(numeroTarjeta);
         }
 

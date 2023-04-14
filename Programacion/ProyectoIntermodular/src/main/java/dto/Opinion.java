@@ -42,6 +42,11 @@ public class Opinion {
     }
 
     @Override
+    public String toString() {
+        return "Opinion{" + "codigo=" + codigo + ", mensaje=" + mensaje + ", fechaPublicacion=" + fechaPublicacion + ", cliente=" + cliente + ", producto=" + producto + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 37 * hash + this.codigo;

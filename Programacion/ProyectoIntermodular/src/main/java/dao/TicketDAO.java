@@ -34,7 +34,6 @@ public class TicketDAO extends TablaDAO<Ticket> {
         prepared.setString(4, t.getEstado().toString());
         prepared.setInt(5, t.getCliente().getCodigo());
         return prepared.executeUpdate();
-
     }
 
     @Override

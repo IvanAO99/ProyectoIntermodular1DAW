@@ -51,7 +51,7 @@ public class DiscoDAO extends TablaDAO<Disco> {
             Producto producto = new ProductoDAO().getByCodigo(resultSet.getInt("codigo"));
             String canciones = resultSet.getString("canciones");
             String sello = resultSet.getString("sello");
-            int asin = resultSet.getInt("asin");
+            long asin = resultSet.getLong("asin");
             String artista = resultSet.getString("artista");
             String tipo = resultSet.getString("tipo");
 
@@ -71,7 +71,7 @@ public class DiscoDAO extends TablaDAO<Disco> {
         while (resultSet.next()) {
             String canciones = resultSet.getString("canciones");
             String sello = resultSet.getString("sello");
-            int asin = resultSet.getInt("asin");
+            long asin = resultSet.getLong("asin");
             String artista = resultSet.getString("artista");
             String tipo = resultSet.getString("tipo");
 

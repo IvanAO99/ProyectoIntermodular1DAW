@@ -56,6 +56,11 @@ public class Pedido {
     }
 
     @Override
+    public String toString() {
+        return "Pedido{" + "codigo=" + codigo + ", fechaPedido=" + fechaPedido + ", precioTotal=" + precioTotal + ", facturado=" + facturado + ", cliente=" + cliente + ", direccion=" + direccion + ", lineasPedido=" + lineasPedido + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 61 * hash + this.codigo;

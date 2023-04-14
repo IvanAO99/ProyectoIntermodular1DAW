@@ -74,6 +74,11 @@ public class Usuario {
     }
 
     @Override
+    public String toString() {
+        return "Usuario{" + "codigo=" + codigo + ", correoElectronico=" + correoElectronico + ", password=" + password + ", nombreCompleto=" + nombreCompleto + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", foto=" + foto + ", tipo=" + tipo + ", ultimaConexion=" + ultimaConexion + ", tarjetas=" + tarjetas + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 3;
         hash = 59 * hash + this.codigo;

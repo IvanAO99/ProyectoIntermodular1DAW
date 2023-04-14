@@ -40,6 +40,11 @@ public class Proveedor {
     }
 
     @Override
+    public String toString() {
+        return "Proveedor{" + "codigo=" + codigo + ", nombre=" + nombre + ", telefono=" + telefono + ", direccion=" + direccion + ", tipo=" + tipo + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 3;
         hash = 53 * hash + this.codigo;

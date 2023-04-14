@@ -3,25 +3,25 @@
 */
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
-VALUES (01, 'ivanayusoolivera@gmail.com', 'lq02lei4mn', TO_DATE('04/02/2023', 'DD-MM-YYYY'), 'ivanao99', TO_DATE('08/12/1999', 'DD-MM-YYYY'), 722365898, './img/ivanao99.jpg', 'Administrador');
+VALUES (01, 'ivanayusoolivera@gmail.com', 'lq02lei4mn', TO_DATE('04/02/2023', 'DD-MM-YYYY'), 'ivanao99', TO_DATE('08/12/1999', 'DD-MM-YYYY'), 7265898, './img/ivanao99.jpg', 'Administrador');
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
-VALUES (02, 'eazorin4@gmail.com', 'g01lw9dkg9', TO_DATE('04/02/2023', 'DD-MM-YYYY'), 'kikesito', TO_DATE('12/08/2001', 'DD-MM-YYYY'), 779852141, './img/kikesito.jpg', 'Administrador');
+VALUES (02, 'eazorin4@gmail.com', 'g01lw9dkg9', TO_DATE('04/02/2023', 'DD-MM-YYYY'), 'kikesito', TO_DATE('12/08/2001', 'DD-MM-YYYY'), 7752141, './img/kikesito.jpg', 'Administrador');
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
-VALUES (03, 'jlopez@gmail.com', '1la03jd7fn', TO_DATE('15/01/2023', 'DD-MM-YYYY'), 'jlopez65', TO_DATE('19/07/1965', 'DD-MM-YYYY'), 659331020, './img/jlopez65.jpg', 'Cliente');
+VALUES (03, 'jlopez@gmail.com', '1la03jd7fn', TO_DATE('15/01/2023', 'DD-MM-YYYY'), 'jlopez65', TO_DATE('19/07/1965', 'DD-MM-YYYY'), 6593020, './img/jlopez65.jpg', 'Cliente');
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
-VALUES (04, 'm.garcia.c@gmail.com', '5ps01m2n4d', TO_DATE('26/01/2023', 'DD-MM-YYYY'), 'manuelgarciacano', TO_DATE('03/12/1996', 'DD-MM-YYYY'), 674558620, './img/manuelgarciacano.jpg', 'Cliente');
+VALUES (04, 'm.garcia.c@gmail.com', '5ps01m2n4d', TO_DATE('26/01/2023', 'DD-MM-YYYY'), 'manuelgarciacano', TO_DATE('03/12/1996', 'DD-MM-YYYY'), 6748620, './img/manuelgarciacano.jpg', 'Cliente');
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
-VALUES (05, 'mariacandel4312@gmail.com', 'p1ow0aken5', TO_DATE('28/01/2023', 'DD-MM-YYYY'), 'marieta95', TO_DATE('24/02/1995', 'DD-MM-YYYY'), 653202014, './img/marieta95.jpg', 'Cliente');
+VALUES (05, 'mariacandel4312@gmail.com', 'p1ow0aken5', TO_DATE('28/01/2023', 'DD-MM-YYYY'), 'marieta95', TO_DATE('24/02/1995', 'DD-MM-YYYY'), 6532014, './img/marieta95.jpg', 'Cliente');
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
-VALUES (06, 'cristinalopez87@gmail.com', 'l0293je7fd', TO_DATE('02/02/2023', 'DD-MM-YYYY'), '97crislo', TO_DATE('06/02/1987', 'DD-MM-YYYY'), 672093882, './img/97crislo.jpg', 'Cliente');
+VALUES (06, 'cristinalopez87@gmail.com', 'l0293je7fd', TO_DATE('02/02/2023', 'DD-MM-YYYY'), '97crislo', TO_DATE('06/02/1987', 'DD-MM-YYYY'), 6793882, './img/97crislo.jpg', 'Cliente');
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
-VALUES (07, 'alex568@gmail.com', 'n384jd0a3l', TO_DATE('31/01/2023', 'DD-MM-YYYY'), 'alex568', TO_DATE('21/07/2000', 'DD-MM-YYYY'), 722910992, './img/alex568.jpg', 'Cliente');
+VALUES (07, 'alex568@gmail.com', 'n384jd0a3l', TO_DATE('31/01/2023', 'DD-MM-YYYY'), 'alex568', TO_DATE('21/07/2000', 'DD-MM-YYYY'), 7220992, './img/alex568.jpg', 'Cliente');
 
 /*
 ** TABLA TICKETS
@@ -47,38 +47,38 @@ VALUES (05, 'Necesito ayuda con mi cuenta', 'AYUDA CUENTA', 'Pendiente', 03);
 */
 
 INSERT INTO ARTESDORADAS_tarjetas (numero)
-VALUES (4029384758);
+VALUES (40294758);
 
 INSERT INTO ARTESDORADAS_tarjetas (numero)
-VALUES (5830192836);
+VALUES (58302836);
 
 INSERT INTO ARTESDORADAS_tarjetas (numero)
-VALUES (3421567834);
+VALUES (34215834);
 
 INSERT INTO ARTESDORADAS_tarjetas (numero)
-VALUES (9182018462);
+VALUES (91820462);
 
 INSERT INTO ARTESDORADAS_tarjetas (numero)
-VALUES (7102938475);
+VALUES (71038475);
 
 /*
 ** TABLA TARJETAS-USUARIOS
 */
 
 INSERT INTO ARTESDORADAS_tarjetas_usuarios (cliente, tarjeta)
-VALUES (03, 4029384758);
+VALUES (03, 40294758);
 
 INSERT INTO ARTESDORADAS_tarjetas_usuarios (cliente, tarjeta)
-VALUES (04, 5830192836);
+VALUES (04, 58302836);
 
 INSERT INTO ARTESDORADAS_tarjetas_usuarios (cliente, tarjeta)
-VALUES (05, 3421567834);
+VALUES (05, 34215834);
 
 INSERT INTO ARTESDORADAS_tarjetas_usuarios (cliente, tarjeta)
-VALUES (06, 9182018462);
+VALUES (06, 91820462);
 
 INSERT INTO ARTESDORADAS_tarjetas_usuarios (cliente, tarjeta)
-VALUES (07, 7102938475);
+VALUES (07, 71038475);
 
 /*
 ** TABLA DIRECCIONES

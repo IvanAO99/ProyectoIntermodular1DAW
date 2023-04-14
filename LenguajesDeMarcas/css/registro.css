@@ -1,0 +1,104 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+main {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+main .formulario {
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    background-color: whitesmoke;
+}
+
+main .formulario .encabezadoForm {
+    text-align: center;
+}
+
+main .formulario .encabezadoForm h2 {
+    border-bottom: 5px solid #b5985d;
+
+    padding: 5px;
+
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    font-family: 'Rock Salt', cursive;
+}
+
+main .formulario .encabezadoForm p {
+    padding: 5px;
+
+    background-color: #77432e;
+
+    color: whitesmoke;
+
+    text-align: center;
+}
+
+form {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: left;
+
+    text-align: left;
+
+    border-top: 5px solid #b5985d;
+    border-bottom: 5px solid #b5985d;
+
+    padding: 10px;
+}
+
+form label {
+    color: black;
+
+    text-decoration: solid;
+    
+    font-family: 'Rock Salt', cursive;
+}
+
+form input {
+    padding: 5px;
+
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+	border: 3px solid #b5985d;
+}
+
+#submit {
+    color: whitesmoke;
+
+    background-color: #77432e;
+
+    font-family: 'Rock Salt', cursive;
+}
+
+.login, .formFooter p {
+    text-align: center;
+
+    background-color: #CF6236;
+
+    color: whitesmoke;
+}
+
+.enlace, .enlace p {
+    text-decoration: none;
+
+    color: #b5985d;
+
+    font-family: 'Rock Salt', cursive;
+}

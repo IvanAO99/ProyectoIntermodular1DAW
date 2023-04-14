@@ -103,6 +103,11 @@ public class Producto {
     }
 
     @Override
+    public String toString() {
+        return "Producto{" + "codigo=" + codigo + ", iva=" + iva + ", stock=" + stock + ", stockMinimo=" + stockMinimo + ", unidadDeMedida=" + unidadDeMedida + ", precio=" + precio + ", nombre=" + nombre + ", descripcion=" + descripcion + ", foto=" + foto + ", fechaCreacion=" + fechaCreacion + ", fechaUltimaModificacion=" + fechaUltimaModificacion + ", proveedor=" + proveedor + ", creador=" + creador + ", modificador=" + modificador + ", categorias=" + categorias + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 3;
         hash = 83 * hash + this.codigo;
