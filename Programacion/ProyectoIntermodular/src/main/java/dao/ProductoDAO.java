@@ -4,6 +4,7 @@ import dto.Categoria;
 import dto.Producto;
 import dto.Proveedor;
 import dto.Usuario;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,13 +30,45 @@ public class ProductoDAO extends TablaDAO<Producto> {
 
     @Override
     public int anyadir(Producto p) throws SQLException {
-        // NO SE UTILIZA EN NUESTRO PROYECTO
-        throw new UnsupportedOperationException("Not supported yet.");
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?,?,?,?)";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, p.getCodigo());
+        prepared.setString(2, p.getFoto());
+        prepared.setString(3, p.getNombre());
+        prepared.setString(4, p.getDescripcion());
+        prepared.setDouble(5, p.getPrecio());
+        prepared.setString(6, p.getUnidadDeMedida());
+        prepared.setInt(7, p.getStock());
+        prepared.setInt(8, p.getStockMinimo());
+        prepared.setInt(9, p.getIva());
+        prepared.setInt(10, p.getProveedor().getCodigo());
+        prepared.setInt(11, p.getCreador().getCodigo());
+        Usuario modificador = p.getModificador();
+        if (modificador == null) {
+            prepared.setNull(12, java.sql.Types.INTEGER);
+        } else {
+            prepared.setInt(12, p.getModificador().getCodigo());
+        }
+        prepared.setTimestamp(13, Timestamp.valueOf(p.getFechaCreacion()));
+        LocalDateTime fechaModificacion = p.getFechaUltimaModificacion();
+        if (fechaModificacion == null) {
+            prepared.setNull(14, java.sql.Types.TIMESTAMP);
+        } else {
+            prepared.setTimestamp(14, Timestamp.valueOf(fechaModificacion));
+        }
+        
+        return prepared.executeUpdate();
     }
 
     public void anyadirCategorias(Producto p) throws SQLException {
-        // NO SE UTILIZA EN NUESTRO PROYECTO
-        throw new UnsupportedOperationException("Not supported yet.");
+        for (Categoria c : p.getCategorias()) {
+            String sentenciaSQL = "INSERT INTO ARTESDORADAS_categorias_productos VALUES(?, ?)";
+            PreparedStatement prepared = getPrepared(sentenciaSQL);
+            prepared.setInt(1, p.getCodigo());
+            prepared.setInt(2, c.getCodigo());
+
+            prepared.executeUpdate();
+        }
     }
 
     public void eliminarCategorias(Producto p) throws SQLException {

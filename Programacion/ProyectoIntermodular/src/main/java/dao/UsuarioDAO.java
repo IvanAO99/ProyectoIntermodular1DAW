@@ -51,11 +51,8 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
 
     @Override
     public Usuario eliminar(Usuario u) throws SQLException {
-        if (u == null) {
-            return null;
-        } else {
-            return eliminar(u.getCodigo()) != null ? u : null;
-        }
+        //No necesario para el proyecto
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

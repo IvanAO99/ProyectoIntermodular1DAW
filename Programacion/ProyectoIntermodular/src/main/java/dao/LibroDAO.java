@@ -25,8 +25,18 @@ public class LibroDAO extends TablaDAO<Libro> {
 
     @Override
     public int anyadir(Libro l) throws SQLException {
-        // NO SE UTILIZA EN NUESTRO PROYECTO
-        throw new UnsupportedOperationException("Not supported yet.");
+        ProductoDAO producto = new ProductoDAO();
+        producto.anyadir(l);
+        
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?)";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, l.getCodigo());
+        prepared.setString(2, l.getFormato());
+        prepared.setString(3, l.getEditorial());
+        prepared.setString(4, l.getAutor());
+        prepared.setLong(5, l.getIsbn());
+        prepared.setInt(6, l.getnPaginas());
+        return prepared.executeUpdate();
     }
 
     @Override

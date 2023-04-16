@@ -110,7 +110,7 @@ CREATE TABLE ARTESDORADAS_libros (
     editorial VARCHAR2(20) NOT NULL,
     autor VARCHAR2(20) NOT NULL,
     isbn NUMBER(13) NOT NULL,
-    numero_paginas VARCHAR2(20) NOT NULL
+    numero_paginas NUMBER(4) NOT NULL
 );
 
 CREATE TABLE ARTESDORADAS_discos (

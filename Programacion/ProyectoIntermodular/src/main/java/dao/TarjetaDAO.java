@@ -31,11 +31,8 @@ public class TarjetaDAO extends TablaDAO<Tarjeta> {
 
     @Override
     public Tarjeta eliminar(Tarjeta t) throws SQLException {
-        if (t == null) {
-            return null;
-        } else {
-            return eliminar(t.getNumero()) != null ? t : null;
-        }
+        //No necesario para el proyecto
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

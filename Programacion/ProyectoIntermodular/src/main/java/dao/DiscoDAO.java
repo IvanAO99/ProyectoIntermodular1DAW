@@ -26,8 +26,18 @@ public class DiscoDAO extends TablaDAO<Disco> {
 
     @Override
     public int anyadir(Disco d) throws SQLException {
-        // NO SE UTILIZA EN NUESTRO PROYECTO
-        throw new UnsupportedOperationException("Not supported yet.");
+        ProductoDAO producto = new ProductoDAO();
+        producto.anyadir(d);
+        
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?)";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, d.getCodigo());
+        prepared.setString(2, d.getCanciones());
+        prepared.setString(3, d.getSello());
+        prepared.setString(4, d.getArtista());
+        prepared.setString(5, d.getTipo());
+        prepared.setLong(6, d.getAsin());
+        return prepared.executeUpdate();
     }
 
     @Override

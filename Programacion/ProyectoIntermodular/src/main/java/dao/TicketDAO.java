@@ -3,8 +3,6 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import dto.*;
 
@@ -38,11 +36,8 @@ public class TicketDAO extends TablaDAO<Ticket> {
 
     @Override
     public Ticket eliminar(Ticket t) throws SQLException {
-        if (t == null) {
-            return null;
-        } else {
-            return eliminar(t.getCodigo()) != null ? t : null;
-        }
+        //No necesario para el proyecto
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

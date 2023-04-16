@@ -29,18 +29,15 @@ public class PedidoDAO extends TablaDAO<Pedido> {
 
     @Override
     public int anyadir(Pedido p) throws SQLException {
-        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?)";
+        String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, p.getCodigo());
         prepared.setTimestamp(2, Timestamp.valueOf(p.getFechaPedido()));
-        prepared.setInt(3, p.getCliente().getCodigo());
-        Direccion direccion = p.getDireccion();
-        if (direccion == null) {
-            prepared.setNull(4, java.sql.Types.INTEGER);
-        } else {
-            prepared.setInt(4, direccion.getCodigo());
-        }
-        //prepared.setString(5, p.getMetodoPago().toString());
+        prepared.setDouble(3, p.getPrecioTotal());
+        prepared.setString(4, p.isFacturado() ? "Sí" : "No");
+        prepared.setInt(5, p.getCliente().getCodigo());
+        prepared.setInt(6, p.getCliente().getCodigo());
+        prepared.setInt(7, p.getDireccion().getCodigo());
         int resultado = prepared.executeUpdate();
         anyadirLineas(p);
         return resultado;
@@ -49,11 +46,8 @@ public class PedidoDAO extends TablaDAO<Pedido> {
 
     @Override
     public Pedido eliminar(Pedido p) throws SQLException {
-        if (p == null) {
-            return null;
-        } else {
-            return eliminar(p.getCodigo()) != null ? p : null;
-        }
+        //No necesario para el proyecto
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
