@@ -1,72 +1,37 @@
 * {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 
-main {
-    padding: 200px;
+#principalWeb {
+    grid-area: main;
+
+    background-image: url('../img/fondo.png');
+
+    padding: 100px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+
+    grid-template-areas: "datosProducto anyadirAX"
+                            "datosProducto2 datosProducto2"
+                            "opiniones opiniones";
 }
 
-section {
-    border: 1px;
-    border-style: solid;
-    border-color: black;
-
-    margin: 20px;
-
-    height: fit-content;
+#datosPrincipales {
+    grid-area: datosProducto;
 }
 
-#primera {
-    display: flex;
-    flex-direction: row;
-
-    justify-content: center;
-
-    margin: 20px;
+#añadirAX {
+    grid-area: anyadirAX;
 }
 
-#segunda {
-    display: flex;
-    flex-direction: row;
-
-    justify-content: center;
-
-    margin: 20px;
-
-    width: fit-content;
+#datosAlternativos {
+    grid-area: datosProducto2;
 }
 
-img {
-    max-width: 100px;
-}
-
-section, article {
-    border: 1px;
-    border-style: solid;
-    border-color: black;
-
-    margin: 20px;
-}
-
-.recomendados {
-    display: flex;
-
-    flex-direction: row;
-
-    justify-content: center;
-}
-
-.recomendados h2 {
-    border: 1px;
-    border-style: solid;
-    border-color: black;
-
-    text-align: center
-}
-
-#subtítulo {
-    display: flex;
-
-    justify-content: center;
+#opiniones {
+    grid-area: opiniones;
 }
