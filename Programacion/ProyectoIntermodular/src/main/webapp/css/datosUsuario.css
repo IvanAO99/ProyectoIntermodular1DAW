@@ -1,0 +1,50 @@
+/* 
+    Created on : May 7, 2023, 9:30:34 PM
+    Author     : ivan
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#principalWeb {
+    grid-area: main;
+
+    background-image: url('../img/fondo.png');
+
+    padding: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 20px;
+}
+
+section#datosUsuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 20px;
+
+    padding: 20px;
+}
+
+article.datoUsuario {
+    border-top: 5px solid #b5985d;
+    border-bottom: 5px solid #b5985d;
+    border-radius: 10px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 20px;
+
+    background-color: whitesmoke;
+}
+

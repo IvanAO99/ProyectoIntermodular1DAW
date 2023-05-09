@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#principalWeb {
+    grid-area: main;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    background-image: url('../img/fondo.png');
+
+    padding: 100px;
+
+    gap: 200px;
+}
+
+main#principalWeb a:hover {
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+}

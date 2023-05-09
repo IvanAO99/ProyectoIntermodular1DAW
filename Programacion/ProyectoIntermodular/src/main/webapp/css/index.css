@@ -1,0 +1,49 @@
+/* 
+    Created on : May 9, 2023, 5:18:53 PM
+    Author     : ivan
+*/
+
+#principalWeb {
+    grid-area: main;
+
+    background-image: url('../img/fondo.png');
+
+    padding: 100px;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+
+    grid-template-areas: "tituloL tituloD"
+                        "libro disco";
+
+    gap: 20px;
+    
+    max-width: 100vw;
+}
+
+#tituloLibros {
+    grid-area: tituloL;
+}
+
+#libroPrincipal {
+    grid-area: libro;
+}
+
+#tituloDiscos {
+    grid-area: tituloD;
+}
+
+#discoPrincipal {
+    grid-area: disco;
+}
+
+figure {
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
