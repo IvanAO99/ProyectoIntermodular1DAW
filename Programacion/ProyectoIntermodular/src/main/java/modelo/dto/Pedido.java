@@ -5,17 +5,18 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 /**
- *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
-**/
+ * @author Iván Ayuso Olivera | Enrique Azorín Castellano
+ *
+ */
 public class Pedido {
-    
+
     private final int codigo;   //  Clave primaria
     private final LocalDateTime fechaPedido;
     private final double precioTotal;
     private final boolean facturado;
     private final Usuario cliente;
     private final Direccion direccion;
-    private final HashMap<Producto, Entry<Integer,Double>> lineasPedido;
+    private final HashMap<Producto, Entry<Integer, Double>> lineasPedido;
 
     public Pedido(int codigo, LocalDateTime fechaPedido, double precioTotal, boolean facturado, Usuario cliente, Direccion direccion, HashMap<Producto, Entry<Integer, Double>> lineasPedido) {
         this.codigo = codigo;
@@ -53,6 +54,28 @@ public class Pedido {
 
     public HashMap<Producto, Entry<Integer, Double>> getLineasPedido() {
         return lineasPedido;
+    }
+
+    public boolean hayStock() {
+        HashMap<Producto, Entry<Integer, Double>> lineasPedido = this.getLineasPedido();
+        for (Producto p : lineasPedido.keySet()) {
+            int cantidadPedido = lineasPedido.get(p).getKey();
+            int stockDisponible = p.getStock();
+            if (cantidadPedido > stockDisponible) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int cantidadStock(Producto p) {
+        HashMap<Producto, Entry<Integer, Double>> lineasPedido = this.getLineasPedido();
+        for (Producto pr : lineasPedido.keySet()) {
+            int cantidadPedido = lineasPedido.get(pr).getKey();
+            int stockDisponible = pr.getStock();
+            return stockDisponible - cantidadPedido;
+        }
+        return 0;
     }
 
     @Override
