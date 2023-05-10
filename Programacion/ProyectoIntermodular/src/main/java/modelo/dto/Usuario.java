@@ -5,8 +5,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
- *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
-**/
+ * @author Iván Ayuso Olivera | Enrique Azorín Castellano
+*
+ */
 public class Usuario {
 
     private final int codigo; //  Clave primaria
@@ -98,5 +99,13 @@ public class Usuario {
         }
         final Usuario other = (Usuario) obj;
         return this.codigo == other.codigo;
+    }
+
+    public boolean esAdmin() {
+        return this.tipo.toString().equals("Administrador");
+    }
+
+    public boolean esCliente() {
+        return this.tipo.toString().equals("Cliente");
     }
 }

@@ -136,4 +136,24 @@ public class PedidoDAO extends TablaDAO<Pedido> {
             prepared.executeUpdate();
         }
     }
+
+    public ArrayList<Pedido> getByCliente(Usuario u) throws SQLException {
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE cliente = ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, u.getCodigo());
+        ResultSet resultSet = prepared.executeQuery();
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
+            double precioTotal = resultSet.getDouble("precio_total");
+            Usuario usuario = new UsuarioDAO().getByCodigo(resultSet.getInt("cliente"));
+            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("direccion_envio"));
+            boolean facturado = (resultSet.getString("facturado").equals("Sí"));
+            HashMap<Producto, Entry<Integer, Double>> lineasPedido = getLineas(codigo);
+            pedidos.add(new Pedido(codigo, fecha, precioTotal, facturado, usuario, direccion, lineasPedido));
+        }
+
+        return pedidos;
+    }
 }
