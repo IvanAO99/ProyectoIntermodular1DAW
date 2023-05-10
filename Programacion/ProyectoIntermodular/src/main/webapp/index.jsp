@@ -32,6 +32,7 @@
         </header>
         <main>
             <h1>Vista de administrador</h1>
+            <a><a href="./facturas.jsp"><p>Ver facturas de clientes</p></a>
         </main>
         <footer>
 

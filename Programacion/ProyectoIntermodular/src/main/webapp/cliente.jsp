@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : cliente
     Created on : May 2, 2023, 7:53:52 PM
     Author     : ivan
@@ -71,7 +71,7 @@
                     <h2>PEDIDOS</h2>
                 </section>
             </a>
-            <a href="./facturas.html">
+            <a href="./facturas.jsp">
                 <section id="facturas">
                     <h2>FACTURAS</h2>
                 </section>

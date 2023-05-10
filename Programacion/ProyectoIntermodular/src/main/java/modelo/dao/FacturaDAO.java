@@ -85,4 +85,22 @@ public class FacturaDAO extends TablaDAO<Factura> {
         return null;
     }
 
+    public ArrayList<Factura> getByCliente(Usuario u) throws SQLException {
+        ArrayList<Factura> facturas = new ArrayList<>();
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE cliente = ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, u.getCodigo());
+        ResultSet resultSet = prepared.executeQuery();
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            Pedido pedido = new PedidoDAO().getByCodigo(resultSet.getInt("pedido"));
+            Direccion direccion = new DireccionDAO().getByCodigo(resultSet.getInt("direccion_factura"));
+            LocalDateTime fecha = resultSet.getTimestamp("fecha").toLocalDateTime();
+            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("cliente"));
+            facturas.add(new Factura(codigo, fecha, cliente, direccion, pedido));
+        }
+
+        return facturas;
+    }
+
 }
