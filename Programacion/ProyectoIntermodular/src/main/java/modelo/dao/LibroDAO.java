@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
  */
 public class LibroDAO extends TablaDAO<Libro> {
-    
+
     public LibroDAO() {
         this.tabla = "ARTESDORADAS_libros";
     }
@@ -27,7 +27,7 @@ public class LibroDAO extends TablaDAO<Libro> {
     public int anyadir(Libro l) throws SQLException {
         ProductoDAO producto = new ProductoDAO();
         producto.anyadir(l);
-        
+
         String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, l.getCodigo());
@@ -84,6 +84,7 @@ public class LibroDAO extends TablaDAO<Libro> {
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, codigo);
         ResultSet resultSet = prepared.executeQuery();
+
         while (resultSet.next()) {
             String formato = resultSet.getString("formato");
             String editorial = resultSet.getString("editorial");

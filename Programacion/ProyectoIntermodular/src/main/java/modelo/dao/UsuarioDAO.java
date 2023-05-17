@@ -46,7 +46,7 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
         prepared.setInt(7, u.getTelefono());
         prepared.setString(8, u.getFoto());
         prepared.setString(9, u.getTipo().toString());
-        
+
         return prepared.executeUpdate();
 
     }
@@ -61,7 +61,6 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
     public boolean existe(Usuario u) throws SQLException {
         return existe(u.getCodigo());
     }
-
 
     @Override
     public ArrayList<Usuario> getAll() throws SQLException {
@@ -97,6 +96,7 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
 
         return lista;
     }
+
     @Override
     public Usuario getByCodigo(int codigo) throws SQLException {
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE codigo=?";
@@ -117,7 +117,7 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
             ArrayList<Tarjeta> tarjetas = getTarjetas(codigo);
             return new Usuario(codigo, email, contrasenya, nombre, fechaNacimiento, telefono, foto, tipoUsuario, ultimaConexion, tarjetas);
         }
-        
+
         return null;
     }
 
@@ -125,16 +125,16 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
         //System.out.println("Entrando en getTarjetas");
         TarjetaDAO tarjetaDAO = new TarjetaDAO();
         ArrayList<Tarjeta> tarjetas = new ArrayList<>();
-        
+
         String sentenciaSQL = "SELECT tarjeta FROM ARTESDORADAS_tarjetas_usuarios WHERE cliente = ?";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, codCliente);
         ResultSet resultSet = prepared.executeQuery();
-        
+
         while (resultSet.next()) {
             //System.out.println("Tarjeta: ");
             Tarjeta tarjeta = tarjetaDAO.getByCodigo(resultSet.getInt("tarjeta"));
-            
+
             tarjetas.add(tarjeta);
         }
 
@@ -159,16 +159,29 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
         prepared.setInt(1, u.getCodigo());
         prepared.executeUpdate();
     }
-    
-    public Usuario getUsuario(String nomEmail, String contrasenya) throws SQLException {
-        ArrayList<Usuario> usuarios = getAll();
-        
-        for (Usuario usuario : usuarios) {
-            if (usuario.getCorreoElectronico().equals(nomEmail) && usuario.getPassword().equals(contrasenya)) {
-                return usuario;
-            }
+
+    public Usuario getUsuario(String email, String contrasenya) throws SQLException {
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE correo_electronico LIKE ? AND password LIKE ?";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setString(1, email);
+        prepared.setString(2, contrasenya);
+        ResultSet resultSet = prepared.executeQuery();
+
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            String nombre = resultSet.getString("nombre");
+            LocalDate fechaNacimiento = resultSet.getDate("fecha_nacimiento").toLocalDate();
+            int telefono = resultSet.getInt("telefono");
+            TipoUsuario tipoUsuario = TipoUsuario.valueOf(resultSet.getString("tipo").toUpperCase());
+            //System.out.println(tipoUsuario);
+            Timestamp ultimaConexionTS = resultSet.getTimestamp("ultima_conexion");
+            String fotoS = resultSet.getString("foto");
+            String foto = fotoS == null ? null : fotoS;
+            LocalDateTime ultimaConexion = ultimaConexionTS == null ? null : ultimaConexionTS.toLocalDateTime();
+            ArrayList<Tarjeta> tarjetas = getTarjetas(codigo);
+            return new Usuario(codigo, email, contrasenya, nombre, fechaNacimiento, telefono, foto, tipoUsuario, ultimaConexion, tarjetas);
         }
-        
+
         return null;
     }
 }

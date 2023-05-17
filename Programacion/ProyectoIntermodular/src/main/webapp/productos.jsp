@@ -1,16 +1,22 @@
-<%-- 
+<%--
     Document   : productos
     Created on : May 7, 2023, 9:16:14 PM
     Author     : ivan
 --%>
 
+<%@page import="modelo.dao.ProductoDAO"%>
+<%@page import="modelo.dto.Producto"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelo.dao.CategoriaDAO"%>
+<%@page import="java.util.Set"%>
+<%@page import="modelo.dto.Categoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Categorías | ARTES DORADAS</title>
+        <title>Productos | ARTES DORADAS</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rock+Salt&display=swap" rel="stylesheet">
@@ -22,13 +28,13 @@
     <body>
         <header id="cabeceraWeb">
             <div id="tittle">
-                <a href="./index.html"><img id="logo" src="./img/logo.png"></a>
+                <a href="./index.jsp"><img id="logo" src="./img/logo.png"></a>
                 <h1>ARTES DORADAS</h1>
             </div>
             <nav id="navegadorPrincipal">
                 <ul id="menu">
                     <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
-                    <li><a href="./categorias.html"><i class="fa-solid fa-list"></i>Productos</a></li>
+                    <li><a href="./productos.jsp"><i class="fa-solid fa-list"></i>Productos</a></li>
                     <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
                     <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>Contacto</a></li>
                     <li><a href="./formulario.html"><i class="fa-solid fa-user"></i>Login</a></li>
@@ -53,22 +59,19 @@
                 <div id="generosWrapper">
                     <h2>GÉNEROS</h2>
                     <form action="" class="inputWrapper">
+                        <%
+                            Set<Categoria> categorias = new CategoriaDAO().getCategoriasDeLibros();
+                            //Set<Categoria> categorias = new CategoriaDAO().getCategoriasDeDiscos();
+
+                            for (Categoria categoria : categorias) {
+                        %>
                         <div class="inputLabelWrapper">
-                            <input type="checkbox" name="" id="checkboxGenero1">
-                            <label for="checkboxGenero1">Genero 1</label>
+                            <input type="checkbox" name="" id="checkboxGenero<%=categoria.getCodigo()%>">
+                            <label for="checkboxGenero<%=categoria.getCodigo()%>"><%=categoria.getNombre()%></label>
                         </div>
-                        <div class="inputLabelWrapper">
-                            <input type="checkbox" name="" id="checkboxGenero2">
-                            <label for="checkboxGenero2">Genero 2</label>
-                        </div>
-                        <div class="inputLabelWrapper">
-                            <input type="checkbox" name="" id="checkboxGenero3">
-                            <label for="checkboxGenero3">Genero 3</label>
-                        </div>
-                        <div class="inputLabelWrapper">
-                            <input type="checkbox" name="" id="checkboxGenero4">
-                            <label for="checkboxGenero4">Genero 4</label>
-                        </div>
+                        <%
+                            }
+                        %>
                     </form>
                 </div>
                 <div id="submitResetWrapper">
@@ -78,53 +81,25 @@
             </aside>
             <section id="productsMain">
                 <input type="search" name="buscador" id="searchBox" placeholder="Buscador...">
-                <figure class="popularimgWrapper">
-                    <img src="./img/disco.jpg" alt="" id="popular">
-                </figure>
                 <section id="products">
                     <div id="productsWrapper">
-                        <section class="productWrapper">
-                            <figure class="imgWrapper">
-                                <img src="./img/libro.jpg" alt="">
-                            </figure>
-                            <h2>Título</h2>
-                            <p>Precio</p>
-                        </section>
-                        <section class="productWrapper">
-                            <figure class="imgWrapper">
-                                <img src="./img/disco.jpg" alt="">
-                            </figure>
-                            <h2>Título</h2>
-                            <p>Precio</p>
-                        </section>
-                        <section class="productWrapper">
-                            <figure class="imgWrapper">
-                                <img src="./img/libro.jpg" alt="">
-                            </figure>
-                            <h2>Título</h2>
-                            <p>Precio</p>
-                        </section>
-                        <section class="productWrapper">
-                            <figure class="imgWrapper">
-                                <img src="./img/libro.jpg" alt="">
-                            </figure>
-                            <h2>Título</h2>
-                            <p>Precio</p>
-                        </section>
-                        <section class="productWrapper">
-                            <figure class="imgWrapper">
-                                <img src="./img/disco.jpg" alt="">
-                            </figure>
-                            <h2>Título</h2>
-                            <p>Precio</p>
-                        </section>
-                        <section class="productWrapper">
-                            <figure class="imgWrapper">
-                                <img src="./img/libro.jpg" alt="">
-                            </figure>
-                            <h2>Título</h2>
-                            <p>Precio</p>
-                        </section>
+                        <%
+                            ArrayList<Producto> productos = new ProductoDAO().getAll();
+
+                            for (Producto producto : productos) {
+                        %>
+                        <a href="./producto.jsp">
+                            <section class="productWrapper">
+                                <figure class="imgWrapper">
+                                    <img src="<%=producto.getFoto()%>" alt="Sin foto">
+                                </figure>
+                                <h2><%=producto.getNombre()%></h2>
+                                <p><%=producto.getPrecio() + " €"%></p>
+                            </section>
+                        </a>
+                        <%
+                            }
+                        %>
                     </div>
                     <p>Ver más</p>
                 </section>

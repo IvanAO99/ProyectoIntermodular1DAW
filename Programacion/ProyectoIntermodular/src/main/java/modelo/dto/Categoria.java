@@ -1,10 +1,11 @@
 package modelo.dto;
 
 /**
- *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
-**/
-public class Categoria {
-    
+ * @author Iván Ayuso Olivera | Enrique Azorín Castellano
+ *
+ */
+public class Categoria implements Comparable<Categoria> {
+
     private final int codigo;   //  Clave primaria
     private final String nombre;
 
@@ -46,5 +47,10 @@ public class Categoria {
         }
         final Categoria other = (Categoria) obj;
         return this.codigo == other.codigo;
+    }
+
+    @Override
+    public int compareTo(Categoria t) {
+        return this.getNombre().compareTo(t.getNombre());
     }
 }

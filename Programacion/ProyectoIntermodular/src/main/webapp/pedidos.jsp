@@ -79,9 +79,6 @@
                 pedidos = (usuarioSesion.esAdmin()) ? pedidoDAO.getAll() : pedidoDAO.getByCliente(usuarioSesion);
             %>
             <section id="datos">
-                <%
-                    for (Pedido pedido : pedidos) {
-                %>
                 <table border="1" width="100%">
                     <thead>
                         <tr>
@@ -92,30 +89,47 @@
                                     }
                                 %>
                             <th>Código de pedido</th>
-                            <th>Pedido asociado</th>
+                            <th>Códigos de productos</th>
                             <th>Dirección</th>
-                            <th>Fecha de Facturación</th>
-                            <th>Total con IVA</th>
+                            <th>Fecha</th>
+                            <th>Precio total + IVA</th>
+                            <th>Facturado</th>
+                                <%
+                                    if (usuarioSesion.esCliente()) {
+                                %>
                             <th></th>
                             <th></th>
+                                <%
+                                    }
+                                %>
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+                            for (Pedido pedido : pedidos) {
+                        %>
                         <tr>
                             <%
                                 if (usuarioSesion.esAdmin()) {
                             %>
-                            <th><%=factura.getCliente().getCorreoElectronico()%></th>
+                            <th><%=pedido.getCliente().getCorreoElectronico()%></th>
                                 <%
                                     }
                                 %>
-                            <td><%=factura.getCodigo()%></td>
-                            <td><%=factura.getPedido().getCodigo()%></td>
-                            <td><%=factura.getDireccion().getDireccionCompleta()%></td>
-                            <td><%=factura.getFechaFactura().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
-                            <td><%=factura.getPedido().getPrecioTotal() + "€"%></td>
+                            <td><%=pedido.getCodigo()%></td>
+                            <td><%=pedido.getCodigosProductos()%></td>
+                            <td><%=pedido.getDireccion().getDireccionCompleta()%></td>
+                            <td><%=pedido.getFechaPedido().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
+                            <td><%=pedido.getPrecioTotal() + "€"%></td>
+                            <td><%=pedido.isFacturado() ? "Sí" : "No"%></td>
+                            <%
+                                if (usuarioSesion.esCliente()) {
+                            %>
                             <td class=\"centrado\"><a href=\"ExportarXML?id="+ factura.getCodigo() +"\"><img class=\"icono\" alt=\"logo XML\" src=\"imagenes/xml.png\"/></a></td>
                             <td class=\"centrado\"><a href=\"ExportarPDF?id="+ factura.getCodigo() +"\"><img class=\"icono\" alt=\"logo PDF\" src=\"imagenes/pdf.png\"/></a></td>
+                                    <%
+                                        }
+                                    %>
                         </tr>
                         <%
                             }

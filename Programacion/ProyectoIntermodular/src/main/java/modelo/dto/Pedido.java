@@ -3,6 +3,8 @@ package modelo.dto;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
@@ -54,6 +56,15 @@ public class Pedido {
 
     public HashMap<Producto, Entry<Integer, Double>> getLineasPedido() {
         return lineasPedido;
+    }
+
+    public String getCodigosProductos() {
+        Set<Integer> codigos = new TreeSet<>();
+
+        for (Producto producto : this.lineasPedido.keySet()) {
+            codigos.add(producto.getCodigo());
+        }
+        return codigos.toString().replace("[", "").replace("]", "");
     }
 
     public boolean hayStock() {

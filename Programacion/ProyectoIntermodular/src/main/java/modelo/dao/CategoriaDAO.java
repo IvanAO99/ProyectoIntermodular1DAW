@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.OptionalInt;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  *
@@ -84,6 +86,36 @@ public class CategoriaDAO extends TablaDAO<Categoria> {
         }
 
         return OptionalInt.empty();
+    }
+
+    public Set<Categoria> getCategoriasDeLibros() throws SQLException {
+        Set<Categoria> conjunt = new TreeSet<>();
+        String sentenciaSQL = "SELECT categoria.codigo, categoria.nombre FROM " + tabla + " producto LEFT JOIN artesdoradas_libros libro on libro.codigo = producto.codigo left join artesdoradas_categorias_productos catproducto on catproducto.producto = producto.codigo left join artesdoradas_categorias categoria on categoria.codigo = catproducto.categoria where libro.codigo is not null";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        ResultSet resultSet = prepared.executeQuery();
+
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            String nombre = resultSet.getString("nombre");
+            conjunt.add(new Categoria(codigo, nombre));
+        }
+
+        return conjunt;
+    }
+
+    public Set<Categoria> getCategoriasDeDiscos() throws SQLException {
+        Set<Categoria> conjunt = new TreeSet<>();
+        String sentenciaSQL = "SELECT categoria.codigo, categoria.nombre FROM " + tabla + " producto LEFT JOIN artesdoradas_discos disco on disco.codigo = producto.codigo left join artesdoradas_categorias_productos catproducto on catproducto.producto = producto.codigo left join artesdoradas_categorias categoria on categoria.codigo = catproducto.categoria where disco.codigo is not null";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        ResultSet resultSet = prepared.executeQuery();
+
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            String nombre = resultSet.getString("nombre");
+            conjunt.add(new Categoria(codigo, nombre));
+        }
+
+        return conjunt;
     }
 
 }

@@ -32,17 +32,18 @@ public class LoginServlet extends HttpServlet {
             String password = request.getParameter("password");
             // Hacemos uso de logica de negocio del bean (dto) como el método "validar()"
             Usuario usuario = new UsuarioDAO().getUsuario(email, password);
-            
-            if(usuario != null) {         
+
+            //System.out.println(usuario);
+            if (usuario != null) {
                 // Si el login es OK guardamos el objeto de tipo "Usuario" en la sesión para poder recuperarlo más tarde.
                 // Y tras esto redirigimos a "index.html"
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
-                response.sendRedirect("index.jsp");  
+                response.sendRedirect("index.jsp");
             } else {
                 // Si el login no es correcto, enviamos un atributo "error" a true a "login.jsp" para que muestre el error.
                 request.setAttribute("error", true);
-                request.getRequestDispatcher("login.jsp").include(request, response);                
+                request.getRequestDispatcher("login.jsp").include(request, response);
             }
         } catch (SQLException ex) {
             System.out.println("ERROR SQL");

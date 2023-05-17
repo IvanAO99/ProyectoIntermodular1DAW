@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
-*
+ *
  */
 public class Usuario {
 
@@ -102,10 +102,12 @@ public class Usuario {
     }
 
     public boolean esAdmin() {
+        //System.out.println(this.tipo.toString().equals("Administrador"));
         return this.tipo.toString().equals("Administrador");
     }
 
     public boolean esCliente() {
+        //System.out.println(this.tipo.toString().equals("Cliente"));
         return this.tipo.toString().equals("Cliente");
     }
 }
