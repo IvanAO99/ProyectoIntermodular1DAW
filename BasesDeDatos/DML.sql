@@ -12,16 +12,16 @@ INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_
 VALUES (03, 'jlopez@gmail.com', '1la03jd7fn', TO_DATE('15/01/2023', 'DD-MM-YYYY'), 'jlopez65', TO_DATE('19/07/1965', 'DD-MM-YYYY'), 6593020, './img/jlopez65.jpg', 'Cliente');
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
-VALUES (04, 'm.garcia.c@gmail.com', '5ps01m2n4d', TO_DATE('26/01/2023', 'DD-MM-YYYY'), 'manuelgarciacano', TO_DATE('03/12/1996', 'DD-MM-YYYY'), 6748620, './img/manuelgarciacano.jpg', 'Cliente');
+VALUES (04, 'm.garcia.c@gmail.com', '5ps01m2n4d', TO_DATE('26/01/2023', 'DD-MM-YYYY'), 'manuelgarciacano', TO_DATE('03/12/1996', 'DD-MM-YYYY'), 6748620, DEFAULT, 'Cliente');
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
 VALUES (05, 'mariacandel4312@gmail.com', 'p1ow0aken5', TO_DATE('28/01/2023', 'DD-MM-YYYY'), 'marieta95', TO_DATE('24/02/1995', 'DD-MM-YYYY'), 6532014, './img/marieta95.jpg', 'Cliente');
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
-VALUES (06, 'cristinalopez87@gmail.com', 'l0293je7fd', TO_DATE('02/02/2023', 'DD-MM-YYYY'), '97crislo', TO_DATE('06/02/1987', 'DD-MM-YYYY'), 6793882, './img/97crislo.jpg', 'Cliente');
+VALUES (06, 'cristinalopez87@gmail.com', 'l0293je7fd', TO_DATE('02/02/2023', 'DD-MM-YYYY'), '97crislo', TO_DATE('06/02/1987', 'DD-MM-YYYY'), 6793882, DEFAULT, 'Cliente');
 
 INSERT INTO ARTESDORADAS_usuarios (codigo, correo_electronico, password, ultima_conexion, nombre, fecha_nacimiento, telefono, foto, tipo)
-VALUES (07, 'alex568@gmail.com', 'n384jd0a3l', TO_DATE('31/01/2023', 'DD-MM-YYYY'), 'alex568', TO_DATE('21/07/2000', 'DD-MM-YYYY'), 7220992, './img/alex568.jpg', 'Cliente');
+VALUES (07, 'alex568@gmail.com', 'n384jd0a3l', TO_DATE('31/01/2023', 'DD-MM-YYYY'), 'alex568', TO_DATE('21/07/2000', 'DD-MM-YYYY'), 7220992, DEFAULT, 'Cliente');
 
 /*
 ** TABLA TICKETS

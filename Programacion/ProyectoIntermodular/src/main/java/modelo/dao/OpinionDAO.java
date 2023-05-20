@@ -9,10 +9,12 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
-**/
+ * @author Iván Ayuso Olivera | Enrique Azorín Castellano
+ *
+ */
 public class OpinionDAO extends TablaDAO<Opinion> {
 
     public OpinionDAO() {
@@ -84,5 +86,23 @@ public class OpinionDAO extends TablaDAO<Opinion> {
         }
 
         return null;
+    }
+
+    public List<Opinion> getByProducto(Producto p) throws SQLException {
+        ArrayList<Opinion> opiniones = new ArrayList<>();
+        String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE producto = ? ORDER BY codigo";
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        prepared.setInt(1, p.getCodigo());
+        ResultSet resultSet = prepared.executeQuery();
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("codigo");
+            String mensaje = resultSet.getString("mensaje");
+            LocalDateTime fechaPublicacion = resultSet.getTimestamp("fecha_publicacion").toLocalDateTime();
+            Usuario cliente = new UsuarioDAO().getByCodigo(resultSet.getInt("cliente"));
+            Producto producto = new ProductoDAO().getByCodigo(resultSet.getInt("producto"));
+            opiniones.add(new Opinion(codigo, mensaje, fechaPublicacion, cliente, producto));
+        }
+
+        return opiniones;
     }
 }

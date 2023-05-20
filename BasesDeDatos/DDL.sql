@@ -11,7 +11,7 @@ CREATE TABLE ARTESDORADAS_usuarios (
     nombre VARCHAR2(20) NOT NULL,
     fecha_nacimiento DATE,
     telefono NUMBER(9),
-    foto VARCHAR2(200),
+    foto VARCHAR2(200) DEFAULT './img/default.jpg',
     tipo VARCHAR2(20) NOT NULL
 );
 

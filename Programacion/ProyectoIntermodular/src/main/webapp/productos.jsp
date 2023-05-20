@@ -88,7 +88,7 @@
 
                             for (Producto producto : productos) {
                         %>
-                        <a href="./producto.jsp">
+                        <a href="./producto.jsp?codProducto=<%=producto.getCodigo()%>">
                             <section class="productWrapper">
                                 <figure class="imgWrapper">
                                     <img src="<%=producto.getFoto()%>" alt="Sin foto">
