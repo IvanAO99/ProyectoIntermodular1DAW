@@ -8,30 +8,320 @@
 
     background-image: url('../img/fondo.png');
 
-    padding: 100px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 20%;
+    padding-right: 20%;
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
 
-    grid-template-areas: "datosProducto anyadirAX"
-                            "datosProducto2 datosProducto2"
-                            "opiniones opiniones";
+    grid-template-areas:
+        "datosProductoyAnyadir"
+        "datosProducto2"
+        "opiniones"
+    ;
+
+    max-width: 100wh;
+
+    gap: 2em;
 }
 
-#datosPrincipales {
-    grid-area: datosProducto;
+#datosPrincipalesyAnyadir {
+    grid-area: datosProductoyAnyadir;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 20px;
 }
 
-#añadirAX {
-    grid-area: anyadirAX;
+#datosPrincipalesyAnyadir>figure {
+    width: 40%;
+    height: 90%;
+
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+}
+
+#datosPrincipalesyAnyadir>figure>img {
+    width: 100%;
+    height: 100%;
+}
+
+#datosPrincipalesyAnyadir>section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    width: 60%;
+    height: max-content;
+}
+
+#datosPrincipalesyAnyadir>section>article,
+div#cesta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+p#error {
+    font-size: 1em;
+    color: red;
+}
+
+p#error > a,
+p#error > a:active,
+p#error > a:visited {
+    text-decoration: none;
+    font-style: italic;
+}
+
+h2#nombreProducto,
+p#autorProducto,
+p#proveedorProducto,
+section#datosAlternativos, 
+section#opiniones,
+p#stock,
+p#precio {
+    border-top: 5px solid #b5985d;
+    border-bottom: 5px solid #b5985d;
+    border-radius: 10px;
+
+    background-color: whitesmoke;
+
+    padding: 20px;
+
+    color: black;
+}
+
+.boton {
+    padding: 0.2em 1em;
+
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    font-family: 'Rock Salt', cursive;
+    font-size: 1em;
+}
+
+.boton:hover {
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    cursor: pointer;
+}
+
+#cantidad {
+    padding: 0.2em 1em;
+
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    font-size: 1em;
+}
+
+form#formCesta {
+    display: flex;
+    flex-direction: row;
+
+    gap: 2em;
 }
 
 #datosAlternativos {
     grid-area: datosProducto2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2em;
+
+    padding: 0 !important;
+}
+
+#datosAlternativos > article {
+    align-self: stretch;
+    
+    border-bottom: 5px solid #b5985d;
+    border-radius: 10px;
+}
+
+#datosAlternativos > article > p {
+    padding: 20px;
+}
+
+#tablaDatosAlternativos {
+    align-self: center;
+
+    text-align: center;
+
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    margin: 0 0 2em 0;
+}
+
+#tablaDatosAlternativos > #body {
+    gap: 2em;
+}
+
+.tdIzquierda, .tdDerecha {
+    padding: 2em 1em;
+
+    border-bottom: 5px solid #b5985d;
+}
+
+#tablaDatosAlternativos > #body tr:last-child td {
+    border-bottom: none;
+}
+
+.tdIzquierda {
+    border-right: 2.5px solid #b5985d;
+
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    font-family: 'Rock Salt', cursive;
+}
+
+.tdDerecha {
+    border-left: 2.5px solid #b5985d;
 }
 
 #opiniones {
     grid-area: opiniones;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2em;
+
+    padding: 0 !important;
+
+    border: 5px solid #b5985d !important;
+    border-radius: 10px !important;
+
+    padding-bottom: 2em !important;
+}
+
+#tituloOpiniones {
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    font-family: 'Rock Salt', cursive;
+
+    border-bottom: 5px solid #b5985d;
+
+    text-align: center;
+
+    padding: 0.5em;
+}
+
+#formularioOpinionWrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2em;
+}
+
+#tituloFormulario {
+    border-bottom: 5px solid #b5985d;
+    padding: 0.5em 2em 0.5em 0.5em;
+    width: max-content;
+}
+
+#formularioOpinion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 2em;
+}
+
+#opinion {
+    width: 95%;
+    resize: none;
+
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    padding: 1em;
+}
+
+#opinion:focus {
+    outline: none;
+}
+
+#formularioOpinion > .boton {
+    width: max-content;
+}
+
+.opinion {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    margin: 0em 1em;
+}
+
+.usuarioYfecha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    padding: 1em;
+
+    border-bottom: 5px solid #b5985d;
+}
+
+.fotoUserYNombre {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 1em;
+}
+
+.fotoPerfilWrapper {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    border: 5px solid #b5985d;
+}
+
+.fotoPerfil {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.mensaje {
+    padding: 1em;
 }

@@ -38,11 +38,12 @@
             </figure>
             <section>
                 <article>
-                    <p id="error">(*) 
+                    <p id="error">(*)
                         <a href="#">Inicia sesión</a>
-                         o 
+                        o
                         <a href="#"> registrate</a>
-                         para añadir a la lista de deseos o cesta</p>
+                        para añadir a la lista de deseos o cesta
+                    </p>
                     <h2 id="nombreProducto">Nombre</h2>
                     <p id="autorProducto">Autor / Artista</p>
                     <p id="proveedorProducto">Editorial / Discográfica</p>
@@ -94,48 +95,55 @@
         </section>
         <section id="opiniones">
             <h2 id="tituloOpiniones">OPINIONES</h2>
-            <div id="formularioOpinion">
+            <div id="formularioOpinionWrapper">
                 <h2 id="tituloFormulario">Deja una opinión de este producto</h2>
-                <form action="#">
-                    <textarea name="opinion" id="opinion" cols="30" rows="10"></textarea>
-                    <input type="submit" value="">
+                <form action="#" id="formularioOpinion">
+                    <p id="error">(*)
+                        <a href="#">Inicia sesión</a>
+                        o
+                        <a href="#"> registrate</a>
+                        para dejar una reseña
+                    </p>
+                    <p id="error">(*) Realiza un pedido de este producto para dejar una reseña</p>
+                    <textarea name="opinion" id="opinion" rows="10" placeholder="Escribe una opinion..."></textarea>
+                    <input type="submit" value="Enviar" class="boton">
                 </form>
             </div>
             <article class="opinion">
                 <div class="usuarioYfecha">
                     <div class="fotoUserYNombre">
-                        <figure>
-                            <img src="#" alt="Foto de perfil">
+                        <figure class="fotoPerfilWrapper">
+                            <img src="../img/user.jpg" alt="Foto de perfil" class="fotoPerfil">
                         </figure>
                         <p>Nombre</p>
                     </div>
                     <p>Fecha de publicación</p>
                 </div>
-                <p>Mensaje</p>
+                <p class="mensaje">Mensaje</p>
             </article>
             <article class="opinion">
                 <div class="usuarioYfecha">
                     <div class="fotoUserYNombre">
-                        <figure>
-                            <img src="#" alt="Foto de perfil">
+                        <figure class="fotoPerfilWrapper">
+                            <img src="../img/careto.png" alt="Foto de perfil" class="fotoPerfil">
                         </figure>
                         <p>Nombre</p>
                     </div>
                     <p>Fecha de publicación</p>
                 </div>
-                <p>Mensaje</p>
+                <p class="mensaje">Mensaje</p>
             </article>
             <article class="opinion">
                 <div class="usuarioYfecha">
                     <div class="fotoUserYNombre">
-                        <figure>
-                            <img src="#" alt="Foto de perfil">
+                        <figure class="fotoPerfilWrapper">
+                            <img src="../img/personaLeyendo.jpg" alt="Foto de perfil" class="fotoPerfil">
                         </figure>
                         <p>Nombre</p>
                     </div>
                     <p>Fecha de publicación</p>
                 </div>
-                <p>Mensaje</p>
+                <p class="mensaje">Mensaje</p>
             </article>
         </section>
     </main>
