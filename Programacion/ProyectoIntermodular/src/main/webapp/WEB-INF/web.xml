@@ -20,6 +20,14 @@
         <servlet-name>Facturar</servlet-name>
         <servlet-class>controlador.Facturar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AnyadirAlCarrito</servlet-name>
+        <servlet-class>controlador.AnyadirAlCarrito</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarCarrito</servlet-name>
+        <servlet-class>controlador.ActualizarCarrito</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>Facturar</servlet-name>
         <url-pattern>/Facturar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AnyadirAlCarrito</servlet-name>
+        <url-pattern>/AnyadirAlCarrito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarCarrito</servlet-name>
+        <url-pattern>/ActualizarCarrito</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

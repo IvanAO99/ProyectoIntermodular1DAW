@@ -4,8 +4,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
- *  @author Iván Ayuso Olivera | Enrique Azorín Castellano
-**/
+ * @author Iván Ayuso Olivera | Enrique Azorín Castellano
+*
+ */
 public class Producto {
 
     private final int codigo;   //  Clave primaria
@@ -100,6 +101,10 @@ public class Producto {
 
     public ArrayList<Categoria> getCategorias() {
         return categorias;
+    }
+
+    public double getPrecioCompleto() {
+        return this.precio + ((this.iva / 100) * this.precio);
     }
 
     @Override

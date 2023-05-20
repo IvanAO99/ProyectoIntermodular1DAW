@@ -2,6 +2,7 @@ package modelo.dto;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeSet;
@@ -87,6 +88,16 @@ public class Pedido {
             return stockDisponible - cantidadPedido;
         }
         return 0;
+    }
+
+    public static double calcularPrecioTotal(HashMap<Producto, Entry<Integer, Double>> lineas) {
+        double precio = 0;
+
+        for (Entry<Producto, Entry<Integer, Double>> linea : lineas.entrySet()) {
+            precio += (linea.getValue().getKey() * linea.getValue().getValue());
+        }
+
+        return precio;
     }
 
     @Override

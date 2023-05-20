@@ -75,12 +75,22 @@
                 </figure>
                 <section>
                     <article>
+                        <%
+                            if (request.getAttribute("errorAnyadirCarrito") != null && (boolean) request.getAttribute("errorAnyadirCarrito")) {
+                        %>
                         <p id="error">(*)
                             <a href="#">Inicia sesión</a>
                             o
                             <a href="#"> registrate</a>
                             para añadir a la lista de deseos o cesta
                         </p>
+                        <%
+                        } else if (request.getAttribute("errorFormCarrito") != null && (boolean) request.getAttribute("errorFormCarrito")) {
+                        %>
+                        <p id="error">(*) Error al añadir al carrito</p>
+                        <%
+                            }
+                        %>
                         <h2 id="nombreProducto"><%=producto.getNombre()%></h2>
                         <p id="autorProducto"><%=producto instanceof Libro ? "Autor: ".concat(((Libro) producto).getAutor()) : "Artista: ".concat(((Disco) producto).getArtista())%></p>
                         <p id="proveedorProducto"><%=producto instanceof Libro ? "Editorial: ".concat(((Libro) producto).getEditorial()) : "Discográfica: ".concat(((Disco) producto).getDiscografica())%></p>
@@ -91,7 +101,8 @@
                     <div id="cesta">
                         <p id="stock">Stock: <%=producto.getStock()%></p>
                         <p id="precio">Precio: <%=producto.getPrecio()%>€ + IVA(<%=producto.getIva()%>%)</p>
-                        <form action="#" id="formCesta">
+                        <form action="AnyadirAlCarrito" id="formCesta">
+                            <input type="hidden" name="codProducto" value="<%=producto.getCodigo()%>"/>
                             <input type="number" name="cantidad" id="cantidad" min="1" max="99" value="1">
                             <input type="submit" value="Añadir a la cesta" class="boton">
                         </form>
