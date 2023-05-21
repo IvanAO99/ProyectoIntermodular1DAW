@@ -56,7 +56,7 @@ public class ProductoDAO extends TablaDAO<Producto> {
         } else {
             prepared.setTimestamp(14, Timestamp.valueOf(fechaModificacion));
         }
-        
+
         return prepared.executeUpdate();
     }
 
@@ -161,6 +161,17 @@ public class ProductoDAO extends TablaDAO<Producto> {
             categorias.add(new Categoria(codigo, nombre));
         }
         return categorias;
+    }
+
+    public int descontarStock(Producto p, int cantidad) throws SQLException {
+        //String sentenciaSQL = "UPDATE " + tabla + " SET nombre=? WHERE codigo=?";
+        String sentenciaSQL = "UPDATE " + this.tabla
+                + " SET stock = stock - " + cantidad
+                + "WHERE codigo = " + p.getCodigo();
+
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+
+        return prepared.executeUpdate();
     }
 
 }

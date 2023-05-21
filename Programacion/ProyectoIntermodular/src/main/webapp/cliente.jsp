@@ -61,12 +61,12 @@
                     <h2>LISTA DE DESEOS</h2>
                 </section>
             </a>
-            <a href="./cesta.html">
+            <a href="./carrito.jsp">
                 <section id="cesta">
                     <h2>CESTA</h2>
                 </section>
             </a>
-            <a href="./pedidos.html">
+            <a href="./pedidos.jsp">
                 <section id="pedidos">
                     <h2>PEDIDOS</h2>
                 </section>

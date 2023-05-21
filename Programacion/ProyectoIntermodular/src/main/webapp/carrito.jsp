@@ -86,6 +86,7 @@
                             <p><%=linea.getValue().getKey() * linea.getValue().getValue()%></p>
                         </div>
                         <p>Eliminar</p>
+                        <a href="EliminarDelCarrito?codProducto=<%=linea.getKey().getCodigo()%>">Eliminar</a>
                     </article>
                     <%
                         }
@@ -108,6 +109,7 @@
                 <section id="pedido">
                     <p><%=carrito.getPrecioTotal()%></p>
                     <button onclick="confirmarPedido()">Confirmar pedido</button>
+                    <a href="ConfirmarPedido">Confirmar pedido</a>
                 </section>
             </form>
             <%

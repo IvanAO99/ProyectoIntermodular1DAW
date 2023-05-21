@@ -128,15 +128,6 @@ public class PedidoDAO extends TablaDAO<Pedido> {
         }
     }
 
-    public void descontarStock(Pedido p) throws SQLException {
-        for (Entry<Producto, Entry<Integer, Double>> linea : p.getLineasPedido().entrySet()) {
-            Producto pr = linea.getKey();
-            String sentenciaSQL = "UPDATE stock SET " + (p.cantidadStock(pr) - 1) + " WHERE pedido = " + p;
-            PreparedStatement prepared = getPrepared(sentenciaSQL);
-            prepared.executeUpdate();
-        }
-    }
-
     public ArrayList<Pedido> getByCliente(Usuario u) throws SQLException {
         ArrayList<Pedido> pedidos = new ArrayList<>();
         String sentenciaSQL = "SELECT * FROM " + tabla + " WHERE cliente = ?";

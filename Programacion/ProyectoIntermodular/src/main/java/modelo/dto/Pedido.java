@@ -69,14 +69,24 @@ public class Pedido {
     }
 
     public boolean hayStock() {
-        HashMap<Producto, Entry<Integer, Double>> lineasPedido = this.getLineasPedido();
+//        HashMap<Producto, Entry<Integer, Double>> lineasPedido = this.getLineasPedido();
+//        for (Producto p : lineasPedido.keySet()) {
+//            int cantidadPedido = lineasPedido.get(p).getKey();
+//            int stockDisponible = p.getStock();
+//            if (cantidadPedido > stockDisponible) {
+//                return false;
+//            }
+//        }
+
         for (Producto p : lineasPedido.keySet()) {
             int cantidadPedido = lineasPedido.get(p).getKey();
             int stockDisponible = p.getStock();
             if (cantidadPedido > stockDisponible) {
+                System.out.println("No hay stock");
                 return false;
             }
         }
+        System.out.println("Hay stock");
         return true;
     }
 
