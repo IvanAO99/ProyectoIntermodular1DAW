@@ -82,8 +82,7 @@
                         </figure>
                         <div class="datosProducto">
                             <p><%=linea.getKey().getNombre()%></p>
-                            <input type="hidden" name="codProducto" value="<%=linea.getKey().getCodigo()%>"/>
-                            <input type="number" onchange="this.form.submit()" name="cantidad" id="" min="1" max="99" value="<%=linea.getValue().getKey()%>">
+                            <input type="number" onchange="this.form.submit()" name="<%=linea.getKey().getCodigo()%>" id="" min="1" max="99" value="<%=linea.getValue().getKey()%>">
                             <p><%=linea.getValue().getKey() * linea.getValue().getValue()%></p>
                         </div>
                         <p>Eliminar</p>
@@ -96,7 +95,7 @@
                 </section>
                 <section id="direcciones">
                     <select name="direccion" id="direccion" onchange="this.form.submit()">
-                        <<option selected="selected" hidden="hidden" value="<%=direcciones.get(0).getCodigo()%>"><%=direcciones.get(0).getDireccionCompleta()%></option>
+                        <<option selected="selected" hidden="hidden" value="<%=carrito.getDireccion().getCodigo()%>"><%=carrito.getDireccion().getDireccionCompleta()%></option>
                         <%
                             for (Direccion direccion : direcciones) {
                         %>
@@ -108,7 +107,7 @@
                 </section>
                 <section id="pedido">
                     <p><%=carrito.getPrecioTotal()%></p>
-                    <input type="submit" value="Realizar pedido">
+                    <button onclick="confirmarPedido()">Confirmar pedido</button>
                 </section>
             </form>
             <%
@@ -126,4 +125,11 @@
             </section>
         </footer>
     </body>
+    <script>
+        function confirmarPedido() {
+            if (confirm("¿Desea confirmar el pedido?")) {
+                window.location.replace("ConfirmarPedido");
+            }
+        }
+    </script>
 </html>

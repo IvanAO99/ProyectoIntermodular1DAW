@@ -54,36 +54,23 @@ public class ActualizarCarrito extends HttpServlet {
                 response.sendRedirect("carrito.jsp");
 
             } else {
-                String strId = request.getParameter("codProducto");
-                String strCantidad = request.getParameter("cantidad");
-                if (strId != null && strCantidad != null && strId.chars().allMatch(Character::isDigit) && strCantidad.chars().allMatch(Character::isDigit)) {
-                    Producto pro = new ProductoDAO().getByCodigo(Integer.parseInt(strId));
-                    int nuevaCantidad = Integer.parseInt(strCantidad);
-
+                Pedido carritoAnterior = (Pedido) session.getAttribute("carrito");
+                HashMap<Producto, Entry<Integer, Double>> lineas = new HashMap<>(carritoAnterior.getLineasPedido());
+                
+                for (Entry<Producto, Entry<Integer, Double>> linea : lineas.entrySet()) {
+                    String strCodigo = String.valueOf(linea.getKey().getCodigo());
+                    Integer nuevaCantidad = Integer.valueOf(request.getParameter(strCodigo));
+                    
                     if (nuevaCantidad > 0) {
-                        Pedido carritoAnterior = (Pedido) session.getAttribute("carrito");
-                        HashMap<Producto, Entry<Integer, Double>> lineas = new HashMap<>(carritoAnterior.getLineasPedido());
-
-                        for (Entry<Producto, Entry<Integer, Double>> linea : lineas.entrySet()) {
-
-                            if (linea.getKey().equals(pro)) {
-                                lineas.put(pro, Map.entry(nuevaCantidad, linea.getValue().getValue()));
-                            }
-                        }
-                        System.out.println("Direccion: " + request.getParameter("direccion"));
-                        Direccion dir = new DireccionDAO().getByCodigo(Integer.parseInt(request.getParameter("direccion")));
-                        Pedido carritoNuevo = new Pedido(carritoAnterior.getCodigo(), LocalDateTime.now(), Pedido.calcularPrecioTotal(lineas), false, usuarioSesion, dir, lineas);
-                        session.setAttribute("carrito", carritoNuevo);
-                        //request.getRequestDispatcher("carrito.jsp").forward(request, response);
-                        response.sendRedirect("carrito.jsp");
-                    } else {
-                        request.setAttribute("errorFormCarrito", true);
-                        request.getRequestDispatcher("producto.jsp?codProducto=" + request.getParameter("codProducto")).include(request, response);
+                        lineas.put(linea.getKey(), Map.entry(nuevaCantidad, linea.getKey().getPrecioCompleto()));
                     }
-                } else {
-                    request.setAttribute("errorFormCarrito", true);
-                    request.getRequestDispatcher("producto.jsp?codProducto=" + request.getParameter("codProducto")).include(request, response);
                 }
+
+                Direccion dir = new DireccionDAO().getByCodigo(Integer.parseInt(request.getParameter("direccion")));
+                Pedido carritoNuevo = new Pedido(carritoAnterior.getCodigo(), LocalDateTime.now(), Pedido.calcularPrecioTotal(lineas), false, usuarioSesion, dir, lineas);
+                session.setAttribute("carrito", carritoNuevo);
+                //request.getRequestDispatcher("carrito.jsp").forward(request, response);
+                response.sendRedirect("carrito.jsp");
             }
 
         } catch (SQLException ex) {
@@ -91,7 +78,7 @@ public class ActualizarCarrito extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
