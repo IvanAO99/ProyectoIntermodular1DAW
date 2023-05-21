@@ -41,11 +41,11 @@ public class Facturar extends HttpServlet {
 
         Usuario usuarioSesion = (session != null && session.getAttribute("usuario") != null) ? (Usuario) session.getAttribute("usuario") : null;
 
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             // Primero validamos que haya usuario logueado y no sea anónimo
             if (usuarioSesion == null) {
                 out.println("<h2>No tienes permiso para acceder a esta sección</h2><p><a href=\"javascript: history.go(-1)\">Volver atrás</a></p>");
-                // Después validamos que el código de pedido que nos hay llegado sea un valor entero    
+                // Después validamos que el código de pedido que nos hay llegado sea un valor entero
             } else if (!strId.chars().allMatch(Character::isDigit)) {
                 out.println("<h2>Código incorrecto.</h2><p><a href=\"javascript: history.go(-1)\">Volver atrás</a></p>");
             } else {
@@ -63,8 +63,8 @@ public class Facturar extends HttpServlet {
                         Pedido pedidoFacturado = new Pedido(pedidoAFacturar.getCodigo(), pedidoAFacturar.getFechaPedido(), pedidoAFacturar.getPrecioTotal(), true, pedidoAFacturar.getCliente(), pedidoAFacturar.getDireccion(), pedidoAFacturar.getLineasPedido());
                         Factura factura = new Factura(facturaDAO.siguienteCodigo(), LocalDateTime.now(), pedidoAFacturar.getCliente(), dirEnvio, pedidoFacturado);
                         facturaDAO.anyadir(factura);
-                        //pedidoDAO.actualizar(pedidoFacturado);
-                        response.sendRedirect("index.html");
+                        pedidoDAO.actualizarFacturado(pedidoFacturado);
+                        response.sendRedirect("facturas.jsp");
                     }
 
                 }

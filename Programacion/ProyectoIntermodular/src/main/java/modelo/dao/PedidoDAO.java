@@ -147,4 +147,14 @@ public class PedidoDAO extends TablaDAO<Pedido> {
 
         return pedidos;
     }
+
+    public int actualizarFacturado(Pedido p) throws SQLException {
+        String sentenciaSQL = "UPDATE " + this.tabla
+                + " SET facturado = 'Sí'"
+                + "WHERE codigo = " + p.getCodigo();
+
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+
+        return prepared.executeUpdate();
+    }
 }

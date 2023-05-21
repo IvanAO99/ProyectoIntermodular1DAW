@@ -79,7 +79,7 @@
                 pedidos = (usuarioSesion.esAdmin()) ? pedidoDAO.getAll() : pedidoDAO.getByCliente(usuarioSesion);
             %>
             <section id="datos">
-                <table border="1" width="100%">
+                <table border="1" width="max-content">
                     <thead>
                         <tr>
                             <% if (usuarioSesion.esAdmin()) {
@@ -97,7 +97,6 @@
                                 <%
                                     if (usuarioSesion.esCliente()) {
                                 %>
-                            <th></th>
                             <th></th>
                                 <%
                                     }
@@ -125,11 +124,33 @@
                             <%
                                 if (usuarioSesion.esCliente()) {
                             %>
-                            <td class=\"centrado\"><a href=\"ExportarXML?id="+ factura.getCodigo() +"\"><img class=\"icono\" alt=\"logo XML\" src=\"imagenes/xml.png\"/></a></td>
-                            <td class=\"centrado\"><a href=\"ExportarPDF?id="+ factura.getCodigo() +"\"><img class=\"icono\" alt=\"logo PDF\" src=\"imagenes/pdf.png\"/></a></td>
-                                    <%
-                                        }
-                                    %>
+                            <td>
+                                <%
+                                    if (pedido.isFacturado()) {
+                                        out.print("-");
+                                    } else {
+                                %>
+                                <form name="facturar-<%= pedido.getCodigo()%>" method="post" action="Facturar">
+                                    <input name="id" type="hidden" value="<%= pedido.getCodigo()%>" />
+                                    <select name="direccion">
+                                        <option selected="selected" hidden="hidden" value="<%=pedido.getDireccion().getCodigo()%>"><%=pedido.getDireccion().getDireccionCompleta()%></option>
+                                        <%
+                                            for (Direccion dirFact : new DireccionDAO().getDireccionesDe(pedido.getCliente())) {
+                                        %>
+                                        <option value="<%=dirFact.getCodigo()%>"><%=dirFact.getDireccionCompleta()%></option>
+                                        <%
+                                            }
+                                        %>
+                                    </select>
+                                    <input type="submit" value="Facturar" />
+                                </form>
+                                <%
+                                    }
+                                %>
+                            </td>
+                            <%
+                                }
+                            %>
                         </tr>
                         <%
                             }

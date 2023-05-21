@@ -96,7 +96,7 @@
                 </section>
                 <section id="direcciones">
                     <select name="direccion" id="direccion" onchange="this.form.submit()">
-                        <<option selected="selected" hidden="hidden" value="<%=carrito.getDireccion().getCodigo()%>"><%=carrito.getDireccion().getDireccionCompleta()%></option>
+                        <option selected="selected" hidden="hidden" value="<%=carrito.getDireccion().getCodigo()%>"><%=carrito.getDireccion().getDireccionCompleta()%></option>
                         <%
                             for (Direccion direccion : direcciones) {
                         %>
