@@ -55,7 +55,7 @@
                         <%
                             if ((usuarioSesion == null)) {
                         %>
-                    <li><a href="./login.jsp"><i class="fa-solid fa-user"></i>Login</a></li>
+                    <li><a href="./login.jsp"><i class="fa-solid fa-user"></i>Inicia sesión</a></li>
                         <%
                         } else {
                         %>
@@ -88,7 +88,7 @@
         <footer id="webFooter">
             <section>
                 <h3>Términos y condiciones</h3>
-                <p><a href="./html/privacidad.html">Política de privacidad</a></p>
+                <p><a href="./privacidad.html">Política de privacidad</a></p>
                 <p id="copyright">
                     © 2022-23, Iván Ayuso & Enrique Azorín
                     <br>1º DAW | IES Poeta Paco Mollá (Petrer)
