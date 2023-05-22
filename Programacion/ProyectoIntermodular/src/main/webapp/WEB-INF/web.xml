@@ -32,6 +32,14 @@
         <servlet-name>EliminarDelCarrito</servlet-name>
         <servlet-class>controlador.EliminarDelCarrito</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MostrarProductos</servlet-name>
+        <servlet-class>controlador.MostrarProductos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MostrarGeneros</servlet-name>
+        <servlet-class>controlador.MostrarGeneros</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>EliminarDelCarrito</servlet-name>
         <url-pattern>/EliminarDelCarrito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MostrarProductos</servlet-name>
+        <url-pattern>/MostrarProductos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MostrarGeneros</servlet-name>
+        <url-pattern>/MostrarGeneros</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -49,7 +49,7 @@
             <nav id="navegadorPrincipal">
                 <ul id="menu">
                     <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
-                    <li><a href="./productos.jsp"><i class="fa-solid fa-list"></i>Productos</a></li>
+                    <li><a href="MostrarGeneros"><i class="fa-solid fa-list"></i>Productos</a></li>
                     <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
                     <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>Contacto</a></li>
                         <%
@@ -71,7 +71,7 @@
             <h2 id="tituloLibros">Libros</h2>
             <section id="libroPrincipal">
                 <figure>
-                    <a href="./productos.jsp">
+                    <a href="MostrarGeneros?tipoProducto=libro">
                         <img src="./img/libroInicio.jpg" alt="">
                     </a>
                 </figure>
@@ -79,7 +79,7 @@
             <h2 id="tituloDiscos">Discos</h2>
             <section id="discoPrincipal">
                 <figure>
-                    <a href="./productos.jsp">
+                    <a href="MostrarGeneros?tipoProducto=disco">
                         <img src="./img/vinilo.jpg" alt="">
                     </a>
                 </figure>

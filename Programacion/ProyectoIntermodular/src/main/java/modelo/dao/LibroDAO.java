@@ -97,4 +97,38 @@ public class LibroDAO extends TablaDAO<Libro> {
 
         return null;
     }
+
+    public ArrayList<Libro> getByCategorias(String filtro) throws SQLException {
+        ArrayList<Libro> libros = new ArrayList<>();
+
+        String sentenciaSQL = "SELECT * FROM " + tabla + " pro"
+                + " LEFT JOIN artesdoradas_categorias_productos catpro ON catpro.producto = pro.codigo"
+                + " LEFT JOIN artesdoradas_categorias cat ON cat.codigo = catpro.categoria"
+                + " WHERE " + filtro;
+
+        System.out.println("Consutla: " + sentenciaSQL);
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        System.out.println(prepared);
+        ResultSet resultSet = prepared.executeQuery();
+
+        while (resultSet.next()) {
+            Producto producto = new ProductoDAO().getByCodigo(resultSet.getInt("codigo"));
+            System.out.println(producto);
+            String formato = resultSet.getString("formato");
+            System.out.println(formato);
+            String editorial = resultSet.getString("editorial");
+            System.out.println(editorial);
+            int nPaginas = resultSet.getInt("numero_paginas");
+            System.out.println(nPaginas);
+            long isbn = resultSet.getLong("isbn");
+            System.out.println(isbn);
+            String autor = resultSet.getString("autor");
+            System.out.println(autor);
+
+            libros.add(new Libro(producto, formato, editorial, autor, isbn, nPaginas));
+            System.out.println(libros);
+        }
+
+        return libros;
+    }
 }

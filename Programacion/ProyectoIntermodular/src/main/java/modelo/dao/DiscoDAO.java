@@ -1,4 +1,3 @@
-
 package modelo.dao;
 
 import modelo.dto.Disco;
@@ -28,7 +27,7 @@ public class DiscoDAO extends TablaDAO<Disco> {
     public int anyadir(Disco d) throws SQLException {
         ProductoDAO producto = new ProductoDAO();
         producto.anyadir(d);
-        
+
         String sentenciaSQL = "INSERT INTO " + tabla + " VALUES(?,?,?,?,?,?)";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         prepared.setInt(1, d.getCodigo());
@@ -89,5 +88,32 @@ public class DiscoDAO extends TablaDAO<Disco> {
         }
 
         return null;
+    }
+
+    public ArrayList<Disco> getByCategorias(String filtro) throws SQLException {
+        ArrayList<Disco> discos = new ArrayList<>();
+
+        String sentenciaSQL = "SELECT * FROM " + tabla + " pro"
+                + " LEFT JOIN artesdoradas_categorias_productos catpro ON catpro.producto = pro.codigo"
+                + " LEFT JOIN artesdoradas_categorias cat ON cat.codigo = catpro.categoria"
+                + " WHERE " + filtro;
+
+        System.out.println("Consutla: " + sentenciaSQL);
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+        System.out.println(prepared);
+        ResultSet resultSet = prepared.executeQuery();
+
+        while (resultSet.next()) {
+            Producto producto = new ProductoDAO().getByCodigo(resultSet.getInt("codigo"));
+            String canciones = resultSet.getString("canciones");
+            String sello = resultSet.getString("sello");
+            long asin = resultSet.getLong("asin");
+            String artista = resultSet.getString("artista");
+            String tipo = resultSet.getString("tipo");
+
+            discos.add(new Disco(producto, canciones, sello, artista, tipo, asin));
+        }
+
+        return discos;
     }
 }

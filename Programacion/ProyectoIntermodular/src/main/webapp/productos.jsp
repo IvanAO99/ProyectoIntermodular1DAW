@@ -4,6 +4,10 @@
     Author     : ivan
 --%>
 
+<%@page import="modelo.dao.DiscoDAO"%>
+<%@page import="modelo.dao.LibroDAO"%>
+<%@page import="java.util.TreeSet"%>
+<%@page import="modelo.dto.Libro"%>
 <%@page import="modelo.dao.ProductoDAO"%>
 <%@page import="modelo.dto.Producto"%>
 <%@page import="java.util.ArrayList"%>
@@ -45,38 +49,72 @@
             <aside id="filtro">
                 <div id="categoriasWrapper">
                     <h2>CATEGORÍAS</h2>
-                    <form action="" class="inputWrapper">
+                    <form action="MostrarGeneros" class="inputWrapper">
+                        <%
+                            String tipo = request.getParameter("tipo");
+
+                            if (tipo == null) {
+                        %>
                         <div class="inputLabelWrapper">
-                            <input type="radio" name="categoria" id="checkboxLibros">
+                            <input type="radio" name="tipoProducto" id="checkboxLibros" onchange="this.form.submit()" value="libro">
                             <label for="checkboxLibros" class="generoLabel">Libros</label>
                         </div>
                         <div class="inputLabelWrapper">
-                            <input type="radio" name="categoria" id="checkboxDiscos">
+                            <input type="radio" name="tipoProducto" id="checkboxDiscos" onchange="this.form.submit()" value="disco">
                             <label for="checkboxDiscos" class="generoLabel">Discos</label>
                         </div>
-                    </form>
-                </div>
-                <div id="generosWrapper">
-                    <h2>GÉNEROS</h2>
-                    <form action="" class="inputWrapper">
                         <%
-                            Set<Categoria> categorias = new CategoriaDAO().getCategoriasDeLibros();
-                            //Set<Categoria> categorias = new CategoriaDAO().getCategoriasDeDiscos();
-
-                            for (Categoria categoria : categorias) {
+                        } else if (tipo.equals("libros")) {
                         %>
                         <div class="inputLabelWrapper">
-                            <input type="checkbox" name="" id="checkboxGenero<%=categoria.getCodigo()%>">
-                            <label for="checkboxGenero<%=categoria.getCodigo()%>"><%=categoria.getNombre()%></label>
+                            <input type="radio" name="tipoProducto" id="checkboxLibros" onchange="this.form.submit()" value="libro" checked="checked">
+                            <label for="checkboxLibros" class="generoLabel">Libros</label>
+                        </div>
+                        <div class="inputLabelWrapper">
+                            <input type="radio" name="tipoProducto" id="checkboxDiscos" onchange="this.form.submit()" value="disco">
+                            <label for="checkboxDiscos" class="generoLabel">Discos</label>
+                        </div>
+                        <%
+                        } else {
+                        %>
+                        <div class="inputLabelWrapper">
+                            <input type="radio" name="tipoProducto" id="checkboxLibros" onchange="this.form.submit()" value="libro">
+                            <label for="checkboxLibros" class="generoLabel">Libros</label>
+                        </div>
+                        <div class="inputLabelWrapper">
+                            <input type="radio" name="tipoProducto" id="checkboxDiscos" onchange="this.form.submit()" value="disco" checked="checked">
+                            <label for="checkboxDiscos" class="generoLabel">Discos</label>
                         </div>
                         <%
                             }
                         %>
                     </form>
                 </div>
-                <div id="submitResetWrapper">
-                    <input type="submit" value="Aplicar" id="submitAplicar">
-                    <input type="reset" value="Resetear" id="resetResetear">
+                <div id="generosWrapper">
+                    <h2>GÉNEROS</h2>
+                    <form action="MostrarProductos" class="inputWrapper">
+                        <%
+                            Set<Categoria> categorias = (((Set<Categoria>) request.getAttribute("categorias")) == null) ? new TreeSet<>() : (Set<Categoria>) request.getAttribute("categorias");
+
+                            for (Categoria categoria : categorias) {
+                        %>
+                        <div class="inputLabelWrapper">
+                            <input type="hidden" name="tipo" value="<%=tipo%>">
+                            <input type="checkbox" name="categoria" id="checkboxGenero<%=categoria.getCodigo()%>" value="<%=categoria.getCodigo()%>">
+                            <label for="checkboxGenero<%=categoria.getCodigo()%>"><%=categoria.getNombre()%></label>
+                        </div>
+                        <%
+                            }
+                            if (!categorias.isEmpty()) {
+                        %>
+                        <div id="submitResetWrapper">
+                            <input type="submit" value="Aplicar" id="submitAplicar">
+                            <input type="reset" value="Resetear" id="resetResetear">
+                        </div>
+                        <%
+                            }
+                        %>
+                    </form>
                 </div>
             </aside>
             <section id="productsMain">
@@ -84,9 +122,20 @@
                 <section id="products">
                     <div id="productsWrapper">
                         <%
-                            ArrayList<Producto> productos = new ProductoDAO().getAll();
+                            ArrayList<Libro> libros = (ArrayList<Libro>) request.getAttribute("productos");
 
-                            for (Producto producto : productos) {
+                            if (libros == null) {
+                                ArrayList<? extends Producto> productos = new ArrayList<>();
+                                if (tipo == null) {
+                                    productos = new ProductoDAO().getAll();
+                                } else if (tipo.equals("libros")) {
+                                    productos = new LibroDAO().getAll();
+                                } else {
+                                    productos = new DiscoDAO().getAll();
+                                }
+
+                                for (Producto producto : productos) {
+
                         %>
                         <a href="./producto.jsp?codProducto=<%=producto.getCodigo()%>">
                             <section class="productWrapper">
@@ -98,6 +147,22 @@
                             </section>
                         </a>
                         <%
+                            }
+                        } else {
+                            for (Producto producto : libros) {
+
+                        %>
+                        <a href="./producto.jsp?codProducto=<%=producto.getCodigo()%>">
+                            <section class="productWrapper">
+                                <figure class="imgWrapper">
+                                    <img src="<%=producto.getFoto()%>" alt="Sin foto">
+                                </figure>
+                                <h2><%=producto.getNombre()%></h2>
+                                <p><%=producto.getPrecio() + " €"%></p>
+                            </section>
+                        </a>
+                        <%
+                                }
                             }
                         %>
                     </div>
