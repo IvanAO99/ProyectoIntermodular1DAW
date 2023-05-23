@@ -27,18 +27,18 @@
         <main id="principalWeb">
             <%                if (usuarioSesion == null || usuarioSesion.esCliente()) {
             %>
-            <h2 id="tituloLibros">Libros</h2>
             <section id="libroPrincipal">
+                <h2 id="tituloLibros">Libros</h2>
                 <figure>
-                    <a href="MostrarGeneros?tipoProducto=libro">
+                    <a href="MostrarGeneros?tipoProducto=libro" class="enlaceAProductos">
                         <img src="./img/libroInicio.jpg" alt="">
                     </a>
                 </figure>
             </section>
-            <h2 id="tituloDiscos">Discos</h2>
             <section id="discoPrincipal">
                 <figure>
-                    <a href="MostrarGeneros?tipoProducto=disco">
+                    <h2 id="tituloDiscos">Discos</h2>
+                    <a href="MostrarGeneros?tipoProducto=disco" class="enlaceAProductos">
                         <img src="./img/vinilo.jpg" alt="">
                     </a>
                 </figure>

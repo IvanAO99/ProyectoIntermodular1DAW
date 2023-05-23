@@ -37,6 +37,9 @@ public class LoginServlet extends HttpServlet {
             if (usuario != null) {
                 // Si el login es OK guardamos el objeto de tipo "Usuario" en la sesión para poder recuperarlo más tarde.
                 // Y tras esto redirigimos a "index.html"
+                new UsuarioDAO().actualizarUltimaConexion(usuario);
+                //System.out.println("He actualizado la conexion del USUARIO");
+
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
                 response.sendRedirect("index.jsp");

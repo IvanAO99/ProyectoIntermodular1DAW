@@ -112,8 +112,8 @@
                             <td><%=factura.getDireccion().getDireccionCompleta()%></td>
                             <td><%=factura.getFechaFactura().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
                             <td><%=factura.getPedido().getPrecioTotal() + "€"%></td>
-                            <td class=\"centrado\"><a href=\"ExportarXML?id="+ factura.getCodigo() +"\"><img class=\"icono\" alt=\"logo XML\" src=\"imagenes/xml.png\"/></a></td>
-                            <td class=\"centrado\"><a href=\"ExportarPDF?id="+ factura.getCodigo() +"\"><img class=\"icono\" alt=\"logo PDF\" src=\"imagenes/pdf.png\"/></a></td>
+                            <td class="centrado"><a href="ExportarXML?id=<%=factura.getCodigo()%>"><img class="fotoTD" alt="logo XML" src="./img/xml.png"/></a></td>
+                            <td class="centrado"><a href="ExportarPDF?id=<%=factura.getCodigo()%>"><img class="fotoTD" alt="logo PDF" src="./img/pdf.png"/></a></td>
                         </tr>
                         <%
                             }

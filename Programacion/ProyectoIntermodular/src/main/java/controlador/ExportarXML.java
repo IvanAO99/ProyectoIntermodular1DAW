@@ -39,7 +39,7 @@ public class ExportarXML extends HttpServlet {
         // Recogemos al ususuario que está en la sesión
         HttpSession session = request.getSession(false);
         Usuario usuarioSesion = (session != null && session.getAttribute("usuario") != null) ? (Usuario) session.getAttribute("usuario") : null;
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             try {
                 // Recogemos el codigo de factura que se solicita exportar
                 if (request.getParameter("id") != null && request.getParameter("id").chars().allMatch(Character::isDigit)) {
@@ -62,6 +62,7 @@ public class ExportarXML extends HttpServlet {
 
                         out.println("\t<direccion_facturacion>");
                         out.println("\t\t<direccion>" + factura.getDireccion().getDireccionCompleta() + "</direccion>");
+                        out.println("\t\t<cp>" + factura.getDireccion().getCp() + "</cp>");
                         out.println("\t\t<poblacion>" + factura.getDireccion().getLocalidad() + "</poblacion>");
                         out.println("\t\t<provincia>" + factura.getDireccion().getProvincia() + "</provincia>");
                         out.println("\t</direccion_facturacion>");
@@ -69,9 +70,9 @@ public class ExportarXML extends HttpServlet {
                         Pedido ped = factura.getPedido();
                         out.println("\t<pedido_asociado codigo_pedido=\"" + ped.getCodigo() + "\">");
                         out.println("\t\t<cliente>" + ped.getCliente().getNombreCompleto() + "</cliente>");
-                        out.println("\t\t<tarjeta>" + ped.getCliente().getTarjetas() + "</tarjeta>");
                         out.println("\t\t<direccion_envio>");
                         out.println("\t\t\t<direccion>" + ped.getDireccion().getDireccionCompleta() + "</direccion>");
+                        out.println("\t\t<cp>" + ped.getDireccion().getCp() + "</cp>");
                         out.println("\t\t\t<poblacion>" + ped.getDireccion().getLocalidad() + "</poblacion>");
                         out.println("\t\t\t<provincia>" + ped.getDireccion().getProvincia() + "</provincia>");
                         out.println("\t\t</direccion_envio>");
@@ -83,9 +84,8 @@ public class ExportarXML extends HttpServlet {
                             out.println("\t\t\t\t<nombre>" + linea.getKey().getNombre() + "</nombre>");
                             out.println("\t\t\t\t<precio_unitario>" + redondear(linea.getKey().getPrecio()) + "</precio_unitario>");
                             out.println("\t\t\t\t<iva>" + linea.getKey().getIva() + "</iva>");
-                            out.println("\t\t\t\t<cantidad_productos>" + linea.getValue() + "</cantidad_productos>");
-                            out.println("\t\t\t\t<total_linea>" + redondear(Double.parseDouble(linea.getValue().toString()) * linea.getKey().getPrecio()) + "</total_linea>");
-                            out.println("\t\t\t\t<total_linea_con_iva>" + redondear(Double.parseDouble(linea.getValue().toString()) * linea.getKey().getPrecio() * (1 + linea.getKey().getIva() / 100.0)) + "</total_linea_con_iva>");
+                            out.println("\t\t\t\t<cantidad_productos>" + linea.getValue().getKey() + "</cantidad_productos>");
+                            out.println("\t\t\t\t<total_linea>" + redondear(linea.getValue().getKey() * linea.getValue().getValue()) + "</total_linea>");
                             out.println("\t\t\t</producto>");
                         }
 

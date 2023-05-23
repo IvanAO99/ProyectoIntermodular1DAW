@@ -40,6 +40,10 @@
         <servlet-name>MostrarGeneros</servlet-name>
         <servlet-class>controlador.MostrarGeneros</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExportarPDF</servlet-name>
+        <servlet-class>controlador.ExportarPDF</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>MostrarGeneros</servlet-name>
         <url-pattern>/MostrarGeneros</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExportarPDF</servlet-name>
+        <url-pattern>/ExportarPDF</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

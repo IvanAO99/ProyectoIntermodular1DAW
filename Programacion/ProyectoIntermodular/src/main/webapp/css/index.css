@@ -3,6 +3,9 @@
     Author     : ivan
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
 #principalWeb {
     grid-area: main;
 
@@ -12,33 +15,38 @@
 
     display: grid;
     grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
 
-    grid-template-areas: "tituloL tituloD"
-                        "libro disco";
+    grid-template-areas: "libro disco";
 
     gap: 20px;
     
     max-width: 100vw;
 }
 
-#tituloLibros {
-    grid-area: tituloL;
-}
-
 #libroPrincipal {
     grid-area: libro;
-}
-
-#tituloDiscos {
-    grid-area: tituloD;
 }
 
 #discoPrincipal {
     grid-area: disco;
 }
 
+#libroPrincipal, #discoPrincipal {
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    min-width: 100%;
+
+    max-height: max-content;
+}
+
 figure {
+    width: 100%;
+    height: 500px;
+}
+
+.enlaceAProductos {
     width: 100%;
     height: 100%;
 }
@@ -49,6 +57,16 @@ img {
 }
 
 #tituloLibros, #tituloDiscos {
-    border: 5px solid #b5985d;
-    border-radius: 10px;
+    font-family: 'Dancing Script', cursive !important;
+    text-align: center;
+
+    border-bottom: 5px solid #b5985d;
+    min-height: 5%;
+
+    background-color: #CF6236;
+    color: whitesmoke;
+    
+    padding: 0.1em 0em;
+
+    font-size: 50px;
 }

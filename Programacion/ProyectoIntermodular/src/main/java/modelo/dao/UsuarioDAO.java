@@ -184,4 +184,18 @@ public class UsuarioDAO extends TablaDAO<Usuario> {
 
         return null;
     }
+
+    public int actualizarUltimaConexion(Usuario u) throws SQLException {
+        //System.out.println("ESTOY EN ACTUALIZAR USUARIO!!!!!");
+        //String sentenciaSQL = "UPDATE " + tabla + " SET nombre=? WHERE codigo=?";
+        String sentenciaSQL = "UPDATE " + this.tabla
+                + " SET ultima_conexion = ? "
+                + "WHERE codigo = " + u.getCodigo();
+
+        PreparedStatement prepared = getPrepared(sentenciaSQL);
+
+        prepared.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
+
+        return prepared.executeUpdate();
+    }
 }
