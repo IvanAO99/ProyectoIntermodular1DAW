@@ -7,15 +7,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Author     : ivan
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
 * {
     padding: 0;
     margin: 0;
+
+    font-family: 'Sriracha', cursive;
 }
 
 body {
     display: grid;
 
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto auto auto;
 
     grid-template-areas:
         "header"
@@ -31,12 +36,10 @@ body {
     grid-area: header;
 
     display: flex;
-
     flex-direction: column;
 
+
     background-color: #30201a;
-    justify-content: center;
-    align-items: center;
     color: #b5985d;
 }
 
@@ -45,6 +48,7 @@ div#tittle {
     flex-direction: row;
 
     align-items: center;
+    align-self: center;
 
     padding: 10px;
 }
@@ -57,45 +61,101 @@ div#tittle {
 }
 
 h1#nombreEmpresa {
-    font-size: 125px !important;
-    font-family: 'Rock Salt', cursive !important;
+    font-size: 100px !important;
+    font-family: 'Dancing Script', cursive !important;
 }
 
 nav#navegadorPrincipal {
     background-color: #77432e;
-    width: 100%;
-    height: auto;
     font-size: 17px;
-    padding: 100px;
+    padding: 1em 2em;
+
+    border-top: 5px solid #b5985d;
+    border-bottom: 5px solid #b5985d;
 }
 
 ul#menu {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+
+div#comun,
+div#unico {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }
 
 li {
-    font-family: 'Roboto', sans-serif;
-    margin: 5px;
-    padding: 5px;
-    display: inline-block;
     cursor: default;
     list-style: none;
+
+    background-color: whitesmoke;
+
     border-radius: 10px;
-    border: 3px solid #b5985d;
+    border: 5px solid #b5985d;
+
     text-align: center;
+    font-size: 1em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-li a:link, li a:visited, li a:active {
+li:hover {
+    background-color: #CF6236;
+}
+
+li a {
+    padding: 0.2em 1em;
+    color: black;
+}
+
+li a:link,
+li a:visited,
+li a:active {
     text-decoration: none;
+    color: black;
+}
+
+li a:hover {
     color: whitesmoke;
 }
 
-li a:hover,footer a:hover {
-    background-color: #cf6236;
-}
-
 i {
-    margin-right: 5px;
+    padding-right: 0.5em;
 }
 
+#fotoYNombreNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#fotoPerfilWrapperNav  {
+    width: 50px;
+    height: 50px;
+
+    border-right: 5px solid #b5985d;
+}
+
+#fotoPerfilNav {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center;
+}
+
+/*
+<li id="fotoYNombreNav">
+                    <figure id="fotoPerfilWrapperNav">
+                        <img src="<%=usuarioSesion.getFoto()%>" alt="" id="fotoPerfilNav">
+                    </figure>
+                    <a href="./cliente.jsp"><%= usuarioSesion.getNombreCompleto()%></a>
+                </li>
+*/

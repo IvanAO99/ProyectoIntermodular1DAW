@@ -6,6 +6,7 @@
 
 <%@page import="modelo.dto.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,52 +23,10 @@
         <link rel="icon" type="image/png" href="./img/logo.png">
     </head>
     <body>
-        <%
-            Usuario usuarioSesion = (session != null && session.getAttribute("usuario") != null) ? (Usuario) session.getAttribute("usuario") : null;
-
-            if (usuarioSesion != null && usuarioSesion.getTipo().toString().equals("Administrador")) {
-        %>
-        <header>
-
-        </header>
-        <main>
-            <h1>Vista de administrador</h1>
-            <a href="./facturas.jsp"><p>Ver facturas de clientes</p></a>
-            <a href="./pedidos.jsp"><p>Ver pedidos de clientes</p></a>
-        </main>
-        <footer>
-
-        </footer>
-        <%
-        } else {
-        %>
-        <header id="cabeceraWeb">
-            <div id="tittle">
-                <a href="./index.jsp"><img id="logo" src="./img/logo.png"></a>
-                <h1 id="nombreEmpresa">ARTES DORADAS</h1>
-            </div>
-            <nav id="navegadorPrincipal">
-                <ul id="menu">
-                    <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
-                    <li><a href="MostrarGeneros"><i class="fa-solid fa-list"></i>Productos</a></li>
-                    <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
-                    <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>Contacto</a></li>
-                        <%
-                            if ((usuarioSesion == null)) {
-                        %>
-                    <li><a href="./login.jsp"><i class="fa-solid fa-user"></i>Inicia sesión</a></li>
-                        <%
-                        } else {
-                        %>
-                    <li><a href="./cliente.jsp"><i class="fa-solid fa-user"></i><%= usuarioSesion.getNombreCompleto()%></a></li>
-                    <li><a href="./cesta.html"><i class="fa-solid fa-phone"></i>Cesta</a></li>
-                        <%
-                            }
-                        %>
-                </ul>
-            </nav>
-        </header>
+        <%@include file="./header.jsp"%>
         <main id="principalWeb">
+            <%                if (usuarioSesion == null || usuarioSesion.esCliente()) {
+            %>
             <h2 id="tituloLibros">Libros</h2>
             <section id="libroPrincipal">
                 <figure>
@@ -84,6 +43,12 @@
                     </a>
                 </figure>
             </section>
+            <%
+            } else {
+            %>
+            <%
+                }
+            %>
         </main>
         <footer id="webFooter">
             <section>
@@ -95,8 +60,5 @@
                 </p>
             </section>
         </footer>
-        <%
-            }
-        %>
     </body>
 </html>

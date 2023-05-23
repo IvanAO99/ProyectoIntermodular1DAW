@@ -8,7 +8,7 @@
 
     background-image: url('../img/fondo.png');
 
-    padding: 100px;
+    padding: 10px 100px;
 
     display: grid;
     grid-template-columns: auto auto;
@@ -46,4 +46,9 @@ figure {
 img {
     width: 100%;
     height: 100%;
+}
+
+#tituloLibros, #tituloDiscos {
+    border: 5px solid #b5985d;
+    border-radius: 10px;
 }
