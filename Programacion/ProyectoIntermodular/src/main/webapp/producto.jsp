@@ -20,7 +20,6 @@
 <%
     Producto producto = null;
     List<Opinion> opiniones = null;
-    Usuario usuarioSesion = (session != null && session.getAttribute("usuario") != null) ? (Usuario) session.getAttribute("usuario") : null;
     if (request != null && request.getParameter("codProducto") != null && request.getParameter("codProducto").chars().allMatch(Character::isDigit)) {
         int codigo = Integer.parseInt(request.getParameter("codProducto"));
         //producto = new ProductoDAO().getByCodigo(codigo);
@@ -46,21 +45,7 @@
         <link rel="icon" type="image/png" href="./img/logo.png">
     </head>
     <body>
-        <header id="cabeceraWeb">
-            <div id="tittle">
-                <a href="../index.html"><img id="logo" src="../img/logo.png"></a>
-                <h1>ARTES DORADAS</h1>
-            </div>
-            <nav id="navegadorPrincipal">
-                <ul id="menu">
-                    <li><a href="./index.html"><i class="fa-solid fa-house"></i>INICIO</a></li>
-                    <li><a href="./categorias.html"><i class="fa-solid fa-list"></i>CATEGORÍAS</a></li>
-                    <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>SOBRE NOSOTROS</a></li>
-                    <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>CONTACTO</a></li>
-                    <li><a href="./formulario.html"><i class="fa-solid fa-user"></i>LOGIN</a></li>
-                </ul>
-            </nav>
-        </header>
+        <%@include file="./header.jsp"%>
         <main id="principalWeb">
             <%
                 if (producto == null) {

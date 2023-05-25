@@ -15,6 +15,7 @@
     <div id="tittle">
         <a href="./index.jsp"><img id="logo" src="./img/logo.png"></a>
         <h1 id="nombreEmpresa">ARTES DORADAS</h1>
+        <i class="fa-solid fa-bars" id="hamburguesa"></i>
     </div>
     <nav id="navegadorPrincipal">
         <ul id="menu">

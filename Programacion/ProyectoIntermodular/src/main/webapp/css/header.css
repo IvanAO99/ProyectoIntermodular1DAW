@@ -20,7 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 body {
     display: grid;
 
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto 1fr auto;
 
     grid-template-areas:
         "header"
@@ -46,6 +46,7 @@ body {
 div#tittle {
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
 
     align-items: center;
     align-self: center;
@@ -72,6 +73,10 @@ nav#navegadorPrincipal {
 
     border-top: 5px solid #b5985d;
     border-bottom: 5px solid #b5985d;
+}
+
+#hamburguesa {
+    display: none;
 }
 
 ul#menu {
@@ -159,3 +164,39 @@ i {
                     <a href="./cliente.jsp"><%= usuarioSesion.getNombreCompleto()%></a>
                 </li>
 */
+
+@media only screen and (max-width: 768px) {
+    #hamburguesa {
+        display: block;
+
+        padding: 0.5em 1em;
+
+        border-radius: 10px;
+        border: 5px solid #b5985d;
+
+        font-size: 1em;
+    }
+
+    #hamburguesa:hover {
+        background-color: #CF6236;
+
+        color: whitesmoke;
+
+        cursor: pointer;
+    }
+
+    h1#nombreEmpresa {
+        display: none;
+    }
+
+    nav#navegadorPrincipal {
+        display: none;
+    }
+
+    div#tittle {
+        border-bottom: 5px solid #b5985d;
+        align-self: stretch;
+        justify-content: space-between;
+        padding: 10px 50px;
+    }
+}

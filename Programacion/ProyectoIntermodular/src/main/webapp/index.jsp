@@ -29,19 +29,19 @@
             %>
             <section id="libroPrincipal">
                 <h2 id="tituloLibros">Libros</h2>
-                <figure>
-                    <a href="MostrarGeneros?tipoProducto=libro" class="enlaceAProductos">
+                <a href="MostrarGeneros?tipoProducto=libro" class="enlaceAProductos">
+                    <figure>
                         <img src="./img/libroInicio.jpg" alt="">
-                    </a>
-                </figure>
+                    </figure>
+                </a>
             </section>
             <section id="discoPrincipal">
-                <figure>
-                    <h2 id="tituloDiscos">Discos</h2>
-                    <a href="MostrarGeneros?tipoProducto=disco" class="enlaceAProductos">
+                <h2 id="tituloDiscos">Discos</h2>
+                <a href="MostrarGeneros?tipoProducto=disco" class="enlaceAProductos">
+                    <figure>
                         <img src="./img/vinilo.jpg" alt="">
-                    </a>
-                </figure>
+                    </figure>
+                </a>
             </section>
             <%
             } else {

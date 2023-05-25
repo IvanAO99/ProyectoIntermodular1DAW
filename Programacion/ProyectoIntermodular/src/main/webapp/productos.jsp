@@ -24,34 +24,21 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rock+Salt&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/header.css">
         <link rel="stylesheet" type="text/css" href="./css/categorias.css">
+        <link rel="stylesheet" href="./css/footer.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="icon" type="image/png" href="./img/logo.png">
     </head>
 
     <body>
-        <header id="cabeceraWeb">
-            <div id="tittle">
-                <a href="./index.jsp"><img id="logo" src="./img/logo.png"></a>
-                <h1>ARTES DORADAS</h1>
-            </div>
-            <nav id="navegadorPrincipal">
-                <ul id="menu">
-                    <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
-                    <li><a href="./productos.jsp"><i class="fa-solid fa-list"></i>Productos</a></li>
-                    <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
-                    <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>Contacto</a></li>
-                    <li><a href="./formulario.html"><i class="fa-solid fa-user"></i>Login</a></li>
-                </ul>
-            </nav>
-        </header>
+        <%@include file="./header.jsp"%>
         <main id="principalWeb">
             <aside id="filtro">
                 <div id="categoriasWrapper">
                     <h2>CATEGORÍAS</h2>
                     <form action="MostrarGeneros" class="inputWrapper">
-                        <%
-                            String tipo = request.getParameter("tipo");
+                        <%                            String tipo = request.getParameter("tipo");
 
                             if (tipo == null) {
                         %>
@@ -118,7 +105,10 @@
                 </div>
             </aside>
             <section id="productsMain">
-                <input type="search" name="buscador" id="searchBox" placeholder="Buscador...">
+                <div id="buscadorYHamburgesa">
+                    <i class="fa-solid fa-bars" id="hamburgesa"></i>
+                    <input type="search" name="buscador" id="searchBox" placeholder="Buscador...">
+                </div>
                 <section id="products">
                     <div id="productsWrapper">
                         <%
