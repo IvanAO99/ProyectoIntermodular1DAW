@@ -17,7 +17,6 @@
 <%
     List<Pedido> pedidos = null;
     PedidoDAO pedidoDAO = new PedidoDAO();
-    Usuario usuarioSesion = (session != null && session.getAttribute("usuario") != null) ? (Usuario) session.getAttribute("usuario") : null;
 %>
 
 <!DOCTYPE html>
@@ -36,39 +35,9 @@
         <link rel="icon" type="image/png" href="./img/logo.png">
     </head>
     <body>
-        <header id="cabeceraWeb">
-            <div id="tittle">
-                <a href="./index.jsp"><img id="logo" src="./img/logo.png"></a>
-                <h1>ARTES DORADAS</h1>
-            </div>
-            <nav id="navegadorPrincipal">
-                <ul id="menu">
-                    <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
-                    <li><a href="./productos.jsp"><i class="fa-solid fa-list"></i>Productos</a></li>
-                    <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
-                    <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>Contacto</a></li>
-                        <%
-                            if ((usuarioSesion == null)) {
-                        %>
-                    <li><a href="./login.jsp"><i class="fa-solid fa-user"></i>Login</a></li>
-                        <%
-                        } else {
-                        %>
-                    <li><a href="./cliente.jsp"><i class="fa-solid fa-user"></i><%= usuarioSesion.getNombreCompleto()%></a></li>
-                            <%
-                                if (usuarioSesion.esCliente()) {
-                            %>
-                    <li><a href="./cesta.html"><i class="fa-solid fa-phone"></i>Cesta</a></li>
-                        <%
-                                }
-                            }
-                        %>
-                </ul>
-            </nav>
-        </header>
+        <%@include file="./header.jsp"%>
         <main id="principalWeb">
-            <%
-                if ((usuarioSesion == null)) {
+            <%                if ((usuarioSesion == null)) {
             %>
             <section id="datos">
                 <p>JOSÉ RAMÓN!!! NO PUEDES VER ESTO SI NO ERES CLIENTE o ADMINISTRADOR :'(</p>
@@ -79,7 +48,7 @@
                 pedidos = (usuarioSesion.esAdmin()) ? pedidoDAO.getAll() : pedidoDAO.getByCliente(usuarioSesion);
             %>
             <section id="datos">
-                <table border="1" width="max-content">
+                <table width="max-content" cellspacing="0">
                     <thead>
                         <tr>
                             <% if (usuarioSesion.esAdmin()) {
@@ -95,7 +64,7 @@
                             <th>Precio total + IVA</th>
                             <th>Facturado</th>
                                 <%
-                                    if (usuarioSesion.esCliente()) {
+                                    if (usuarioSesion.esCliente() || usuarioSesion.esAdmin()) {
                                 %>
                             <th></th>
                                 <%
@@ -111,18 +80,18 @@
                             <%
                                 if (usuarioSesion.esAdmin()) {
                             %>
-                            <th><%=pedido.getCliente().getCorreoElectronico()%></th>
-                                <%
-                                    }
-                                %>
+                            <td><%=pedido.getCliente().getCorreoElectronico()%></td>
+                            <%
+                                }
+                            %>
                             <td><%=pedido.getCodigo()%></td>
                             <td><%=pedido.getCodigosProductos()%></td>
                             <td><%=pedido.getDireccion().getDireccionCompleta()%></td>
                             <td><%=pedido.getFechaPedido().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
-                            <td><%=pedido.getPrecioTotal() + "€"%></td>
+                            <td><%=pedido.getPrecioTotal() + " €"%></td>
                             <td><%=pedido.isFacturado() ? "Sí" : "No"%></td>
                             <%
-                                if (usuarioSesion.esCliente()) {
+                                if (usuarioSesion.esCliente() || usuarioSesion.esAdmin()) {
                             %>
                             <td>
                                 <%

@@ -42,7 +42,7 @@
                 <%
                     if (usuarioSesion.esCliente()) {
                 %>
-                <li><a href="./cesta.jsp"><i class="fa-solid fa-phone"></i>Cesta</a></li>
+                <li><a href="./carrito.jsp"><i class="fa-solid fa-phone"></i>Cesta</a></li>
                     <%
                             }
                         }

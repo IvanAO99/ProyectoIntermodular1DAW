@@ -46,6 +46,7 @@
             <%
             } else {
             %>
+            <a href="./pedidos.jsp"></a>
             <%
                 }
             %>

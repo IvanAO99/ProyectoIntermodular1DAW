@@ -127,6 +127,13 @@ li a:active {
     color: black;
 }
 
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
 li a:hover {
     color: whitesmoke;
 }

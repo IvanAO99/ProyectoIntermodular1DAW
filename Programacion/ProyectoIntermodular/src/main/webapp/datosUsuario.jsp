@@ -1,9 +1,11 @@
-<%-- 
+<%--
     Document   : datosUsuario
     Created on : May 2, 2023, 7:49:06 PM
     Author     : ivan
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="modelo.dao.UsuarioDAO"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="modelo.dto.Direccion"%>
 <%@page import="modelo.dao.DireccionDAO"%>
@@ -21,47 +23,60 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rock+Salt&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./css/header.css">
         <link rel="stylesheet" type="text/css" href="./css/datosUsuario.css">
+        <link rel="stylesheet" type="text/css" href="./css/datos.css">
         <link rel="stylesheet" type="text/css" href="./css/footer.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="icon" type="image/png" href="./img/logo.png">
     </head>
     <body>
-        <header id="cabeceraWeb">
-            <div id="tittle">
-                <a href="./index.jsp"><img id="logo" src="./img/logo.png"></a>
-                <h1>ARTES DORADAS</h1>
-            </div>
-            <nav id="navegadorPrincipal">
-                <ul id="menu">
-                    <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
-                    <li><a href="./productos.jsp"><i class="fa-solid fa-list"></i>Productos</a></li>
-                    <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
-                    <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>Contacto</a></li>
-                        <%
-                            Usuario usuarioSesion = (session != null && session.getAttribute("usuario") != null) ? (Usuario) session.getAttribute("usuario") : null;
-
-                            if ((usuarioSesion == null)) {
-                        %>
-                    <li><a href="./login.jsp"><i class="fa-solid fa-user"></i>Login</a></li>
-                        <%
-                        } else {
-                        %>
-                    <li><a href="./cliente.jsp"><i class="fa-solid fa-user"></i><%= usuarioSesion.getNombreCompleto()%></a></li>
-                    <li><a href="./cesta.html"><i class="fa-solid fa-phone"></i>Cesta</a></li>
-                        <%
-                            }
-                        %>
-                </ul>
-            </nav>
-        </header>
+        <%@include file="./header.jsp"%>
         <main id="principalWeb">
-            <%
-                if ((usuarioSesion == null)) {
+            <%                if ((usuarioSesion == null)) {
             %>
             <section id="datosUsuario">
-                <p>JOSÉ RAMÓN!!! NO PUEDES VER ESTO SI NO ERES CLIENTE :'(</p>
+                <p>JOSÉ RAMÓN!!! NO PUEDES VER ESTO SI NO INICIAS SESION :'(</p>
                 <p><a href="./index.jsp">Volver al index</a></p>
             </section>
+            <%
+            } else if (usuarioSesion.esAdmin()) {
+                List<Usuario> usuarios = new UsuarioDAO().getAll();
+            %>
+            <section id="datos">
+                <table width="max-content" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Nombre</th>
+                            <th>Correo electrónico</th>
+                            <th>Contraseña</th>
+                            <th>Fecha última conexión</th>
+                            <th>Telefono</th>
+                            <th>Fecha de nacimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            for (Usuario usuario : usuarios) {
+                                if (usuario.esCliente()) {
+                        %>
+                        <tr>
+                            <td><%=usuario.getCodigo()%></td>
+                            <td><%=usuario.getNombreCompleto()%></td>
+                            <td><%=usuario.getCorreoElectronico()%></td>
+                            <td><%=usuario.getPassword()%></td>
+                            <td><%=usuario.getUltimaConexion().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
+                            <td><%=usuario.getTelefono()%></td>
+                            <td><%=usuario.getFechaNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%></td>
+                        </tr>
+                        <%
+                                }
+                            }
+                        %>
+                    </tbody>
+                </table>
+            </section>
+            <a href="./index.jsp">Volver a inicio</a>
+            <a href="./cliente.jsp">Atrás</a>
             <%
             } else {
             %>

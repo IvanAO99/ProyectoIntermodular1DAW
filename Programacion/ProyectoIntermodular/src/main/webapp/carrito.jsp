@@ -12,9 +12,6 @@
 <%@page import="modelo.dto.Producto"%>
 <%@page import="modelo.dto.Pedido"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    Usuario usuarioSesion = (session != null && session.getAttribute("usuario") != null) ? (Usuario) session.getAttribute("usuario") : null;
-%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,35 +28,9 @@
         <link rel="icon" type="image/png" href="../img/logo.png">
     </head>
     <body>
-        <header id="cabeceraWeb">
-            <div id="tittle">
-                <a href="./index.jsp"><img id="logo" src="./img/logo.png"></a>
-                <h1 id="nombreEmpresa">ARTES DORADAS</h1>
-            </div>
-            <nav id="navegadorPrincipal">
-                <ul id="menu">
-                    <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
-                    <li><a href="./productos.jsp"><i class="fa-solid fa-list"></i>Productos</a></li>
-                    <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
-                    <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>Contacto</a></li>
-                        <%
-                            if ((usuarioSesion == null)) {
-                        %>
-                    <li><a href="./login.jsp"><i class="fa-solid fa-user"></i>Login</a></li>
-                        <%
-                        } else {
-                        %>
-                    <li><a href="./cliente.jsp"><i class="fa-solid fa-user"></i><%= usuarioSesion.getNombreCompleto()%></a></li>
-                    <li><a href="./cesta.html"><i class="fa-solid fa-phone"></i>Cesta</a></li>
-                        <%
-                            }
-                        %>
-                </ul>
-            </nav>
-        </header>
+        <%@include file="./header.jsp"%>
         <main id="principalWeb">
-            <%
-                if (usuarioSesion == null || usuarioSesion.esAdmin()) {
+            <%                if (usuarioSesion == null || usuarioSesion.esAdmin()) {
             %>
             <p>(*) No tienes permisos para acceder a esta sección</p>
             <%
@@ -67,10 +38,15 @@
             %>
             <p>(*) No tienes creado ningún carrito</p>
             <%
+            } else if (((Pedido) session.getAttribute("carrito")).getLineasPedido().isEmpty()) {
+            %>
+            <p>(*) El carrito está vacio</p>
+            %>
+            <%
             } else {
                 Pedido carrito = (Pedido) session.getAttribute("carrito");
             %>
-            <<form method="post" action="ActualizarCarrito" id="actualizarform">
+            <form method="post" action="ActualizarCarrito" id="actualizarform">
                 <section id="productos">
                     <%
                         for (Entry<Producto, Entry<Integer, Double>> linea : carrito.getLineasPedido().entrySet()) {
@@ -81,12 +57,11 @@
                             <img src="<%=linea.getKey().getFoto()%>" alt="img del producto">
                         </figure>
                         <div class="datosProducto">
-                            <p><%=linea.getKey().getNombre()%></p>
-                            <input type="number" onchange="this.form.submit()" name="<%=linea.getKey().getCodigo()%>" id="" min="1" max="99" value="<%=linea.getValue().getKey()%>">
-                            <p><%=linea.getValue().getKey() * linea.getValue().getValue()%></p>
+                            <p class="nombreProducto"><%=linea.getKey().getNombre()%></p>
+                            <input type="number" onchange="this.form.submit()" name="<%=linea.getKey().getCodigo()%>" id="cantidadCarrito" min="1" max="99" value="<%=linea.getValue().getKey()%>">
+                            <p><%=linea.getValue().getKey() * linea.getValue().getValue()%> €</p>
+                            <a href="EliminarDelCarrito?codProducto=<%=linea.getKey().getCodigo()%>"><i class="fa-solid fa-trash"></i></a>
                         </div>
-                        <p>Eliminar</p>
-                        <a href="EliminarDelCarrito?codProducto=<%=linea.getKey().getCodigo()%>">Eliminar</a>
                     </article>
                     <%
                         }
@@ -100,16 +75,15 @@
                         <%
                             for (Direccion direccion : direcciones) {
                         %>
-                        <option value="<%=direccion.getCodigo()%>"><%=direccion.getDireccionCompleta()%></option>
+                        <option  class="opcion" value="<%=direccion.getCodigo()%>"><%=direccion.getDireccionCompleta()%></option>
                         <%
                             }
                         %>
                     </select>
                 </section>
                 <section id="pedido">
-                    <p><%=carrito.getPrecioTotal()%></p>
-                    <button onclick="confirmarPedido()">Confirmar pedido</button>
-                    <a href="ConfirmarPedido">Confirmar pedido</a>
+                    <p>Total: <%=carrito.getPrecioTotal()%> €</p>
+                    <a href="ConfirmarPedido" class="boton">Confirmar pedido</a>
                 </section>
             </form>
             <%
