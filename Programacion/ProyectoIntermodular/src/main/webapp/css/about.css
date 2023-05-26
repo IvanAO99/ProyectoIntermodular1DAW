@@ -157,3 +157,27 @@ main {
     width: 100%;
     height: 100%;
 }
+
+#sobre-nosotros {
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 5px solid #b5985d;
+}
+
+#sobre-nosotros .container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#sobre-nosotros h2 {
+    background-color: #CF6236;
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: "Rock Salt", cursive;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 32px;
+}
