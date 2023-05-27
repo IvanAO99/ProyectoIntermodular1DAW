@@ -72,10 +72,10 @@
                                 for (Factura factura : facturas) {
                                     if (usuarioSesion.esAdmin()) {
                             %>
-                            <th><%=factura.getCliente().getCorreoElectronico()%></th>
-                                <%
-                                    }
-                                %>
+                            <td><%=factura.getCliente().getCorreoElectronico()%></td>
+                            <%
+                                }
+                            %>
                             <td><%=factura.getCodigo()%></td>
                             <td><%=factura.getPedido().getCodigo()%></td>
                             <td><%=factura.getDireccion().getDireccionCompleta()%></td>

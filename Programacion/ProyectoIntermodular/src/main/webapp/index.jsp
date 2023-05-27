@@ -46,7 +46,22 @@
             <%
             } else {
             %>
-            <a href="./pedidos.jsp"></a>
+            <section id="clientesYProductos">
+                <article class="enlaceASeccion">
+                    <a href="./datosUsuario.jsp"><h2 class="tituloEnlace">VER CLIENTES</h2></a>
+                </article>
+                <article class="enlaceASeccion">
+                    <a href="./productos.jsp"><h2 class="tituloEnlace">VER PRODUCTOS</h2></a>
+                </article>
+            </section>
+            <section id="pedidosYFacturas">
+                <article class="enlaceASeccion">
+                    <a href="./pedidos.jsp"><h2 class="tituloEnlace">VER PEDIDOS</h2></a>
+                </article>
+                <article class="enlaceASeccion">
+                    <a href="./facturas.jsp"><h2 class="tituloEnlace">VER FACTURAS</h2></a>
+                </article>
+            </section>
             <%
                 }
             %>

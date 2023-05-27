@@ -80,20 +80,25 @@
                 <div id="generosWrapper">
                     <h2>GÉNEROS</h2>
                     <form action="MostrarProductos" class="inputWrapper">
-                        <%
-                            Set<Categoria> categorias = (((Set<Categoria>) request.getAttribute("categorias")) == null) ? new TreeSet<>() : (Set<Categoria>) request.getAttribute("categorias");
+                        <div id="allCheckBoxWrapper">
+                            <%
+                                Set<Categoria> categorias = (((Set<Categoria>) request.getAttribute("categorias")) == null) ? new TreeSet<>() : (Set<Categoria>) request.getAttribute("categorias");
 
-                            for (Categoria categoria : categorias) {
-                        %>
-                        <div class="inputLabelWrapper">
-                            <input type="hidden" name="tipo" value="<%=tipo%>">
-                            <input type="checkbox" name="categoria" id="checkboxGenero<%=categoria.getCodigo()%>" value="<%=categoria.getCodigo()%>">
-                            <label for="checkboxGenero<%=categoria.getCodigo()%>"><%=categoria.getNombre()%></label>
+                                for (Categoria categoria : categorias) {
+                            %>
+                            <div class="inputLabelWrapper">
+                                <input type="hidden" name="tipo" value="<%=tipo%>">
+                                <input type="checkbox" name="categoria" id="checkboxGenero<%=categoria.getCodigo()%>" value="<%=categoria.getCodigo()%>">
+                                <label for="checkboxGenero<%=categoria.getCodigo()%>"><%=categoria.getNombre()%></label>
+                            </div>
+                            <%
+                                }
+                            %>
                         </div>
                         <%
-                            }
                             if (!categorias.isEmpty()) {
                         %>
+
                         <div id="submitResetWrapper">
                             <input type="submit" value="Aplicar" id="submitAplicar">
                             <input type="reset" value="Resetear" id="resetResetear">

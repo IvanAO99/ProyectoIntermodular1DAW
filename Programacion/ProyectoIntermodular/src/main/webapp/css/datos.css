@@ -27,6 +27,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 table {
     border: 5px solid #b5985d;
     border-radius: 10px;
+
+    background-color: whitesmoke;
 }
 
 th {

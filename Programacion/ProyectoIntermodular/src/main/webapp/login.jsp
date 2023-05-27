@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : login.jsp
     Created on : May 2, 2023, 8:15:38 PM
     Author     : ivan
@@ -23,35 +23,8 @@
     </head>
     <body>
         <script src="js/scripts.js"></script>
-        <header id="cabeceraWeb">
-            <div id="tittle">
-                <a href="./index.jsp"><img id="logo" src="./img/logo.png"></a>
-                <h1>ARTES DORADAS</h1>
-            </div>
-            <nav id="navegadorPrincipal">
-                <ul id="menu">
-                    <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
-                    <li><a href="./productos.jsp"><i class="fa-solid fa-list"></i>Productos</a></li>
-                    <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
-                    <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>Contacto</a></li>
-                        <%
-                            Usuario usuarioSesion = (session != null && session.getAttribute("usuario") != null) ? (Usuario) session.getAttribute("usuario") : null;
-
-                            if ((usuarioSesion == null)) {
-                        %>
-                    <li><a href="./login.jsp"><i class="fa-solid fa-user"></i>Login</a></li>
-                        <%
-                        } else {
-                        %>
-                    <li><a href="./cliente.jsp"><i class="fa-solid fa-user"></i><%= usuarioSesion.getNombreCompleto()%></a></li>
-                    <li><a href="./cesta.html"><i class="fa-solid fa-phone"></i>Cesta</a></li>
-                        <%
-                            }
-                        %>
-                </ul>
-            </nav>
-        </header>
-        <main>
+        <%@include file="./header.jsp"%>
+        <main id="principalWeb">
             <section class="formulario">
                 <section class="encabezadoForm">
                     <h2>INICIAR SESION</h2>
@@ -63,21 +36,20 @@
                         <label for="password">CONTRASEÑA:</label>
                         <input id="password" type="password" name="password" placeholder="Contraseña">
                         <input type="submit" name="enviar" id="submit" value="Enviar">
-                        <%
-                            if (request.getAttribute("error") != null && (boolean) request.getAttribute("error")) {
+                        <%                            if (request.getAttribute("error") != null && (boolean) request.getAttribute("error")) {
                                 out.println("<p>(*) Nombre de correo o contraseña inválidos. Vuelve a intentarlo</p>");
                             }
                         %>
                     </form>
                     <p class="login">
                         ¿No tienes una cuenta?
-                        <a class="enlace" href="./registro.html">
+                        <a class="enlace" href="#">
                             Registrate
                         </a>
                     </p>
                 </section>
                 <section class="formFooter">
-                    <a class="enlace" href="../index.jsp">
+                    <a class="enlace" href="./index.jsp">
                         <p>
                             Volver a inicio
                         </p>

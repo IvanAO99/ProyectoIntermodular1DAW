@@ -17,19 +17,19 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
 
-    grid-template-areas: "libro disco";
+    grid-template-areas: "seccionIzquierda seccionDerecha";
 
     gap: 20px;
     
     max-width: 100vw;
 }
 
-#libroPrincipal {
-    grid-area: libro;
+#libroPrincipal, #clientesYProductos {
+    grid-area: seccionIzquierda;
 }
 
-#discoPrincipal {
-    grid-area: disco;
+#discoPrincipal, #pedidosYFacturas {
+    grid-area: seccionDerecha;
 }
 
 #libroPrincipal, #discoPrincipal {
@@ -76,15 +76,80 @@ img {
     display: block;
 }
 
-@media only screen and (max-width: 768px) {
+/* ADMIN */
+
+#clientesYProductos, #pedidosYFacturas {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+article.enlaceASeccion {
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 16px;
+
+    width: max-content;
+    height: max-content;
+
+    background-color: whitesmoke;
+    color: black;
+}
+
+article.enlaceASeccion:hover {
+    background-color: #CF6236;
+}
+
+h2.tituloEnlace {
+    padding: 50px;
+
+    font-family: 'Dancing Script', cursive;
+    color: black;
+}
+
+h2.tituloEnlace:hover {
+    color: whitesmoke;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 1120px) {
+
+}
+
+@media (max-width: 768px) {
     #principalWeb {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
     
         grid-template-areas: 
-            "libro"
-            "disco";
+            "seccionIzquierda"
+            "seccionDerecha";
 
         padding: 10px 50px;
     }
+
+    #clientesYProductos, #pedidosYFacturas {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 480px) {
+    #principalWeb {
+        padding: 10px 10px;
+    }
+}
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 360px) {
+
 }

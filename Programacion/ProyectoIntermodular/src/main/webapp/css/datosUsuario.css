@@ -3,11 +3,6 @@
     Author     : ivan
 */
 
-* {
-    padding: 0;
-    margin: 0;
-}
-
 #principalWeb {
     grid-area: main;
 

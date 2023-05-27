@@ -23,7 +23,7 @@
                 <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
                 <li><a href="MostrarGeneros"><i class="fa-solid fa-list"></i>Productos</a></li>
                 <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
-                <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>Contacto</a></li>
+                <li><a href="./contacto.jsp"><i class="fa-solid fa-phone"></i>Contacto</a></li>
             </div>
             <div id="unico">
                 <%
@@ -33,18 +33,25 @@
                     <%
                     } else {
                     %>
-                <li id="fotoYNombreNav">
+                <div id="fotoYNombreNav">
                     <figure id="fotoPerfilWrapperNav">
                         <img src="<%=usuarioSesion.getFoto()%>" alt="" id="fotoPerfilNav">
                     </figure>
-                    <a href="./cliente.jsp"><%= usuarioSesion.getNombreCompleto()%></a>
-                </li>
+                    <li><a href="./cliente.jsp"><%= usuarioSesion.getNombreCompleto()%></a></li>
+                </div>
                 <%
                     if (usuarioSesion.esCliente()) {
                 %>
-                <li><a href="./carrito.jsp"><i class="fa-solid fa-phone"></i>Cesta</a></li>
+                <li><a href="./carrito.jsp"><i class="fa-solid fa-cart-shopping"></i></i>Carrito</a></li>
                     <%
                             }
+                        }
+                    %>
+                    <%
+                        if (usuarioSesion != null) {
+                    %>
+                <li><a href="LogoutServlet"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
+                    <%
                         }
                     %>
             </div>

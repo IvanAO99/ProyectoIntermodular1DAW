@@ -60,13 +60,22 @@ div#categoriasWrapper > form.inputWrapper {
 
 .inputWrapper {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-evenly;
 
     padding: 20px;
 
     gap: 20px;
+}
+
+div#allCheckBoxWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+
+    padding: 20px; 
 }
 
 input:checked ~ label {
@@ -183,11 +192,6 @@ figure.popularimgWrapper img {
     justify-content: flex-start;
 
     gap: 20px;
-}
-
-a:link, li a:visited, li a:active {
-    text-decoration: none;
-    color: black;
 }
 
 .productWrapper {
