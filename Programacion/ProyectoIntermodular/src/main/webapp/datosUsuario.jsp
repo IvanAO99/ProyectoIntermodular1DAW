@@ -33,10 +33,10 @@
         <main id="principalWeb">
             <%                if ((usuarioSesion == null)) {
             %>
-            <section id="datosUsuario">
-                <p>JOSÉ RAMÓN!!! NO PUEDES VER ESTO SI NO INICIAS SESION :'(</p>
+            <div class="error">
+                <p>JOSÉ RAMÓN!!! NO PUEDES VER ESTO SI NO ERES CLIENTE o ADMINISTRADOR :'(</p>
                 <p><a href="./index.jsp">Volver al index</a></p>
-            </section>
+            </div>
             <%
             } else if (usuarioSesion.esAdmin()) {
                 List<Usuario> usuarios = new UsuarioDAO().getAll();
@@ -75,8 +75,8 @@
                     </tbody>
                 </table>
             </section>
-            <a href="./index.jsp">Volver a inicio</a>
-            <a href="./cliente.jsp">Atrás</a>
+            <a href="./index.jsp" class="boton">Volver a inicio</a>
+            <a href="./cliente.jsp" class="boton">Atrás</a>
             <%
             } else {
             %>
@@ -137,8 +137,8 @@
                     <p><%=usuarioSesion.getTipo().toString()%></p>
                 </article>
             </section>
-            <a href="./index.jsp">Volver a inicio</a>
-            <a href="./cliente.jsp">Atrás</a>
+            <a href="./index.jsp" class="boton">Volver a inicio</a>
+            <a href="./cliente.jsp" class="boton">Atrás</a>
             <%
                 }
             %>

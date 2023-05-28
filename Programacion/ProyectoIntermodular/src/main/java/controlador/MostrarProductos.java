@@ -45,46 +45,61 @@ public class MostrarProductos extends HttpServlet {
             String[] categorias = request.getParameterValues("categoria");
             String tipo = request.getParameter("tipo");
 
-            if (tipo.equals("libros")) {
-
-                for (int i = 0; i < categorias.length; i++) {
-                    if (i == categorias.length - 1) {
-                        consulta = consulta.concat(categorias[i]);
-                    } else {
-                        consulta = consulta.concat(categorias[i]).concat(" OR cat.codigo = ");
-                    }
-                }
-
-                //System.out.println("Consulta SQL: " + consulta);
-                //System.out.println("He recibido las categorias");
-                //String buscador = request.getParameter("buscador");
-                ArrayList<Libro> productos = new LibroDAO().getByCategorias(consulta);
+            if (tipo.equals("libros") && categorias == null) {
                 categoriasSet = new CategoriaDAO().getCategoriasDeLibros();
 
-                //request.setAttribute("categorias", categorias);
-                request.setAttribute("productos", productos);
-
-                request.getRequestDispatcher("productos.jsp").forward(request, response);
-
-            } else {
-                for (int i = 0; i < categorias.length; i++) {
-                    if (i == categorias.length - 1) {
-                        consulta = consulta.concat(categorias[i]);
-                    } else {
-                        consulta = consulta.concat(categorias[i]).concat(" OR cat.codigo = ");
-                    }
-                }
-
-                //System.out.println("Consulta SQL: " + consulta);
-                //System.out.println("He recibido las categorias");
-                //String buscador = request.getParameter("buscador");
-                ArrayList<? extends Producto> productos = new DiscoDAO().getByCategorias(consulta);
+                request.setAttribute("categorias", categoriasSet);
+                request.setAttribute("errorArrayVacio", true);
+                request.getRequestDispatcher("productos.jsp").include(request, response);
+            } else if (tipo.equals("discos") && categorias == null) {
                 categoriasSet = new CategoriaDAO().getCategoriasDeDiscos();
 
-                //request.setAttribute("categorias", categorias);
-                request.setAttribute("productos", productos);
+                request.setAttribute("categorias", categoriasSet);
+                request.setAttribute("errorArrayVacio", true);
+                request.getRequestDispatcher("productos.jsp").include(request, response);
+            } else {
 
-                request.getRequestDispatcher("productos.jsp").forward(request, response);
+                if (tipo.equals("libros")) {
+
+                    for (int i = 0; i < categorias.length; i++) {
+                        if (i == categorias.length - 1) {
+                            consulta = consulta.concat(categorias[i]);
+                        } else {
+                            consulta = consulta.concat(categorias[i]).concat(" OR cat.codigo = ");
+                        }
+                    }
+
+                    //System.out.println("Consulta SQL: " + consulta);
+                    //System.out.println("He recibido las categorias");
+                    //String buscador = request.getParameter("buscador");
+                    ArrayList<Libro> productos = new LibroDAO().getByCategorias(consulta);
+                    categoriasSet = new CategoriaDAO().getCategoriasDeLibros();
+
+                    request.setAttribute("categorias", categoriasSet);
+                    request.setAttribute("productos", productos);
+
+                    request.getRequestDispatcher("productos.jsp").forward(request, response);
+
+                } else {
+                    for (int i = 0; i < categorias.length; i++) {
+                        if (i == categorias.length - 1) {
+                            consulta = consulta.concat(categorias[i]);
+                        } else {
+                            consulta = consulta.concat(categorias[i]).concat(" OR cat.codigo = ");
+                        }
+                    }
+
+                    //System.out.println("Consulta SQL: " + consulta);
+                    //System.out.println("He recibido las categorias");
+                    //String buscador = request.getParameter("buscador");
+                    ArrayList<? extends Producto> productos = new DiscoDAO().getByCategorias(consulta);
+                    categoriasSet = new CategoriaDAO().getCategoriasDeDiscos();
+
+                    request.setAttribute("categorias", categoriasSet);
+                    request.setAttribute("productos", productos);
+
+                    request.getRequestDispatcher("productos.jsp").forward(request, response);
+                }
             }
 
         } catch (SQLException ex) {

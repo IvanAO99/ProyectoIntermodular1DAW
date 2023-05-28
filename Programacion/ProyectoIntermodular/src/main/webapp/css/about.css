@@ -1,8 +1,3 @@
-* {
-    padding: 0px;
-    margin: 0px;
-}
-
 main {
     display: flex;
 
@@ -44,7 +39,7 @@ main {
 
     padding: 20px;
 
-    font-family: "Rock Salt", cursive;
+    font-family: 'Dancing Script', cursive;
     color: whitesmoke;
 }
 
@@ -169,15 +164,20 @@ main {
 #sobre-nosotros .container {
     max-width: 100%;
     margin: 0 auto;
+    border: 5px solid #b5985d;
+    border-radius: 10px;
 }
 
 #sobre-nosotros h2 {
     background-color: #CF6236;
-    border: 5px solid #b5985d;
-    border-radius: 10px;
+    border-bottom: 5px solid #b5985d;
     padding: 20px;
-    font-family: "Rock Salt", cursive;
+    font-family: 'Dancing Script', cursive;
     color: whitesmoke;
     text-align: center;
     font-size: 32px;
+}
+
+#sobre-nosotros .container p {
+    padding: 0px 20px;
 }

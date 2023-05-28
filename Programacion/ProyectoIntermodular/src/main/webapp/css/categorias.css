@@ -41,7 +41,7 @@ aside#filtro > div > h2 {
 
     color: whitesmoke;
 
-    font-family: 'Rock Salt', cursive;
+    font-family: 'Dancing Script', cursive;
 
     text-align: center;
 }
@@ -107,14 +107,20 @@ div#submitResetWrapper > input {
     border-radius: 10px;
     border: 5px solid #b5985d;
 
-    font-family: 'Rock Salt', cursive;
-    font-size: 10px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
 }
 
 div#submitResetWrapper > input:hover {
     background-color: #CF6236;
 
     color: whitesmoke;
+}
+
+p.error {
+    font-size: 1em;
+    color: red;
+    text-align: center;
 }
 
 #productsMain {
@@ -215,7 +221,8 @@ figure.popularimgWrapper img {
 
     padding: 10px;
 
-    font-family: 'Rock Salt', cursive;
+    font-family: 'Dancing Script', cursive;
+    text-transform: uppercase;
 }
 
 .productWrapper > p {
@@ -240,7 +247,7 @@ section#products > p {
     border-radius: 10px;
     border: 5px solid #b5985d;
 
-    font-family: 'Rock Salt', cursive;
+    font-family: 'Dancing Script', cursive;
     font-size: 10px;
 
     background-color: whitesmoke;
@@ -248,7 +255,14 @@ section#products > p {
     width: max-content;
 }
 
-@media only screen and (max-width: 768px) {
+/* MEDIA QUERY */
+@media (max-width: 1120px) {
+    #principalWeb {
+        grid-template-columns: 30vw auto;
+    }
+}
+
+@media (max-width: 768px) {
     #filtro {
         display: none;
     }
@@ -281,4 +295,20 @@ section#products > p {
 
         cursor: pointer;
     }
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 360px) {
+
 }

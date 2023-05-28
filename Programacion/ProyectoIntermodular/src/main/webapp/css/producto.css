@@ -71,6 +71,7 @@ div#cesta {
 p#error {
     font-size: 1em;
     color: red;
+    text-align: center;
 }
 
 p#error > a,
@@ -78,6 +79,8 @@ p#error > a:active,
 p#error > a:visited {
     text-decoration: none;
     font-style: italic;
+    color: #b5985d;
+    text-transform: uppercase;
 }
 
 h2#nombreProducto,
@@ -104,8 +107,10 @@ p#precio {
     border-radius: 10px;
     border: 5px solid #b5985d;
 
-    font-family: 'Rock Salt', cursive;
-    font-size: 1em;
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+
+    width: max-content;
 }
 
 .boton:hover {
@@ -123,6 +128,8 @@ p#precio {
     border: 5px solid #b5985d;
 
     font-size: 1em;
+
+    width: max-content;
 }
 
 form#formCesta {
@@ -162,7 +169,7 @@ form#formCesta {
     border: 5px solid #b5985d;
     border-radius: 10px;
 
-    margin: 0 0 2em 0;
+    margin: 0 2em 2em 2em;
 }
 
 #tablaDatosAlternativos > #body {
@@ -186,7 +193,9 @@ form#formCesta {
 
     color: whitesmoke;
 
-    font-family: 'Rock Salt', cursive;
+    font-family: 'Dancing Script', cursive;
+    text-transform: uppercase;
+    font-size: 20px;
 }
 
 .tdDerecha {
@@ -214,7 +223,7 @@ form#formCesta {
 
     color: whitesmoke;
 
-    font-family: 'Rock Salt', cursive;
+    font-family: 'Dancing Script', cursive;
 
     border-bottom: 5px solid #b5985d;
 
@@ -246,13 +255,14 @@ form#formCesta {
 }
 
 #opinion {
-    width: 95%;
+    width: -moz-available;
     resize: none;
 
     border: 5px solid #b5985d;
     border-radius: 10px;
 
     padding: 1em;
+    margin: 1em;
 }
 
 #opinion:focus {
@@ -318,9 +328,30 @@ form#formCesta {
     padding: 1em;
 }
 
-@media only screen and (max-width: 768px) {
+/* MEDIA QUERY */
+@media (max-width: 1366px) {
     #principalWeb {
-        padding: 10px 10px;
+        padding: 10px 20px;
+
+        gap: 1em;
+    }
+}
+
+@media (max-width: 1120px) {
+    #principalWeb {
+        padding: 10px 20px;
+
+        gap: 1em;
+    }
+
+    #formCesta {
+        flex-direction: column !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #principalWeb {
+        padding: 10px 20px;
 
         gap: 1em;
     }
@@ -340,4 +371,20 @@ form#formCesta {
     #datosPrincipalesyAnyadir>section {
         width: 100%;
     }
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 360px) {
+
 }

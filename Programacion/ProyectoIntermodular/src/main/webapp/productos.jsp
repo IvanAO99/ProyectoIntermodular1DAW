@@ -15,6 +15,9 @@
 <%@page import="java.util.Set"%>
 <%@page import="modelo.dto.Categoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    Set<Categoria> categorias = null;
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -82,7 +85,7 @@
                     <form action="MostrarProductos" class="inputWrapper">
                         <div id="allCheckBoxWrapper">
                             <%
-                                Set<Categoria> categorias = (((Set<Categoria>) request.getAttribute("categorias")) == null) ? new TreeSet<>() : (Set<Categoria>) request.getAttribute("categorias");
+                                categorias = (((Set<Categoria>) request.getAttribute("categorias")) == null) ? new TreeSet<>() : (Set<Categoria>) request.getAttribute("categorias");
 
                                 for (Categoria categoria : categorias) {
                             %>
@@ -107,6 +110,13 @@
                             }
                         %>
                     </form>
+                    <%
+                        if (request.getAttribute("errorArrayVacio") != null && (boolean) request.getAttribute("errorArrayVacio")) {
+                    %>
+                    <p class="error">(*) Selecciona al menos un género</p>
+                    <%
+                        }
+                    %>
                 </div>
             </aside>
             <section id="productsMain">
@@ -161,7 +171,6 @@
                             }
                         %>
                     </div>
-                    <p>Ver más</p>
                 </section>
             </section>
         </main>

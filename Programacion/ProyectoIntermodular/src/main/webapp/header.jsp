@@ -22,7 +22,7 @@
             <div id="comun">
                 <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
                 <li><a href="MostrarGeneros"><i class="fa-solid fa-list"></i>Productos</a></li>
-                <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
+                <li><a href="./sobreNosotros.jsp"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
                 <li><a href="./contacto.jsp"><i class="fa-solid fa-phone"></i>Contacto</a></li>
             </div>
             <div id="unico">

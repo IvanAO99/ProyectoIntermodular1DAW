@@ -39,10 +39,10 @@
         <main id="principalWeb">
             <%                if ((usuarioSesion == null)) {
             %>
-            <section id="datos">
+            <div class="error">
                 <p>JOSÉ RAMÓN!!! NO PUEDES VER ESTO SI NO ERES CLIENTE o ADMINISTRADOR :'(</p>
                 <p><a href="./index.jsp">Volver al index</a></p>
-            </section>
+            </div>
             <%
             } else {
                 pedidos = (usuarioSesion.esAdmin()) ? pedidoDAO.getAll() : pedidoDAO.getByCliente(usuarioSesion);
@@ -99,9 +99,9 @@
                                         out.print("-");
                                     } else {
                                 %>
-                                <form name="facturar-<%= pedido.getCodigo()%>" method="post" action="Facturar">
+                                <form name="facturar-<%= pedido.getCodigo()%>" method="post" action="Facturar" id="formFacturar">
                                     <input name="id" type="hidden" value="<%= pedido.getCodigo()%>" />
-                                    <select name="direccion">
+                                    <select name="direccion" class="boton">
                                         <option selected="selected" hidden="hidden" value="<%=pedido.getDireccion().getCodigo()%>"><%=pedido.getDireccion().getDireccionCompleta()%></option>
                                         <%
                                             for (Direccion dirFact : new DireccionDAO().getDireccionesDe(pedido.getCliente())) {
@@ -111,7 +111,7 @@
                                             }
                                         %>
                                     </select>
-                                    <input type="submit" value="Facturar" />
+                                    <input type="submit" value="Facturar" class="boton"/>
                                 </form>
                                 <%
                                     }
@@ -127,8 +127,8 @@
                     </tbody>
                 </table>
             </section>
-            <a href="./index.jsp">Volver a inicio</a>
-            <a href="./cliente.jsp">Atrás</a>
+            <a href="./index.jsp" class="boton">Volver a inicio</a>
+            <a href="./cliente.jsp" class="boton">Atrás</a>
             <%
                 }
             %>

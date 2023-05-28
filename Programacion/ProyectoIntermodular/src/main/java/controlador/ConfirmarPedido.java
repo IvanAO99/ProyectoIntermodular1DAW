@@ -63,7 +63,9 @@ public class ConfirmarPedido extends HttpServlet {
                     response.sendRedirect("index.jsp");
 
                 } else {
-                    out.println("<h2>No tenemos suficiente stock para confirmar el pedido</h2><p><a href=\"carrito.jsp\">Volver atrás</a></p>");
+                    //out.println("<h2>No tenemos suficiente stock para confirmar el pedido</h2><p><a href=\"carrito.jsp\">Volver atrás</a></p>");
+                    request.setAttribute("errorStock", true);
+                    request.getRequestDispatcher("carrito.jsp").include(request, response);
                 }
             }
         } catch (SQLException ex) {

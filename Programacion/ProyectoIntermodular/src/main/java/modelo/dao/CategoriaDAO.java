@@ -90,7 +90,10 @@ public class CategoriaDAO extends TablaDAO<Categoria> {
 
     public Set<Categoria> getCategoriasDeLibros() throws SQLException {
         Set<Categoria> conjunt = new TreeSet<>();
-        String sentenciaSQL = "SELECT categoria.codigo, categoria.nombre FROM " + tabla + " producto LEFT JOIN artesdoradas_libros libro on libro.codigo = producto.codigo left join artesdoradas_categorias_productos catproducto on catproducto.producto = producto.codigo left join artesdoradas_categorias categoria on categoria.codigo = catproducto.categoria where libro.codigo is not null";
+        String sentenciaSQL = "SELECT cat.codigo, cat.nombre FROM " + tabla + " cat"
+                + " LEFT JOIN artesdoradas_categorias_productos catpro ON catpro.categoria = cat.codigo"
+                + " LEFT JOIN artesdoradas_libros l ON l.codigo = catpro.producto"
+                + " WHERE l.codigo IS NOT NULL";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
 
@@ -105,7 +108,10 @@ public class CategoriaDAO extends TablaDAO<Categoria> {
 
     public Set<Categoria> getCategoriasDeDiscos() throws SQLException {
         Set<Categoria> conjunt = new TreeSet<>();
-        String sentenciaSQL = "SELECT categoria.codigo, categoria.nombre FROM " + tabla + " producto LEFT JOIN artesdoradas_discos disco on disco.codigo = producto.codigo left join artesdoradas_categorias_productos catproducto on catproducto.producto = producto.codigo left join artesdoradas_categorias categoria on categoria.codigo = catproducto.categoria where disco.codigo is not null";
+        String sentenciaSQL = "SELECT cat.codigo, cat.nombre FROM " + tabla + " cat"
+                + " LEFT JOIN artesdoradas_categorias_productos catpro ON catpro.categoria = cat.codigo"
+                + " LEFT JOIN artesdoradas_discos d ON d.codigo = catpro.producto"
+                + " WHERE d.codigo IS NOT NULL";
         PreparedStatement prepared = getPrepared(sentenciaSQL);
         ResultSet resultSet = prepared.executeQuery();
 

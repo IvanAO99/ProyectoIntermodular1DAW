@@ -47,10 +47,9 @@
     <body>
         <%@include file="./header.jsp"%>
         <main id="principalWeb">
-            <%
-                if (producto == null) {
+            <%                if (producto == null) {
             %>
-            <p id="error">(*) No se ha encontrado el producto</p>
+            <p id="error">(*) Producto no encontrado</p>
             <%
             } else {
             %>
@@ -64,7 +63,7 @@
                             if (request.getAttribute("errorAnyadirCarrito") != null && (boolean) request.getAttribute("errorAnyadirCarrito")) {
                         %>
                         <p id="error">(*)
-                            <a href="#">Inicia sesión</a>
+                            <a href="./login.jsp">Inicia sesión</a>
                             o
                             <a href="#"> registrate</a>
                             para añadir a la lista de deseos o cesta
@@ -80,17 +79,33 @@
                         <p id="autorProducto"><%=producto instanceof Libro ? "Autor: ".concat(((Libro) producto).getAutor()) : "Artista: ".concat(((Disco) producto).getArtista())%></p>
                         <p id="proveedorProducto"><%=producto instanceof Libro ? "Editorial: ".concat(((Libro) producto).getEditorial()) : "Discográfica: ".concat(((Disco) producto).getDiscografica())%></p>
                     </article>
+                    <%
+                        if (usuarioSesion == null || usuarioSesion.esCliente()) {
+                    %>
                     <form action="#">
                         <input type="submit" value="Añadir a deseados" class="boton">
                     </form>
+                    <%
+                        }
+                    %>
                     <div id="cesta">
                         <p id="stock">Stock: <%=producto.getStock()%></p>
                         <p id="precio">Precio: <%=producto.getPrecio()%>€ + IVA(<%=producto.getIva()%>%)</p>
+                        <%
+                            if (usuarioSesion == null || usuarioSesion.esCliente()) {
+                        %>
                         <form action="AnyadirAlCarrito" id="formCesta">
                             <input type="hidden" name="codProducto" value="<%=producto.getCodigo()%>"/>
                             <input type="number" name="cantidad" id="cantidad" min="1" max="99" value="1">
                             <input type="submit" value="Añadir a la cesta" class="boton">
                         </form>
+                        <%
+                        } else {
+                        %>
+                        <a href="#" class="boton">Editar</a>
+                        <%
+                            }
+                        %>
                     </div>
                 </section>
             </section>
@@ -157,6 +172,9 @@
             </section>
             <section id="opiniones">
                 <h2 id="tituloOpiniones">OPINIONES</h2>
+                <%
+                    if (usuarioSesion == null || usuarioSesion.esCliente()) {
+                %>
                 <div id="formularioOpinionWrapper">
                     <h2 id="tituloFormulario">Deja una opinión de este producto</h2>
                     <form action="#" id="formularioOpinion">
@@ -171,6 +189,9 @@
                         <input type="submit" value="Enviar" class="boton">
                     </form>
                 </div>
+                <%
+                    }
+                %>
                 <%
                     if (!opiniones.isEmpty()) {
                         for (Opinion opinion : opiniones) {

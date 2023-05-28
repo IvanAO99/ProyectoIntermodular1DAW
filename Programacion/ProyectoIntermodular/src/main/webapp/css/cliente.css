@@ -48,6 +48,26 @@ h2.tituloEnlace:hover {
     color: whitesmoke;
 }
 
+div.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    font-size: 1em;
+    color: red;
+    text-align: center;
+
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+}
+
+div.error p a {
+    color: #b5985d !important;
+}
+
 /* MEDIA QUERY */
 @media (max-width: 1120px) {
     #principalWeb {

@@ -24,15 +24,46 @@
     <body>
         <%@include file="./header.jsp"%>
         <main id="principalWeb">
+            <%                if ((usuarioSesion == null)) {
+            %>
+            <div class="error">
+                <p>JOSÉ RAMÓN!!! NO PUEDES VER ESTO SI NO ERES CLIENTE o ADMINISTRADOR :'(</p>
+                <p><a href="./index.jsp">Volver al index</a></p>
+            </div>
+            <%
+            } else {
+            %>
+            <%
+                if (usuarioSesion.esCliente()) {
+            %>
             <article class="enlaceASeccion">
                 <a href="./datosUsuario.jsp"><h2 class="tituloEnlace">VER DATOS</h2></a>
             </article>
+            <%
+            } else {
+            %>
+            <article class="enlaceASeccion">
+                <a href="./datosUsuario.jsp"><h2 class="tituloEnlace">VER CLIENTES</h2></a>
+            </article>
+            <%
+                }
+                if (usuarioSesion.esCliente()) {
+            %>
             <article class="enlaceASeccion">
                 <a href="#"><h2 class="tituloEnlace">LISTA DE DESEOS</h2></a>
             </article>
+            <%
+                }
+            %>
+            <%
+                if (usuarioSesion.esCliente()) {
+            %>
             <article class="enlaceASeccion">
                 <a href="./carrito.jsp"><h2 class="tituloEnlace">CARRITO</h2></a>
             </article>
+            <%
+                }
+            %>
             <article class="enlaceASeccion">
                 <a href="./pedidos.jsp"><h2 class="tituloEnlace">PEDIDOS</h2></a>
             </article>
@@ -45,6 +76,9 @@
             <article class="enlaceASeccion">
                 <a href="LogoutServlet"><h2 class="tituloEnlace">LOG OUT</h2></a>
             </article>
+            <%
+                }
+            %>
         </main>
         <footer id="webFooter">
             <section>

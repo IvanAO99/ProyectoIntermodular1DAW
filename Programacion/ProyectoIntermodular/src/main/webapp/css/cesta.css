@@ -1,8 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-}
-
 #principalWeb {
     grid-area: main;
 
@@ -16,6 +11,12 @@
 	justify-content: center;
 
 	gap: 20px;
+}
+
+p.error {
+    font-size: 1em;
+    color: red;
+    text-align: center;
 }
 
 #actualizarform {
@@ -54,6 +55,8 @@ article.producto {
     align-items: stretch;
 
     gap: 20px;
+
+    background-color: whitesmoke;
 }
 
 article.producto figure {
@@ -106,6 +109,8 @@ div.datosProducto {
 
     font-family: 'Dancing Script', cursive;
     font-size: 1.5em;
+
+    background-color: whitesmoke;
 }
 
 .boton:hover, #direccion:hover {

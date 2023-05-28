@@ -1,38 +1,29 @@
+<%--
+    Document   : sobreNosotros
+    Created on : May 28, 2023, 8:55:17 PM
+    Author     : ivan
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sobre nosotros | ARTES DORADAS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rock+Salt&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link rel="stylesheet" type="text/css" href="./css/about.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="./img/logo.png">
-	</head>
-	<body>
-		<script src="js/scripts.js"></script>
-        <header>
-            <section>
-                <header id="cabeceraWeb">
-                    <a href="./index.jsp"><img id="logo" src="./img/logo.png"></a>
-                    <h1>ARTES DORADAS</h1>
-                </header>
-            </section>
-            <section>
-                <nav>
-                    <ul id="menu">
-                        <li><a href="./index.jsp"><i class="fa-solid fa-house"></i>Inicio</a></li>
-                        <li><a href="./productos.jsp"><i class="fa-solid fa-list"></i>Productos</a></li>
-                        <li><a href="./sobre_nosotros.html"><i class="fa-solid fa-address-card"></i>Sobre nosotros</a></li>
-                        <li><a href="./contacto.html"><i class="fa-solid fa-phone"></i>Contacto</a></li>
-                        <li><a href="./login.jsp"><i class="fa-solid fa-user"></i>Inicia sesión</a></li>
-                    </ul>
-                </nav>
-            </section>
-        </header>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sobre nosotros | ARTES DORADAS</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Rock+Salt&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./css/header.css">
+        <link rel="stylesheet" type="text/css" href="./css/about.css">
+        <link rel="stylesheet" type="text/css" href="./css/footer.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="icon" type="image/png" href="./img/logo.png">
+    </head>
+    <body>
+        <script src="js/scripts.js"></script>
+        <%@include file="./header.jsp"%>
         <main>
             <section id="sobre-nosotros">
                 <div class="container">
@@ -153,12 +144,12 @@
         <footer>
             <section>
                 <h3>Términos y condiciones</h3>
-		        <p><a href="./privacidad.html">Política de privacidad</a></p>
-		        <p id="copyright">
-			        © 2022-23, Iván Ayuso & Enrique Azorín
-			        <br>1º DAW | IES Poeta Paco Mollá (Petrer)
-		        </p>
+                <p><a href="./privacidad.html">Política de privacidad</a></p>
+                <p id="copyright">
+                    © 2022-23, Iván Ayuso & Enrique Azorín
+                    <br>1º DAW | IES Poeta Paco Mollá (Petrer)
+                </p>
             </section>
         </footer>
-	</body>
+    </body>
 </html>

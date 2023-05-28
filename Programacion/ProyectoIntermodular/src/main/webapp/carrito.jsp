@@ -32,19 +32,24 @@
         <main id="principalWeb">
             <%                if (usuarioSesion == null || usuarioSesion.esAdmin()) {
             %>
-            <p>(*) No tienes permisos para acceder a esta sección</p>
+            <p class="error">(*) No tienes permisos para acceder a esta sección</p>
             <%
             } else if (session.getAttribute("carrito") == null) {
             %>
-            <p>(*) No tienes creado ningún carrito</p>
+            <p class="error">(*) No tienes creado ningún carrito</p>
             <%
             } else if (((Pedido) session.getAttribute("carrito")).getLineasPedido().isEmpty()) {
             %>
-            <p>(*) El carrito está vacio</p>
-            %>
+            <p class="error">(*) El carrito está vacio</p>
             <%
             } else {
                 Pedido carrito = (Pedido) session.getAttribute("carrito");
+
+                if ((request.getAttribute("errorStock") != null && (boolean) request.getAttribute("errorStock"))) {
+            %>
+            <p class="error">(*) No tenemos suficiente stock para confirmar el pedido</p>
+            <%
+                }
             %>
             <form method="post" action="ActualizarCarrito" id="actualizarform">
                 <section id="productos">
