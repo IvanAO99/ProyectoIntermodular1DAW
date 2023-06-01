@@ -72,17 +72,17 @@
                                 for (Factura factura : facturas) {
                                     if (usuarioSesion.esAdmin()) {
                             %>
-                            <td><%=factura.getCliente().getCorreoElectronico()%></td>
+                            <td data-label="Cliente"><%=factura.getCliente().getCorreoElectronico()%></td>
                             <%
                                 }
                             %>
-                            <td><%=factura.getCodigo()%></td>
-                            <td><%=factura.getPedido().getCodigo()%></td>
-                            <td><%=factura.getDireccion().getDireccionCompleta()%></td>
-                            <td><%=factura.getFechaFactura().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
-                            <td><%=factura.getPedido().getPrecioTotal() + " €"%></td>
-                            <td class="centrado"><a href="ExportarXML?id=<%=factura.getCodigo()%>"><img class="fotoTD" alt="logo XML" src="./img/xml.png"/></a></td>
-                            <td class="centrado"><a href="ExportarPDF?id=<%=factura.getCodigo()%>"><img class="fotoTD" alt="logo PDF" src="./img/pdf.png"/></a></td>
+                            <td data-label="Código factura"><%=factura.getCodigo()%></td>
+                            <td data-label="Pedido asociado"><%=factura.getPedido().getCodigo()%></td>
+                            <td data-label="Dirección facturación"><%=factura.getDireccion().getDireccionCompleta()%></td>
+                            <td data-label="Fecha de facturación"><%=factura.getFechaFactura().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
+                            <td data-label="Total con IVA"><%=factura.getPedido().getPrecioTotal() + " €"%></td>
+                            <td class="centrado" data-label="Exportar a XML"><a href="ExportarXML?id=<%=factura.getCodigo()%>"><img class="fotoTD" alt="logo XML" src="./img/xml.png"/></a></td>
+                            <td class="centrado" data-label="Exportar a PDF"><a href="ExportarPDF?id=<%=factura.getCodigo()%>"><img class="fotoTD" alt="logo PDF" src="./img/pdf.png"/></a></td>
                         </tr>
                         <%
                             }

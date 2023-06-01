@@ -80,20 +80,20 @@
                             <%
                                 if (usuarioSesion.esAdmin()) {
                             %>
-                            <td><%=pedido.getCliente().getCorreoElectronico()%></td>
+                            <td data-label="Cliente"><%=pedido.getCliente().getCorreoElectronico()%></td>
                             <%
                                 }
                             %>
-                            <td><%=pedido.getCodigo()%></td>
-                            <td><%=pedido.getCodigosProductos()%></td>
-                            <td><%=pedido.getDireccion().getDireccionCompleta()%></td>
-                            <td><%=pedido.getFechaPedido().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
-                            <td><%=pedido.getPrecioTotal() + " €"%></td>
-                            <td><%=pedido.isFacturado() ? "Sí" : "No"%></td>
+                            <td data-label="Código de pedido"><%=pedido.getCodigo()%></td>
+                            <td data-label="Códigos de productos"><%=pedido.getCodigosProductos()%></td>
+                            <td data-label="Dirección"><%=pedido.getDireccion().getDireccionCompleta()%></td>
+                            <td data-label="Fecha"><%=pedido.getFechaPedido().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
+                            <td data-label="Precio total + IVA"><%=pedido.getPrecioTotal() + " €"%></td>
+                            <td data-label="Facturado"><%=pedido.isFacturado() ? "Sí" : "No"%></td>
                             <%
                                 if (usuarioSesion.esCliente() || usuarioSesion.esAdmin()) {
                             %>
-                            <td>
+                            <td class="facturar">
                                 <%
                                     if (pedido.isFacturado()) {
                                         out.print("-");

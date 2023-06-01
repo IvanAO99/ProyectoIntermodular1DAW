@@ -60,13 +60,13 @@
                                 if (usuario.esCliente()) {
                         %>
                         <tr>
-                            <td><%=usuario.getCodigo()%></td>
-                            <td><%=usuario.getNombreCompleto()%></td>
-                            <td><%=usuario.getCorreoElectronico()%></td>
-                            <td><%=usuario.getPassword()%></td>
-                            <td><%=usuario.getUltimaConexion().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
-                            <td><%=usuario.getTelefono()%></td>
-                            <td><%=usuario.getFechaNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%></td>
+                            <td data-label="Cliente"><%=usuario.getCodigo()%></td>
+                            <td data-label="Nombre"><%=usuario.getNombreCompleto()%></td>
+                            <td data-label="Correo electrónico"><%=usuario.getCorreoElectronico()%></td>
+                            <td data-label="Contraseña"><%=usuario.getPassword()%></td>
+                            <td data-label="Fecha última conexión"><%=usuario.getUltimaConexion().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))%></td>
+                            <td data-label="Teléfono"><%=usuario.getTelefono()%></td>
+                            <td data-label="Fecha de nacimiento"><%=usuario.getFechaNacimiento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%></td>
                         </tr>
                         <%
                                 }

@@ -88,6 +88,9 @@ INSERT INTO ARTESDORADAS_direcciones (cliente, codigo, tipo, cp, localidad, prov
 VALUES (03, 01, 'Avenida', 03640, 'Monóvar', 'Alicante', 'Avda. Comunidad Valenciana, 14');
 
 INSERT INTO ARTESDORADAS_direcciones (cliente, codigo, tipo, cp, localidad, provincia, direccion_completa)
+VALUES (03, 06, 'Calle', 03640, 'Monóvar', 'Alicante', 'Calle Andalucía, 04');
+
+INSERT INTO ARTESDORADAS_direcciones (cliente, codigo, tipo, cp, localidad, provincia, direccion_completa)
 VALUES (04, 02, 'Calle', 19125, 'Alcocer', 'Guadalajara', 'Calle Mayor, 20');
 
 INSERT INTO ARTESDORADAS_direcciones (cliente, codigo, tipo, cp, localidad, provincia, direccion_completa)

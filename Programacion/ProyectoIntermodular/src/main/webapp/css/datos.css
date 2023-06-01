@@ -115,3 +115,90 @@ div.error p a {
     flex-direction: column;
     gap: 20px;
 }
+
+/* MEDIA QUERY */
+@media (max-width: 1120px) {
+
+    #principalWeb {
+        padding: 20px 10px;
+    }
+
+    table {
+        border: none;
+        background-color: none;
+        border-radius: none;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table, table tbody, table tr {
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+    }
+
+    tr:last-child td {
+        border-bottom: 5px solid #b5985d;
+    }
+
+    table td {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        border: none;
+        border-bottom: 5px solid #b5985d;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+
+        border: 5px solid #b5985d;
+        border-radius: 10px;
+        border-bottom: none;
+
+        background-color: whitesmoke;
+    }
+
+    table td:not(.facturar)::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td.facturar {
+        align-items: center;
+    }
+
+    td.centrado {
+        width: -moz-available;
+    }
+    
+    td a img.fotoTD {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 360px) {
+
+}

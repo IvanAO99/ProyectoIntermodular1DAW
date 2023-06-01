@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * @author Iván Ayuso Olivera | Enrique Azorín Castellano
-*
+ *
  */
 public class Disco extends Producto {
 
@@ -14,7 +14,7 @@ public class Disco extends Producto {
     private final String artista;
     private final String tipo;
     private final long asin;
-    private final String discografica = "hola";
+    private final String discografica = "Sin especificar";
 
     public Disco(String canciones, String sello, String artista, String tipo, long asin, int codigo, int iva, int stock, int stockMinimo, String unidadDeMedida, double precio, String nombre, String descripcion, String foto, LocalDateTime fechaCreacion, LocalDateTime fechaUltimaModificacion, Proveedor proveedor, Usuario creador, Usuario modificador, ArrayList<Categoria> categorias) {
         super(codigo, iva, stock, stockMinimo, unidadDeMedida, precio, nombre, descripcion, foto, fechaCreacion, fechaUltimaModificacion, proveedor, creador, modificador, categorias);
