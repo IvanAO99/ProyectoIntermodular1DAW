@@ -1,0 +1,390 @@
+#principalWeb {
+    grid-area: main;
+
+    background-image: url('../img/fondo.png');
+
+    padding: 10px 200px;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+
+    grid-template-areas:
+        "datosProductoyAnyadir"
+        "datosProducto2"
+        "opiniones"
+    ;
+
+    max-width: 100wh;
+
+    gap: 2em;
+}
+
+#datosPrincipalesyAnyadir {
+    grid-area: datosProductoyAnyadir;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 20px;
+}
+
+#datosPrincipalesyAnyadir>figure {
+    width: 40%;
+    height: 90%;
+
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+}
+
+#datosPrincipalesyAnyadir>figure>img {
+    width: 100%;
+    height: 100%;
+}
+
+#datosPrincipalesyAnyadir>section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    width: 60%;
+    height: max-content;
+}
+
+#datosPrincipalesyAnyadir>section>article,
+div#cesta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+p#error {
+    font-size: 1em;
+    color: red;
+    text-align: center;
+}
+
+p#error > a,
+p#error > a:active,
+p#error > a:visited {
+    text-decoration: none;
+    font-style: italic;
+    color: #b5985d;
+    text-transform: uppercase;
+}
+
+h2#nombreProducto,
+p#autorProducto,
+p#proveedorProducto,
+section#datosAlternativos, 
+section#opiniones,
+p#stock,
+p#precio {
+    border-top: 5px solid #b5985d;
+    border-bottom: 5px solid #b5985d;
+    border-radius: 10px;
+
+    background-color: whitesmoke;
+
+    padding: 20px;
+
+    color: black;
+}
+
+.boton {
+    padding: 0.2em 1em;
+
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+
+    width: max-content;
+}
+
+.boton:hover {
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    cursor: pointer;
+}
+
+#cantidad {
+    padding: 0.2em 1em;
+
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    font-size: 1em;
+
+    width: max-content;
+}
+
+form#formCesta {
+    display: flex;
+    flex-direction: row;
+
+    gap: 2em;
+}
+
+#datosAlternativos {
+    grid-area: datosProducto2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2em;
+
+    padding: 0 !important;
+}
+
+#datosAlternativos > article {
+    align-self: stretch;
+    
+    border-bottom: 5px solid #b5985d;
+    border-radius: 10px;
+}
+
+#datosAlternativos > article > p {
+    padding: 20px;
+}
+
+#tablaDatosAlternativos {
+    align-self: center;
+
+    text-align: center;
+
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    margin: 0 2em 2em 2em;
+}
+
+#tablaDatosAlternativos > #body {
+    gap: 2em;
+}
+
+.tdIzquierda, .tdDerecha {
+    padding: 2em 1em;
+
+    border-bottom: 5px solid #b5985d;
+}
+
+#tablaDatosAlternativos > #body tr:last-child td {
+    border-bottom: none;
+}
+
+.tdIzquierda {
+    border-right: 2.5px solid #b5985d;
+
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    font-family: 'Dancing Script', cursive;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.tdDerecha {
+    border-left: 2.5px solid #b5985d;
+}
+
+#opiniones {
+    grid-area: opiniones;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2em;
+
+    padding: 0 !important;
+
+    border: 5px solid #b5985d !important;
+    border-radius: 10px !important;
+
+    padding-bottom: 2em !important;
+}
+
+#tituloOpiniones {
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    font-family: 'Dancing Script', cursive;
+
+    border-bottom: 5px solid #b5985d;
+
+    text-align: center;
+
+    padding: 0.5em;
+}
+
+#formularioOpinionWrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2em;
+}
+
+#tituloFormulario {
+    border-bottom: 5px solid #b5985d;
+    padding: 0.5em 2em 0.5em 0.5em;
+    width: max-content;
+}
+
+#formularioOpinion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 2em;
+}
+
+#opinion {
+    width: -moz-available;
+    resize: none;
+
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    padding: 1em;
+    margin: 1em;
+}
+
+#opinion:focus {
+    outline: none;
+}
+
+#formularioOpinion > .boton {
+    width: max-content;
+}
+
+.opinion {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    margin: 0em 1em;
+}
+
+.usuarioYfecha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    padding: 1em;
+
+    border-bottom: 5px solid #b5985d;
+}
+
+.fotoUserYNombre {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 1em;
+}
+
+.fotoPerfilWrapper {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    border: 5px solid #b5985d;
+}
+
+.fotoPerfil {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.mensaje {
+    padding: 1em;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 1366px) {
+    #principalWeb {
+        padding: 10px 20px;
+
+        gap: 1em;
+    }
+}
+
+@media (max-width: 1120px) {
+    #principalWeb {
+        padding: 10px 20px;
+
+        gap: 1em;
+    }
+
+    #formCesta {
+        flex-direction: column !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #principalWeb {
+        padding: 10px 20px;
+
+        gap: 1em;
+    }
+
+    #datosPrincipalesyAnyadir {
+        flex-direction: column;
+        justify-content: stretch;
+
+        height: max-content;
+    }
+
+    #datosPrincipalesyAnyadir>figure {
+        width: 100%;
+        height: 600px;
+    }
+
+    #datosPrincipalesyAnyadir>section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 360px) {
+
+}

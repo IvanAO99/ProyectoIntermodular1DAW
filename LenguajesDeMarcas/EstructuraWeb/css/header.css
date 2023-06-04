@@ -1,0 +1,226 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : May 9, 2023, 7:13:08 PM
+    Author     : ivan
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+
+    font-family: 'Sriracha', cursive;
+}
+
+body {
+    display: grid;
+
+    grid-template-rows: auto 1fr auto;
+
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+
+    max-width: 100vw;
+
+    min-height: 100vh;
+}
+
+#cabeceraWeb {
+    grid-area: header;
+
+    display: flex;
+    flex-direction: column;
+
+
+    background-color: #30201a;
+    color: #b5985d;
+}
+
+div#tittle {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+
+    align-items: center;
+    align-self: center;
+
+    padding: 10px;
+}
+
+#logo {
+    margin: 5px;
+    padding: 5px;
+    max-height: 128px;
+    width: auto;
+}
+
+h1#nombreEmpresa {
+    font-size: 100px !important;
+    font-family: 'Dancing Script', cursive !important;
+}
+
+nav#navegadorPrincipal {
+    background-color: #77432e;
+    font-size: 17px;
+    padding: 1em 2em;
+
+    border-top: 5px solid #b5985d;
+    border-bottom: 5px solid #b5985d;
+}
+
+#hamburguesa {
+    display: none;
+}
+
+ul#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div#comun,
+div#unico {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+li {
+    cursor: default;
+    list-style: none;
+
+    background-color: whitesmoke;
+
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    text-align: center;
+    font-size: 1em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+li:hover {
+    background-color: #CF6236;
+}
+
+li a {
+    padding: 0.2em 1em;
+    color: black;
+}
+
+li a:link,
+li a:visited,
+li a:active {
+    text-decoration: none;
+    color: black;
+}
+
+a:link,
+a:visited,
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
+li a:hover {
+    color: whitesmoke;
+}
+
+i {
+    padding-right: 0.5em;
+}
+
+#fotoYNombreNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#fotoPerfilWrapperNav  {
+    width: 60px;
+    height: 60px;
+
+    border: 5px solid #b5985d;
+    border-radius: 50%;
+}
+
+#fotoPerfilNav {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 1120px) {
+    ul#menu {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    #hamburguesa {
+        display: block;
+
+        padding: 0.5em 1em;
+
+        border-radius: 10px;
+        border: 5px solid #b5985d;
+
+        font-size: 1em;
+    }
+
+    #hamburguesa:hover {
+        background-color: #CF6236;
+
+        color: whitesmoke;
+
+        cursor: pointer;
+    }
+
+    h1#nombreEmpresa {
+        display: none;
+    }
+
+    nav#navegadorPrincipal {
+        display: none;
+    }
+
+    div#tittle {
+        border-bottom: 5px solid #b5985d;
+        align-self: stretch;
+        justify-content: space-between;
+        padding: 10px 50px;
+    }
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 360px) {
+
+}

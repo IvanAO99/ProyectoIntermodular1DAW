@@ -1,0 +1,121 @@
+/*  MAIN    */
+
+#principalWeb {
+    grid-area: main;
+
+    background-image: url('../img/fondo.png');
+
+    padding: 20px 100px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    align-items: stretch;
+
+	gap: 20px;
+}
+
+section.contacto, section.tickets {
+	display: flex;
+    flex-direction: column;
+
+	border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    background-color: whitesmoke;
+}
+
+h2.contactoTittle, h2.ticketsTittle {
+	border-bottom: 5px solid #b5985d;
+
+    padding: 1em;
+
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    font-family: 'Dancing Script', cursive;
+
+    text-align: center;
+}
+
+article.contactoArticle,
+section.tickets p,
+section.tickets form.ticketsForm {
+    padding: 20px;
+}
+
+form.ticketsForm {
+	display: flex;
+	flex-direction: column;
+
+	gap: 20px;
+}
+
+textarea#ticketsMensaje, 
+input#ticketsAsunto {
+    resize: none;
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+    padding: 1em;
+}
+
+textarea#ticketsMensaje:focus, 
+input#ticketsAsunto:focus {
+    outline: none;
+}
+
+div.submitAndResetWrapper {
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+    align-self: center;
+    gap: 20px;
+}
+
+input.ticketsEnviar, input.ticketsBorrar {
+	padding: 0.2em 1em;
+
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 1em;
+
+	width: max-content;
+}
+
+input.ticketsEnviar:hover, input.ticketsBorrar:hover {
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    cursor: pointer;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 1120px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 576px) {
+    #principalWeb {
+        padding: 20px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 360px) {
+
+}

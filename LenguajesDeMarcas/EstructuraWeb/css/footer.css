@@ -1,0 +1,29 @@
+#webFooter {
+    grid-area: footer;
+}
+
+footer {
+	background-color: #77432e;
+	text-align: center;
+}
+
+footer h3 {
+	color: whitesmoke;
+	border-top: 5px solid #b5985d;
+}
+
+footer a {
+	text-decoration: none;
+	color: whitesmoke !important;
+}
+
+footer p {
+	color: whitesmoke;
+	text-align: center;
+	border-bottom: 5px solid #b5985d;
+}
+
+#copyright {
+	background-color: #30201a;
+	border-bottom: none;
+}

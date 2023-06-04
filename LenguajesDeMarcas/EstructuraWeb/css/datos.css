@@ -1,0 +1,204 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/*
+    Created on : May 23, 2023, 7:38:33 PM
+    Author     : ivan
+*/
+
+#principalWeb {
+    grid-area: main;
+
+    background-image: url('../img/fondo.png');
+
+    padding: 20px 20px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+    align-items: center;
+    
+    text-align: center;
+
+	gap: 20px;
+}
+
+table {
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    background-color: whitesmoke;
+}
+
+th {
+    font-family: 'Dancing Script', cursive;
+    padding: 2em 1em;
+    background-color: #CF6236;
+    color: whitesmoke;
+    text-transform: uppercase;
+
+    border-bottom: 5px solid #b5985d;
+    border-right: 5px solid #b5985d;
+}
+
+th:last-child {
+    border-right: none;
+}
+
+td {
+    padding: 2em 1em;
+    
+    border-right: 5px solid #b5985d;
+    border-bottom: 5px solid #b5985d;
+}
+
+td:last-child {
+    border-right: none;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+td.centrado {
+    width: min-content;
+}
+
+td a img.fotoTD {
+    width: 50%;
+    height: 50%;
+}
+
+.boton {
+    padding: 0.2em 1em;
+
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+
+    background-color: whitesmoke;
+}
+
+.boton:hover {
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    cursor: pointer;
+}
+
+div.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    font-size: 1em;
+    color: red;
+    text-align: center;
+
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+}
+
+div.error p a {
+    color: #b5985d !important;
+}
+
+#formFacturar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 1120px) {
+
+    #principalWeb {
+        padding: 20px 10px;
+    }
+
+    table {
+        border: none;
+        background-color: none;
+        border-radius: none;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table, table tbody, table tr {
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+    }
+
+    tr:last-child td {
+        border-bottom: 5px solid #b5985d;
+    }
+
+    table td {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        border: none;
+        border-bottom: 5px solid #b5985d;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+
+        border: 5px solid #b5985d;
+        border-radius: 10px;
+        border-bottom: none;
+
+        background-color: whitesmoke;
+    }
+
+    table td:not(.facturar)::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td.facturar {
+        align-items: center;
+    }
+
+    td.centrado {
+        width: -moz-available;
+    }
+    
+    td a img.fotoTD {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 360px) {
+
+}

@@ -1,0 +1,314 @@
+/*  MAIN    */
+
+#principalWeb {
+    grid-area: main;
+
+    display: grid;
+
+    grid-template-columns: 20vw auto;
+
+    grid-template-areas: "filtro productos";
+
+    background-image: url('../img/fondo.png');
+
+    padding: 20px
+}
+
+#filtro {
+    grid-area: filtro;
+
+    display: flex;
+
+    flex-direction: column;
+
+
+    height: min-content;
+
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    background-color: whitesmoke;
+
+    padding-bottom: 5px;
+}
+
+aside#filtro > div > h2 {
+    border-bottom: 5px solid #b5985d;
+
+    padding: 5px;
+
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    font-family: 'Dancing Script', cursive;
+
+    text-align: center;
+}
+
+div#categoriasWrapper > form.inputWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#generosWrapper {
+    border-top: 5px solid #b5985d;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    padding: 20px;
+
+    gap: 20px;
+}
+
+div#allCheckBoxWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+
+    padding: 20px; 
+}
+
+input:checked ~ label {
+    border-bottom: 5px solid #b5985d;
+}
+
+.inputLabelWrapper {
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+div#submitResetWrapper {
+    display: flex;
+    flex-direction: row;
+
+    gap: 20px;
+
+    justify-content: center;
+}
+
+div#submitResetWrapper > input {
+    padding: 5px;
+
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+}
+
+div#submitResetWrapper > input:hover {
+    background-color: #CF6236;
+
+    color: whitesmoke;
+}
+
+p.error {
+    font-size: 1em;
+    color: red;
+    text-align: center;
+}
+
+#productsMain {
+    grid-area: productos;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding-left: 20px;
+
+    gap: 20px;
+}
+
+#buscadorYHamburgesa {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#hamburgesa {
+    display: none;
+}
+
+section#productsMain #buscadorYHamburgesa > input#searchBox {
+    width: min-content;
+
+    padding: 5px;
+
+    background: none;
+    outline: 0;
+    border: 0;
+    border-radius: 10px;
+    border-bottom: 5px solid #b5985d;
+}
+
+section#productsMain #buscadorYHamburgesa > input#searchBox:hover, section#productsMain > input#searchBox:focus {
+    background: none;
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+    outline: 0;
+
+    padding: 10px;
+
+    background-color: whitesmoke;
+}
+
+figure.popularimgWrapper {
+    width: 800px;
+}
+
+figure.popularimgWrapper img {
+    width: 100%;
+    height: 100%;
+}
+
+#products {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+#productsWrapper {
+    display: flex;
+
+    flex-direction: row;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-start;
+
+    gap: 20px;
+}
+
+.productWrapper {
+    width: 350px;
+    height: min-content;
+
+    background: none;
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.productWrapper > h2 {
+    border-top: 5px solid #b5985d;
+    border-bottom: 5px solid #b5985d;
+
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    padding: 10px;
+
+    font-family: 'Dancing Script', cursive;
+    text-transform: uppercase;
+}
+
+.productWrapper > p {
+    padding: 10px;
+    background-color: whitesmoke;
+}
+
+figure.imgWrapper {
+    width: 100%;
+
+    height: 40vh;
+}
+
+figure.imgWrapper img {
+    width: 100%;
+    height: 100%;
+}
+
+section#products > p {
+    padding: 5px;
+
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 10px;
+
+    background-color: whitesmoke;
+
+    width: max-content;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 1120px) {
+    #principalWeb {
+        grid-template-columns: 30vw auto;
+    }
+}
+
+@media (max-width: 768px) {
+    #filtro {
+        display: none;
+    }
+
+    #principalWeb {
+        grid-template-columns: 1fr;
+
+        grid-template-areas: "productos";
+    }
+
+    #productsWrapper {
+        justify-content: center;
+    }
+
+    #hamburgesa {
+        display: block;
+
+        padding: 0.2em 1em;
+
+        border-radius: 10px;
+        border: 5px solid #b5985d;
+
+        font-size: 1em;
+    }
+
+    #hamburgesa:hover {
+        background-color: #CF6236;
+
+        color: whitesmoke;
+
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 360px) {
+
+}

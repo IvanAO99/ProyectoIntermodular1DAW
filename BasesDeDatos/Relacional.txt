@@ -1,0 +1,115 @@
+USUARIOS (código, correo_electrónico, password, última_conexión, nombre, fecha_nacimiento*, teléfono*, foto*)
+	PK: código
+	UK: correo_electrónico
+
+ADMINISTRADORES (código)
+	PK: código
+	FK: código → USUARIO.código
+
+CLIENTES (código)
+	PK: código
+	FK: código → USUARIO.código
+
+TICKETS (código, mensaje, asunto, estado, cliente)
+	PK: código
+	FK: cliente → CLIENTE.código
+	NN (cliente)
+
+TARJETAS (número)
+	PK: número
+
+TARJETAS_USUARIOS (cliente, tarjeta)
+	PK: cliente, tarjeta
+	FK: cliente → CLIENTES.código
+	FK: tarjeta → TARJETAS.número
+
+DIRECCIONES (cliente, código, tipo, cp, localidad, provincia, dirección_completa)
+	PK: cliente, código
+	FK: cliente → CLIENTES.código
+
+PEDIDOS (código, fecha, precio_total, facturado, cliente, dirección_envio)
+	PK: código
+	FK: cliente, dirección_envio → DIRECCIONES. cliente, código
+	NN (cliente, dirección_envio)
+
+FACTURAS (código, fecha, cliente, dirección_factura, pedido)
+	PK: código
+	UK: pedido
+	FK: cliente, dirección_factura → DIRECCIONES. cliente, código
+	NN (cliente, dirección_factura)
+	FK: pedido → PEDIDOS.código
+	NN (pedido)
+
+PEDIDOS_CLIENTES (cliente, pedido)
+	PK: cliente, pedido
+	FK: cliente → CLIENTES.código
+	FK: pedido → PEDIDOS.código
+
+LISTAS_DESEOS (cliente, nombre)
+	PK: cliente, nombre
+	FK: cliente → CLIENTES.código
+
+OPINIONES (código, mensaje, fecha_publicación, cliente, producto)
+	PK: código
+	FK: cliente → CLIENTES.código
+	FK: producto → PRODUCTOS.código
+	NN (cliente)
+	NN (producto)
+
+PROVEEDORES (código, teléfono, dirección, nombre, tipo)
+	PK: código
+
+CATEGORÍAS (código, nombre)
+	PK: código
+
+PRODUCTOS (código, foto, nombre, descripción, precio, unidad_medida, stock_mínimo, stock, iva, proveedor, modificador*, creador, fecha_creación, fecha_ultima_modificacion*)
+	PK: código
+	FK: proveedor → PROVEEDORES.código
+	FK: modificador → ADMINISTRADORES.código
+	FK: creador → ADMINISTRADORES.código
+	NN (proveedor)
+	NN (creador)
+
+CATEGORIAS_PRODUCTOS (categoría,  producto)
+	PK: categoría, producto
+	FK: categoría → CATEGORIAS.código
+	FK: producto → PRODUCTOS.código
+
+LIBROS (código, formato, editorial, autor, género, isbn, número_páginas)
+	PK: código
+	FK: código → PRODUCTOS.código
+
+DISCOS (código, canciones, sello, género, artista, tipo, asin)
+	PK: código
+	FK: código → PRODUCTOS.código
+
+PEDIDOS_PRODUCTOS (producto, pedido, cantidad, precio)
+	PK: producto, pedido
+	FK: producto → PRODUCTOS.código
+	FK: pedido → PEDIDOS.código
+
+LISTAS_DESEOS_PRODUCTOS (producto, nombre_lista, cliente)
+	PK: producto, nombre_lista, cliente
+	FK: producto → PRODUCTOS.código
+	FK: nombre_lista, cliente → LISTAS_DESEOS.cliente, nombre
+
+PÉRDIDAS SEMÁNTICAS
+
+Generalización →  solamente hay pérdida si una generalización es total o exclusiva.
+
+	La generalización de USUARIO es tanto total como exclusiva.
+    Se pierden tanto la totalidad como la exclusividad puesto que no podemos plasmarlas en el modelo relacional.
+
+	La generalización de PRODUCTO es exclusiva. Se pierde la exclusividad ya que no se puede plasmar en el modelo relacional.
+
+(1,n) →  Se pierde el uno, no se puede representar.
+         Ya que en el relacional sólo podemos captar la existencia mínima de ese producto en relaciones con restricción de  existencia.
+
+	Se pierde el 1 del (1,n) de PRODUCTOS-PROVEEDORES.
+	Se pierde el 1 del (1,n) de PRODUCTOS-LISTAS_DESEOS.
+	Se pierde el 1 del (1,n) de PRODUCTOS-PEDIDOS.
+	Se pierde el 1 del (1,n) de CLIENTES-PEDIDOS.
+
+1:N o 1:1 →  Si hay atributo en la relación, no se puede saber su origen. 
+	En las relaciones 1:N ADMINISTRADOR-MODIFICAR-PRODUCTO y ADMINISTRADOR-CREAR-PRODUCTO,
+    se pierde el origen de los atributos “Fecha de creación” y “Fecha de última modificación” porque no hacemos una tabla de la relación.

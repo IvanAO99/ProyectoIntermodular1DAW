@@ -1,0 +1,148 @@
+#principalWeb {
+    grid-area: main;
+
+    background-image: url('../img/fondo.png');
+
+    padding: 20px 200px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    align-items: center;
+    
+    text-align: center;
+}
+
+main .formulario {
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+
+    background-color: whitesmoke;
+
+    width: max-content;
+
+    font-size: larger;
+}
+
+main .formulario .encabezadoForm {
+    text-align: center;
+}
+
+main .formulario .encabezadoForm h2 {
+    font-family: 'Dancing Script', cursive;
+    background-color: #CF6236;
+    color: whitesmoke;
+    text-align: center;
+    padding: 0.5em;
+}
+
+main .formulario .encabezadoForm p {
+    padding: 5px;
+
+    background-color: #77432e;
+
+    color: whitesmoke;
+
+    text-align: center;
+}
+
+form {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: left;
+
+    text-align: left;
+
+    border-top: 5px solid #b5985d;
+    border-bottom: 5px solid #b5985d;
+
+    padding: 10px;
+}
+
+form label {
+    color: black;
+
+    text-decoration: solid;
+}
+
+form input {
+    padding: 5px;
+
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+	border: 3px solid #b5985d;
+}
+
+#submit {
+    padding: 0.2em 1em;
+
+    border-radius: 10px;
+    border: 5px solid #b5985d;
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 1em;
+
+    background-color: whitesmoke;
+    color: black;
+
+    width: max-content;
+
+    align-self: center;
+}
+
+#submit:hover {
+    background-color: #CF6236;
+
+    color: whitesmoke;
+
+    cursor: pointer;
+}
+
+.login, .formFooter p {
+    text-align: center;
+
+    background-color: whitesmoke;
+
+    color: black;
+
+    padding: 0.2em 1em;
+}
+
+.enlace, .enlace p {
+    color: #b5985d !important;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 1120px) {
+    /* Sin cambios */
+}
+
+@media (max-width: 768px) {
+    #principalWeb {
+        padding: 20px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    #principalWeb {
+        padding: 20px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #principalWeb {
+        padding: 20px 20px;
+    }
+}
+
+@media (max-width: 400px) {
+
+}
+
+@media (max-width: 360px) {
+
+}

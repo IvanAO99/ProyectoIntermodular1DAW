@@ -1,0 +1,183 @@
+main {
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 50px;
+}
+
+.id-card {
+    border-radius: 10px;
+	border: 5px solid #b5985d;
+
+    background-color: whitesmoke;
+
+    width: 750px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.id-card .id-title {
+    display: flex;
+
+    flex-direction: column;
+    
+    align-items: stretch;
+
+    text-align: center;
+}
+
+.id-card .id-title h2 {
+    background-color: #CF6236;
+
+    border-bottom: 5px solid #b5985d;
+
+    padding: 20px;
+
+    font-family: 'Dancing Script', cursive;
+    color: whitesmoke;
+}
+
+.id-card .id-title p {
+    padding: 20px;
+
+    text-align: center;
+
+    border-bottom: 5px solid #b5985d;
+}
+
+.id-card .informacion-personal .datos {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-evenly;
+    align-items: stretch;
+
+    width: 100%;
+    height: auto;
+}
+
+.id-card .informacion-personal .datos article:first-child {
+    padding-top: 10px;
+}
+
+.id-card .informacion-personal .datos article .h2 {
+    background-color: #b5985d;
+
+    color: whitesmoke;
+
+    padding: 5px;
+
+    text-align: left;
+}
+
+.id-card .informacion-personal .datos article p {
+    background-color: whitesmoke;
+
+    padding: 10px;
+
+    text-align: center;
+}
+
+.cod-barras, .caducidad {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.informacion-personal, .card-footer {
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+}
+
+.id-card .informacion-personal .foto .careto {
+    width: 100%;
+    height: 310px;
+}
+
+.foto, .datos {
+    width: 100%;
+    height: auto;
+}
+
+.id-card .informacion-personal .foto .careto img {
+    width: 100%;
+    height: auto;
+}
+
+.cod-barras figure, .caducidad {
+    width: 100%;
+
+    border-top: 5px solid #b5985d;
+}
+
+.caducidad {
+    border-bottom: 5px solid #b5985d;
+}
+
+.cod-barras figure {
+    height: 60px;
+}
+
+.cod-barras figure img {
+    width: 100%;
+    height: 60px;
+}
+
+.card-footer {
+    justify-content: space-around;
+
+    background-color: #CF6236;
+}
+
+.card-footer figure {
+    border-left: 5px solid #b5985d;
+    border-right: 5px solid #b5985d;
+
+    width: 200px;
+}
+
+.card-footer figure img {
+    width: 100%;
+    height: 100%;
+}
+
+#sobre-nosotros {
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 5px solid #b5985d;
+}
+
+#sobre-nosotros .container {
+    max-width: 100%;
+    margin: 0 auto;
+    border: 5px solid #b5985d;
+    border-radius: 10px;
+}
+
+#sobre-nosotros h2 {
+    background-color: #CF6236;
+    border-bottom: 5px solid #b5985d;
+    padding: 20px;
+    font-family: 'Dancing Script', cursive;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 32px;
+}
+
+#sobre-nosotros .container p {
+    padding: 0px 20px;
+}
